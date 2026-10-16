@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1.1 to 1.5 Brand foundation | PSF prototype</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+.psf{font-family:'Inter',system-ui,sans-serif;color:#14171A;-webkit-font-smoothing:antialiased}
+.psf *{box-sizing:border-box}
+.sf{font-family:'Source Serif 4',Georgia,serif}
+.lbl{font-size:12px;line-height:1.2;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.sw{display:flex;flex-direction:column;border:1px solid #E4E2DC;border-radius:4px;overflow:hidden}
+.sw .c{height:72px}
+.sw .t{padding:10px 12px;display:flex;flex-direction:column;gap:2px;font-size:12px}
+.sw .n{font-weight:600;font-size:13px}
+.sw .h{color:#5A6169;font-variant-numeric:tabular-nums}
+.chip{display:inline-flex;align-items:center;height:24px;padding:0 8px;border-radius:2px;font-size:12px;font-weight:600}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 18px;border-radius:2px;font:500 15px 'Inter',sans-serif;border:1px solid transparent}
+.sec{border-top:2px solid #14171A;padding-top:12px;margin-bottom:20px}
+</style>
+<style>
+.psf-proto-nav{position:fixed;left:16px;bottom:16px;z-index:9999;display:flex;flex-wrap:wrap;gap:6px;align-items:center;max-width:calc(100vw - 32px);padding:8px;background:#14171A;border-radius:4px;box-shadow:0 8px 24px rgba(20,23,26,.24);font:500 13px/1 Inter,system-ui,sans-serif}
+.psf-proto-nav a{color:#FFFFFF;text-decoration:none;padding:8px 10px;border-radius:2px}
+.psf-proto-nav a:hover{background:#2E3338}
+.psf-proto-nav a[aria-current]{background:#FFFFFF;color:#14171A}
+.psf-proto-nav span{color:#BBC0C4;padding:0 4px 0 8px}
+</style>
+</head>
+<body>
+
+<div class="psf" style="width: 1440px; height: 1720px; padding: 72px 80px; background: #FFFFFF; display: flex; flex-direction: column; gap: 48px">
+  <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 24px">
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <span class="lbl" style="color: #04411F">UI spec 1.1 to 1.5 · binding on every screen</span>
+      <h1 class="sf" style="margin: 0; font-size: 44px; line-height: 1.1; font-weight: 600">PSF brand foundation</h1>
+    </div>
+    <div style="display: flex; gap: 16px; align-items: center; padding: 14px 18px; border: 1px solid #E4E2DC; border-radius: 4px; max-width: 520px">
+      <span style="width: 56px; height: 56px; border: 2px solid #04411F; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #04411F; font: 700 15px/1 'Source Serif 4', Georgia, serif; flex: none">PSF</span>
+      <span style="font-size: 13px; line-height: 1.5; color: #2E3338">Placeholder for the crest lockup. Replace with the supplied logo, never redrawn or recoloured. Gold <strong style="font-weight: 600">#D9A52B</strong> and black appear inside the lockup only, never as UI colours.</span>
+    </div>
+  </div>
+
+  <section>
+    <div class="sec"><h2 class="lbl" style="margin: 0">Brand green, logo-derived (final)</h2></div>
+    <div style="display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 12px">
+      <div class="sw"><div class="c" style="background: #022C15"></div><div class="t"><span class="n">green-900</span><span class="h">#022C15 · 15.3:1</span><span>Footer, deep overlays</span></div></div>
+      <div class="sw"><div class="c" style="background: #03361A"></div><div class="t"><span class="n">green-800</span><span class="h">#03361A · 13.6:1</span><span>Pressed, active nav</span></div></div>
+      <div class="sw" style="border-color: #04411F; border-width: 2px"><div class="c" style="background: #04411F"></div><div class="t"><span class="n">green-700</span><span class="h">#04411F · 11.8:1</span><span>Primary brand</span></div></div>
+      <div class="sw"><div class="c" style="background: #0D6634"></div><div class="t"><span class="n">green-600</span><span class="h">#0D6634 · 7.1:1</span><span>Hover, success-700</span></div></div>
+      <div class="sw"><div class="c" style="background: #198348"></div><div class="t"><span class="n">green-500</span><span class="h">#198348 · 4.8:1</span><span>Focus, globe, chart 1</span></div></div>
+      <div class="sw"><div class="c" style="background: #BBD3C5"></div><div class="t"><span class="n">green-200</span><span class="h">#BBD3C5</span><span>Selected, chip border</span></div></div>
+      <div class="sw"><div class="c" style="background: #DCE5E0"></div><div class="t"><span class="n">green-100</span><span class="h">#DCE5E0</span><span>Peer-reviewed badge</span></div></div>
+      <div class="sw"><div class="c" style="background: #F2F5F3"></div><div class="t"><span class="n">green-50</span><span class="h">#F2F5F3</span><span>Row hover</span></div></div>
+    </div>
+  </section>
+
+  <section style="display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px">
+    <div>
+      <div class="sec"><h2 class="lbl" style="margin: 0">Surfaces and ink (FRD 3.3)</h2></div>
+      <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px">
+        <div class="sw"><div class="c" style="background: #FFFFFF; border-bottom: 1px solid #E4E2DC"></div><div class="t"><span class="n">paper</span><span class="h">#FFFFFF</span></div></div>
+        <div class="sw"><div class="c" style="background: #FBF9F4"></div><div class="t"><span class="n">ivory-50</span><span class="h">#FBF9F4</span></div></div>
+        <div class="sw"><div class="c" style="background: #F5F1E8"></div><div class="t"><span class="n">ivory-100</span><span class="h">#F5F1E8</span></div></div>
+        <div class="sw"><div class="c" style="background: #E9E3D5"></div><div class="t"><span class="n">ivory-200</span><span class="h">#E9E3D5</span></div></div>
+        <div class="sw"><div class="c" style="background: #E4E2DC"></div><div class="t"><span class="n">line</span><span class="h">#E4E2DC</span></div></div>
+        <div class="sw"><div class="c" style="background: #14171A"></div><div class="t"><span class="n">ink-900</span><span class="h">#14171A</span></div></div>
+        <div class="sw"><div class="c" style="background: #2E3338"></div><div class="t"><span class="n">ink-700</span><span class="h">#2E3338</span></div></div>
+        <div class="sw"><div class="c" style="background: #5A6169"></div><div class="t"><span class="n">ink-500</span><span class="h">#5A6169</span></div></div>
+        <div class="sw"><div class="c" style="background: #7A8189"></div><div class="t"><span class="n">ink-400</span><span class="h">#7A8189</span><span>Input borders, never text</span></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="sec"><h2 class="lbl" style="margin: 0">Semantic</h2></div>
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px">
+        <div class="sw"><div class="c" style="background: #A4231A"></div><div class="t"><span class="n">danger-700</span><span class="h">#A4231A</span></div></div>
+        <div class="sw"><div class="c" style="background: #9A4A0B"></div><div class="t"><span class="n">warning-700</span><span class="h">#9A4A0B</span></div></div>
+        <div class="sw"><div class="c" style="background: #1F4A7A"></div><div class="t"><span class="n">info-700</span><span class="h">#1F4A7A</span></div></div>
+        <div class="sw"><div class="c" style="background: #0D6634"></div><div class="t"><span class="n">success-700</span><span class="h">#0D6634</span></div></div>
+        <div class="sw"><div class="c" style="background: #FBEDEB"></div><div class="t"><span class="n">danger-50</span><span class="h">#FBEDEB</span></div></div>
+        <div class="sw"><div class="c" style="background: #FBF1E6"></div><div class="t"><span class="n">warning-50</span><span class="h">#FBF1E6</span></div></div>
+        <div class="sw"><div class="c" style="background: #EAF1F8"></div><div class="t"><span class="n">info-50</span><span class="h">#EAF1F8</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px">
+    <div>
+      <div class="sec"><h2 class="lbl" style="margin: 0">Status chips</h2></div>
+      <div style="display: flex; flex-wrap: wrap; gap: 10px">
+        <span class="chip" style="background: #F5F1E8; color: #5A6169">Draft</span>
+        <span class="chip" style="background: #FBF1E6; color: #9A4A0B">In review</span>
+        <span class="chip" style="background: #FBF1E6; color: #9A4A0B; box-shadow: inset 0 0 0 1px #9A4A0B">Changes requested</span>
+        <span class="chip" style="background: #DCE5E0; color: #04411F">Published</span>
+        <span class="chip" style="background: #EAF1F8; color: #1F4A7A">Scheduled</span>
+        <span class="chip" style="background: #FBEDEB; color: #A4231A">Rejected</span>
+        <span class="chip" style="background: #E9E3D5; color: #5A6169">Deactivated</span>
+        <span class="chip" style="background: #A4231A; color: #FFFFFF">Banned</span>
+      </div>
+      <div class="sec" style="margin-top: 36px"><h2 class="lbl" style="margin: 0">Content labels</h2></div>
+      <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center">
+        <span class="lbl" style="color: #04411F">Analysis</span>
+        <span class="lbl" style="color: #04411F">Explainer</span>
+        <span class="lbl" style="color: #04411F">Opinion</span>
+        <span class="lbl" style="display: inline-flex; align-items: center; gap: 4px; background: #DCE5E0; color: #04411F; padding: 4px 8px; border-radius: 2px; font-size: 11px"><svg viewBox="0 0 24 24" style="width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Peer-reviewed</span>
+        <span class="lbl" style="background: #A4231A; color: #FFFFFF; padding: 4px 8px; border-radius: 2px; font-size: 11px">Breaking</span>
+        <span class="lbl" style="background: #F5F1E8; color: #5A6169; padding: 4px 8px; border-radius: 2px; font-size: 11px">Archive</span>
+      </div>
+      <div class="sec" style="margin-top: 36px"><h2 class="lbl" style="margin: 0">Buttons · 2px radius · 40 / 48 / 32px</h2></div>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center">
+        <span class="btn" style="background: #04411F; color: #FFFFFF">Primary</span>
+        <span class="btn" style="background: #0D6634; color: #FFFFFF">Hover</span>
+        <span class="btn" style="background: #FFFFFF; color: #14171A; border-color: #14171A">Secondary</span>
+        <span class="btn" style="color: #04411F; text-decoration: underline; text-underline-offset: 3px; padding: 0 6px">Tertiary</span>
+        <span class="btn" style="background: #A4231A; color: #FFFFFF">Destructive</span>
+        <span class="btn" style="background: #04411F; color: #FFFFFF; opacity: .4">Disabled</span>
+        <span class="btn" style="background: #FFFFFF; color: #14171A; border-color: #14171A; outline: 2px solid #198348; outline-offset: 2px">Focus</span>
+      </div>
+      <div class="sec" style="margin-top: 36px"><h2 class="lbl" style="margin: 0">Input</h2></div>
+      <div style="display: flex; flex-direction: column; gap: 6px; max-width: 420px">
+        <span style="font-size: 14px; font-weight: 500">Label</span>
+        <span style="height: 44px; border: 1px solid #7A8189; border-radius: 2px; display: flex; align-items: center; padding: 0 12px; font-size: 15px">Value</span>
+        <span style="font-size: 13px; color: #5A6169">Helper text below. Error text in danger-700 with icon.</span>
+      </div>
+    </div>
+    <div>
+      <div class="sec"><h2 class="lbl" style="margin: 0">Type · Source Serif 4 editorial · Inter interface</h2></div>
+      <div style="display: flex; flex-direction: column; gap: 14px">
+        <div style="display: flex; gap: 16px; align-items: baseline"><span style="width: 96px; font-size: 12px; color: #5A6169; flex: none">display 56</span><span class="sf" style="font-size: 56px; line-height: 1.08; font-weight: 600">Air defence</span></div>
+        <div style="display: flex; gap: 16px; align-items: baseline"><span style="width: 96px; font-size: 12px; color: #5A6169; flex: none">h1 44</span><span class="sf" style="font-size: 44px; line-height: 1.12; font-weight: 600">In depth</span></div>
+        <div style="display: flex; gap: 16px; align-items: baseline"><span style="width: 96px; font-size: 12px; color: #5A6169; flex: none">h2 32</span><span class="sf" style="font-size: 32px; font-weight: 600">Section title</span></div>
+        <div style="display: flex; gap: 16px; align-items: baseline"><span style="width: 96px; font-size: 12px; color: #5A6169; flex: none">h3 24 · h4 20</span><span class="sf" style="font-size: 24px; font-weight: 600">Card title</span></div>
+        <div style="display: flex; gap: 16px; align-items: baseline"><span style="width: 96px; font-size: 12px; color: #5A6169; flex: none">standfirst 22</span><span class="sf" style="font-size: 22px; line-height: 1.45; color: #2E3338">The gaps that remain are mostly about time.</span></div>
+        <div style="display: flex; gap: 16px; align-items: baseline"><span style="width: 96px; font-size: 12px; color: #5A6169; flex: none">body-long 19</span><span class="sf" style="font-size: 19px; line-height: 1.65; color: #2E3338">Long-form reading text, 720px max measure.</span></div>
+        <div style="display: flex; gap: 16px; align-items: baseline"><span style="width: 96px; font-size: 12px; color: #5A6169; flex: none">quote 28</span><span class="sf" style="font-size: 28px; font-style: italic">"Trust the shared picture."</span></div>
+        <div style="display: flex; gap: 16px; align-items: baseline"><span style="width: 96px; font-size: 12px; color: #5A6169; flex: none">body 16</span><span style="font-size: 16px">Interface body, forms, dashboards</span></div>
+        <div style="display: flex; gap: 16px; align-items: baseline"><span style="width: 96px; font-size: 12px; color: #5A6169; flex: none">meta 13</span><span style="font-size: 13px; font-weight: 500; color: #5A6169">Ayesha Rahman · 16 Oct 2026 · 9 min read</span></div>
+        <div style="display: flex; gap: 16px; align-items: baseline"><span style="width: 96px; font-size: 12px; color: #5A6169; flex: none">label 12</span><span class="lbl" style="color: #04411F">Analysis / Defence</span></div>
+        <div style="display: flex; gap: 16px; align-items: baseline"><span style="width: 96px; font-size: 12px; color: #5A6169; flex: none">data 32</span><span style="font-size: 32px; font-weight: 500; font-variant-numeric: tabular-nums">12,480</span></div>
+      </div>
+      <div class="sec" style="margin-top: 36px"><h2 class="lbl" style="margin: 0">Layout</h2></div>
+      <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #2E3338">1440 canvas · 1280 container · 12 columns · 24px gutters · spacing 4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80, 96, 128 · radii 2px buttons and inputs, 4px cards and modals, 0 images in cards, 50% avatars · hairlines over shadows · 80px between home sections.</p>
+    </div>
+  </section>
+</div>
+
+<nav class="psf-proto-nav" aria-label="Prototype"><a href="index.html">All screens</a></nav>
+</body>
+</html>

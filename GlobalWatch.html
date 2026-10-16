@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3.11 / 4 Global Watch | PSF prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#04411F}a:hover{color:#03361A}
+.psf{font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;color:#14171A;-webkit-font-smoothing:antialiased}
+.psf *{box-sizing:border-box}
+.sf{font-family:'Source Serif 4',Georgia,'Times New Roman',serif}
+.lbl{font-size:12px;line-height:1.2;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.meta{font-size:13px;line-height:1.4;font-weight:500;color:#5A6169}
+.wrap{max-width:1280px;margin:0 auto;padding:0 32px;box-sizing:content-box !important}
+.g12{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 18px;border-radius:2px;font:500 15px/1 'Inter',sans-serif;text-decoration:none;border:1px solid transparent;white-space:nowrap;cursor:pointer;background:none}
+.btn-t{color:#04411F;padding:0 6px}
+.icb{width:40px;height:40px;padding:0;border:0;border-radius:2px;background:#FFFFFF;color:#2E3338;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.icb:hover{background:#F2F5F3;color:#04411F}
+.chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border:1px solid #E4E2DC;border-radius:2px;font:500 13px 'Inter',sans-serif;color:#2E3338;text-decoration:none;background:#FFFFFF;cursor:pointer}
+.chip-on{background:#DCE5E0;border-color:#BBD3C5;color:#04411F}
+.sec{border-top:2px solid #14171A;padding-top:12px;display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:20px}
+.t{color:#14171A;text-decoration:none}.t:hover{text-decoration:underline;text-underline-offset:3px}
+.ico{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.ico-s{width:16px;height:16px}
+.ph{background:#E9E3D5}
+.fl{font-size:13px;font-weight:600;color:#2E3338}
+.sel{height:40px;border:1px solid #7A8189;border-radius:2px;background:#FFFFFF;padding:0 12px;display:flex;align-items:center;justify-content:space-between;font:14px 'Inter',sans-serif;color:#2E3338;width:100%;cursor:pointer}
+.ck{display:flex;align-items:center;gap:10px;font-size:14px;color:#2E3338;min-height:32px}
+.ck input{width:18px;height:18px;accent-color:#04411F;margin:0}
+.sw{width:36px;height:20px;border-radius:10px;background:#04411F;position:relative;flex:none}
+.sw:after{content:'';position:absolute;right:2px;top:2px;width:16px;height:16px;border-radius:50%;background:#FFFFFF}
+.sw.off{background:#7A8189}.sw.off:after{right:auto;left:2px}
+.tab{background:none;border:0;padding:12px 0;font:500 14px 'Inter',sans-serif;color:#5A6169;cursor:pointer}
+.tab.on{color:#14171A;box-shadow:inset 0 -2px 0 #04411F}
+@media (max-width:900px){.wrap{padding:0 16px}.g12{grid-template-columns:minmax(0,1fr)}.g12>*{grid-column:1 / -1 !important}}
+</style>
+<style>
+.psf-proto-nav{position:fixed;left:16px;bottom:16px;z-index:9999;display:flex;flex-wrap:wrap;gap:6px;align-items:center;max-width:calc(100vw - 32px);padding:8px;background:#14171A;border-radius:4px;box-shadow:0 8px 24px rgba(20,23,26,.24);font:500 13px/1 Inter,system-ui,sans-serif}
+.psf-proto-nav a{color:#FFFFFF;text-decoration:none;padding:8px 10px;border-radius:2px}
+.psf-proto-nav a:hover{background:#2E3338}
+.psf-proto-nav a[aria-current]{background:#FFFFFF;color:#14171A}
+.psf-proto-nav span{color:#BBC0C4;padding:0 4px 0 8px}
+</style>
+</head>
+<body>
+
+<div class="psf" style="width: 100%; background: #FFFFFF">
+  
+<div style="width: 100%; font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; color: #14171A; background: #FFFFFF; box-sizing: border-box">
+  
+  <div style="background: #F5F1E8; border-bottom: 1px solid #E9E3D5">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 0 32px; height: 36px; display: flex; align-items: center; justify-content: space-between; gap: 24px; font-size: 13px; color: #2E3338; box-sizing: content-box">
+      <div style="display: flex; gap: 24px; align-items: center">
+        <span>Friday, 16 October 2026</span>
+        <a href="GlobalWatch.html" style="display: flex; align-items: center; gap: 6px; text-decoration: none; font-weight: 500; color: #04411F"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>Global Watch: 212 locations covered</a>
+      </div>
+      <div style="display: flex; gap: 20px; align-items: center">
+        <div role="group" aria-label="Text size" style="display: flex; gap: 2px; align-items: center">
+          <button style="height: 28px; padding: 0 8px; background: none; border: 1px solid transparent; border-radius: 2px; font: 500 13px 'Inter', sans-serif; color: #2E3338; cursor: pointer">A−</button>
+          <button aria-pressed="true" style="height: 28px; padding: 0 8px; background: #FFFFFF; border: 1px solid #BBD3C5; border-radius: 2px; font: 600 13px 'Inter', sans-serif; color: #04411F; cursor: pointer">A</button>
+          <button style="height: 28px; padding: 0 8px; background: none; border: 1px solid transparent; border-radius: 2px; font: 500 15px 'Inter', sans-serif; color: #2E3338; cursor: pointer">A+</button>
+        </div>
+        <div style="display: flex; gap: 14px">
+          <a href="#" style="color: #2E3338; text-decoration: none">X</a>
+          <a href="#" style="color: #2E3338; text-decoration: none">Facebook</a>
+          <a href="#" style="color: #2E3338; text-decoration: none">Instagram</a>
+          <a href="#" style="color: #2E3338; text-decoration: none">YouTube</a>
+        </div>
+        <a href="Advertise.html" style="text-decoration: none; font-weight: 500; color: #04411F">Advertise</a>
+      </div>
+    </div>
+  </div>
+  
+  <header style="background: #FFFFFF; border-bottom: 1px solid #E4E2DC">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 0 32px; height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; box-sizing: content-box">
+      <a href="Main.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #14171A; flex: none">
+        <span style="width: 44px; height: 44px; border: 2px solid #04411F; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #04411F; font: 700 13px/1 'Source Serif 4', Georgia, serif; letter-spacing: .04em; box-sizing: border-box">PSF</span>
+        <span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 19px; font-weight: 600; line-height: 1.1">Pakistan Strategic Forum</span>
+      </a>
+      <nav aria-label="Primary" style="display: flex; gap: 28px; font-size: 15px; font-weight: 500; height: 72px; align-items: stretch">
+        
+          <a href="TopicsHub.html" style="display: flex; align-items: center; gap: 4px; text-decoration: none; color: #14171A; box-shadow: none">Topics<svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+        
+          <a href="ReportsHub.html" style="display: flex; align-items: center; gap: 4px; text-decoration: none; color: #14171A; box-shadow: none">Reports<svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+        
+          <a href="ResearchHub.html" style="display: flex; align-items: center; gap: 4px; text-decoration: none; color: #14171A; box-shadow: none">Research<svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+        
+          <a href="GlobalWatch.html" style="display: flex; align-items: center; gap: 4px; text-decoration: none; color: #04411F; box-shadow: inset 0 -2px 0 #04411F">Global Watch</a>
+        
+          <a href="Newsroom.html" style="display: flex; align-items: center; gap: 4px; text-decoration: none; color: #14171A; box-shadow: none">Newsroom<span style="width: 7px; height: 7px; border-radius: 50%; background: #198348; margin-left: 2px" aria-label="New posts in the last 2 hours"></span></a>
+        
+          <a href="About.html" style="display: flex; align-items: center; gap: 4px; text-decoration: none; color: #14171A; box-shadow: none">About<svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+        
+      </nav>
+      <div style="display: flex; align-items: center; gap: 8px; flex: none">
+        <a href="Search.html" aria-label="Search" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #14171A"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></a>
+        
+          <div style="display: flex; align-items: center; gap: 8px">
+            <a href="SignIn.html" style="height: 40px; padding: 0 8px; display: inline-flex; align-items: center; font: 500 15px 'Inter', sans-serif; color: #04411F; text-decoration: none">Sign in</a>
+            <a href="Join.html" style="height: 40px; padding: 0 18px; display: inline-flex; align-items: center; border-radius: 2px; background: #04411F; color: #FFFFFF; font: 500 15px 'Inter', sans-serif; text-decoration: none">Write for PSF</a>
+          </div>
+        
+        
+      </div>
+    </div>
+  </header>
+</div>
+
+
+  
+  <section style="background: #FBF9F4; border-bottom: 1px solid #E9E3D5">
+    <div class="wrap" style="min-height: 120px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px; padding-top: 20px; padding-bottom: 20px">
+      <div style="display: flex; flex-direction: column; gap: 6px">
+        <h1 class="sf" style="margin: 0; font-size: 44px; line-height: 1.1; font-weight: 600">Global Watch</h1>
+        <p style="margin: 0; font-size: 16px; color: #2E3338">Mapping PSF coverage around the world</p>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; border-left: 1px solid #E9E3D5">
+        <div style="padding: 0 24px; display: flex; flex-direction: column; gap: 2px; border-right: 1px solid #E9E3D5"><span style="font-size: 26px; font-weight: 500; font-variant-numeric: tabular-nums">212</span><span class="meta">Locations covered</span></div>
+        <div style="padding: 0 24px; display: flex; flex-direction: column; gap: 2px; border-right: 1px solid #E9E3D5"><span style="font-size: 26px; font-weight: 500; font-variant-numeric: tabular-nums">1,284</span><span class="meta">Items in range</span></div>
+        <div style="padding: 0 24px; display: flex; flex-direction: column; gap: 2px; border-right: 1px solid #E9E3D5"><span style="font-size: 26px; font-weight: 500">Afghanistan</span><span class="meta">Most covered country</span></div>
+        <div style="padding: 0 24px; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 26px; font-weight: 500; font-variant-numeric: tabular-nums">14:30 PKT</span><span class="meta">Last update</span></div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="wrap" style="padding-top: 24px">
+    <div class="g12" style="align-items: stretch">
+      <aside aria-label="Filters" style="grid-column: 1 / 4; display: flex; flex-direction: column; gap: 22px; padding: 20px; border: 1px solid #E4E2DC; border-radius: 4px">
+        <div style="display: flex; justify-content: space-between; align-items: center"><span style="font-size: 15px; font-weight: 600">Filters</span><span style="display: flex; gap: 4px; align-items: center"><a href="#" style="font-size: 14px; font-weight: 500; text-decoration: none; padding: 0 6px">Reset</a><button class="icb" aria-label="Collapse filters" style="width: 32px; height: 32px"><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg></button></span></div>
+        <fieldset style="border: 0; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 2px">
+          <legend class="lbl" style="color: #5A6169; margin-bottom: 8px">Content type</legend>
+          <label class="ck"><input type="checkbox" checked="">Articles</label><label class="ck"><input type="checkbox" checked="">Reports</label><label class="ck"><input type="checkbox" checked="">Research</label><label class="ck"><input type="checkbox" checked="">Newsroom</label>
+        </fieldset>
+        <div style="display: flex; flex-direction: column; gap: 6px"><span class="fl">Topic and subtopic</span><button class="sel">All topics<svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div>
+        <div style="display: flex; flex-direction: column; gap: 8px"><span class="fl">Date range</span><div style="display: flex; flex-wrap: wrap; gap: 6px"><button class="chip">7d</button><button class="chip">30d</button><button class="chip chip-on" aria-pressed="true">90d</button><button class="chip">12m</button><button class="chip">All</button><button class="chip">Custom</button></div></div>
+        <div style="display: flex; flex-direction: column; gap: 6px"><span class="fl">Region</span><button class="sel">All regions<svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div>
+        <div style="display: flex; flex-direction: column; gap: 6px"><label for="gw-country" class="fl">Country</label><div style="position: relative"><input id="gw-country" placeholder="Search a country" style="height: 40px; width: 100%; border: 1px solid #7A8189; border-radius: 2px; padding: 0 12px 0 36px; font: 14px 'Inter', sans-serif"><svg class="ico ico-s" viewBox="0 0 24 24" style="position: absolute; left: 12px; top: 12px; color: #5A6169" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></div></div>
+        <div style="display: flex; flex-direction: column; gap: 10px">
+          <span class="lbl" style="color: #5A6169">Layers</span>
+          <label style="display: flex; justify-content: space-between; align-items: center; font-size: 14px; min-height: 32px">PSF Coverage<span class="sw" role="switch" aria-checked="true"></span></label>
+          <label style="display: flex; justify-content: space-between; align-items: center; font-size: 14px; min-height: 32px">Status layer<span class="sw" role="switch" aria-checked="true"></span></label>
+          <label style="display: flex; justify-content: space-between; align-items: center; font-size: 14px; min-height: 32px">Country borders<span class="sw" role="switch" aria-checked="true"></span></label>
+        </div>
+      </aside>
+
+      <div style="grid-column: 4 / 13; position: relative; border: 1px solid #E4E2DC; border-radius: 4px; height: 680px; background: #FFFFFF; overflow: hidden">
+        <div style="position: absolute; inset: 0 480px 0 0; display: flex; align-items: center; justify-content: center">
+          <svg viewBox="0 0 440 440" style="height: 560px; width: auto" role="img" aria-label="Flat cartographic globe centred on South Asia; Kabul is selected">
+            <circle cx="220" cy="220" r="210" fill="#FFFFFF" stroke="#E9E3D5" stroke-width="1"></circle>
+            <g fill="none" stroke="#F5F1E8" stroke-width="1"><ellipse cx="220" cy="220" rx="45" ry="210"></ellipse><ellipse cx="220" cy="220" rx="110" ry="210"></ellipse><ellipse cx="220" cy="220" rx="165" ry="210"></ellipse><line x1="220" y1="10" x2="220" y2="430"></line><ellipse cx="220" cy="220" rx="210" ry="32"></ellipse><ellipse cx="220" cy="135" rx="192" ry="24"></ellipse><ellipse cx="220" cy="305" rx="192" ry="24"></ellipse><ellipse cx="220" cy="66" rx="126" ry="15"></ellipse><ellipse cx="220" cy="374" rx="126" ry="15"></ellipse></g>
+            <g fill="#E9E3D5" stroke="#C9C2B0" stroke-width="0.5">
+              <path d="M118 104 C 168 86, 250 90, 306 112 C 344 128, 352 170, 334 204 C 318 230, 296 246, 270 262 C 252 274, 246 300, 228 314 C 212 300, 206 272, 190 256 C 168 240, 132 232, 116 206 C 102 180, 100 130, 118 104 Z"></path>
+              <path d="M80 214 C 96 206, 114 216, 118 236 C 122 260, 108 296, 92 308 C 78 298, 68 266, 70 242 C 71 228, 74 218, 80 214 Z"></path>
+              <path d="M326 250 C 346 244, 364 260, 362 280 C 360 296, 344 302, 330 294 C 318 286, 314 262, 326 250 Z"></path>
+            </g>
+            <path d="M190 160 C 198 154, 212 156, 218 166 C 222 176, 216 186, 206 190 C 196 192, 186 184, 186 174 Z" fill="#A4231A" opacity=".35"></path>
+            <path d="M166 188 C 176 182, 188 186, 190 196 C 192 206, 184 212, 174 210 C 166 208, 160 196, 166 188 Z" fill="#9A4A0B" opacity=".35"></path>
+            <path d="M214 174 C 224 168, 238 170, 246 180 C 252 192, 246 206, 236 214 C 226 222, 214 218, 208 206 C 204 194, 206 180, 214 174 Z" fill="none" stroke="#7A8189" stroke-width="1"></path>
+            <g>
+              <circle cx="236" cy="196" r="12" fill="#04411F"></circle><circle cx="236" cy="196" r="19" fill="none" stroke="#A4231A" stroke-width="2"></circle>
+              <circle cx="202" cy="172" r="10" fill="#04411F"></circle><circle cx="202" cy="172" r="16" fill="none" stroke="#14171A" stroke-width="2"></circle>
+              <circle cx="214" cy="150" r="6" fill="#198348"></circle><circle cx="254" cy="214" r="6" fill="#04411F"></circle><circle cx="184" cy="196" r="8" fill="#198348"></circle><circle cx="164" cy="204" r="6" fill="#198348"></circle><circle cx="146" cy="220" r="4" fill="#BBD3C5" stroke="#198348"></circle><circle cx="276" cy="156" r="6" fill="#198348"></circle><circle cx="304" cy="146" r="4" fill="#BBD3C5" stroke="#198348"></circle><circle cx="270" cy="240" r="4" fill="#BBD3C5" stroke="#198348"></circle><circle cx="100" cy="252" r="4" fill="#BBD3C5" stroke="#198348"></circle><circle cx="340" cy="270" r="4" fill="#BBD3C5" stroke="#198348"></circle>
+            </g>
+          </svg>
+        </div>
+        
+        <div role="toolbar" aria-label="Globe controls" style="position: absolute; right: 496px; bottom: 16px; display: flex; gap: 2px; background: #FFFFFF; border: 1px solid #E4E2DC; border-radius: 4px; padding: 2px">
+          <button class="icb" aria-label="Zoom in"><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></button>
+          <button class="icb" aria-label="Zoom out"><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path></svg></button>
+          <button class="icb" aria-label="Reset view"><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg></button>
+          <button class="icb" aria-label="Pause rotation"><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg></button>
+          <button class="icb" aria-label="View as list"><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18"></path><path d="M3 6h18"></path><path d="M3 18h18"></path></svg></button>
+          <button class="icb" aria-label="Fullscreen"><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3"></path><path d="M21 8V5a2 2 0 0 0-2-2h-3"></path><path d="M3 16v3a2 2 0 0 0 2 2h3"></path><path d="M16 21h3a2 2 0 0 0 2-2v-3"></path></svg></button>
+        </div>
+        
+        <aside aria-label="Kabul coverage" style="position: absolute; top: 0; right: 0; bottom: 0; width: 480px; background: #FFFFFF; border-left: 1px solid #E4E2DC; box-shadow: 0 24px 64px rgba(20,23,26,.16); display: flex; flex-direction: column">
+          <div style="padding: 20px 24px 16px 24px; border-bottom: 1px solid #E4E2DC; display: flex; flex-direction: column; gap: 10px">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start">
+              <div style="display: flex; flex-direction: column; gap: 4px"><span class="meta">South Asia</span><h2 class="sf" style="margin: 0; font-size: 28px; font-weight: 600">Kabul, Afghanistan</h2></div>
+              <button class="icb" aria-label="Close drawer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+            </div>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center"><span class="lbl" style="font-size: 11px; background: #FBEDEB; color: #A4231A; padding: 4px 8px; border-radius: 2px">Active conflict</span><span class="meta" style="font-variant-numeric: tabular-nums">18 articles · 3 reports · 1 research · 9 newsroom</span></div>
+          </div>
+          <div role="tablist" style="display: flex; gap: 22px; padding: 0 24px; border-bottom: 1px solid #E4E2DC">
+            <button role="tab" aria-selected="true" class="tab on">All</button><button role="tab" aria-selected="false" class="tab">Articles</button><button role="tab" aria-selected="false" class="tab">Reports</button><button role="tab" aria-selected="false" class="tab">Research</button><button role="tab" aria-selected="false" class="tab">Newsroom</button>
+          </div>
+          <div style="flex: 1; overflow: auto; padding: 0 24px">
+            <a href="NewsroomPost.html" style="display: flex; flex-direction: column; gap: 4px; padding: 14px 0; border-bottom: 1px solid #E4E2DC; text-decoration: none; color: #14171A"><span class="lbl" style="font-size: 11px; color: #A4231A">Newsroom · Breaking</span><span class="sf" style="font-size: 17px; font-weight: 600; line-height: 1.35">Torkham crossing reopens to cargo traffic after three-day closure</span><span class="meta" style="font-size: 12px">16 Oct 2026, 11:40 PKT</span></a>
+            <a href="Article.html" style="display: flex; flex-direction: column; gap: 4px; padding: 14px 0; border-bottom: 1px solid #E4E2DC; text-decoration: none; color: #14171A"><span class="lbl" style="font-size: 11px; color: #04411F">Opinion</span><span class="sf" style="font-size: 17px; font-weight: 600; line-height: 1.35">Border management with Kabul needs a political track, not only fencing</span><span class="meta" style="font-size: 12px">13 Oct 2026 · Lt Gen (R) [Name]</span></a>
+            <a href="Report.html" style="display: flex; flex-direction: column; gap: 4px; padding: 14px 0; border-bottom: 1px solid #E4E2DC; text-decoration: none; color: #14171A"><span class="lbl" style="font-size: 11px; color: #04411F">Report</span><span class="sf" style="font-size: 17px; font-weight: 600; line-height: 1.35">Drones on the western border: a two-year record</span><span class="meta" style="font-size: 12px">2 Oct 2026 · PSF Analysis Desk</span></a>
+            <a href="Article.html" style="display: flex; flex-direction: column; gap: 4px; padding: 14px 0; border-bottom: 1px solid #E4E2DC; text-decoration: none; color: #14171A"><span class="lbl" style="font-size: 11px; color: #04411F">Analysis</span><span class="sf" style="font-size: 17px; font-weight: 600; line-height: 1.35">What the TTP's new structure tells us about its funding</span><span class="meta" style="font-size: 12px">28 Sep 2026 · Hamza Qureshi</span></a>
+            <a href="ResearchPaper.html" style="display: flex; flex-direction: column; gap: 4px; padding: 14px 0; text-decoration: none; color: #14171A"><span class="lbl" style="font-size: 11px; color: #04411F">Research Paper · Peer-reviewed</span><span class="sf" style="font-size: 17px; font-weight: 600; line-height: 1.35">Cross-border trade and stability on the Durand Line</span><span class="meta" style="font-size: 12px">20 Sep 2026</span></a>
+            <div style="padding: 12px 0 16px 0"><button class="btn" style="width: 100%; border: 1px solid #14171A; color: #14171A; background: #FFFFFF">Load more</button></div>
+          </div>
+          <div style="padding: 14px 24px; border-top: 1px solid #E4E2DC; display: flex; justify-content: space-between; align-items: center; gap: 12px">
+            <a href="#region" style="font-size: 14px; font-weight: 500; text-decoration: none">See all coverage in Afghanistan</a>
+            <button class="icb" aria-label="Copy link to this location" style="border: 1px solid #E4E2DC"><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="m8.59 13.51 6.83 3.98"></path><path d="m15.41 6.51-6.82 3.98"></path></svg></button>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    
+    <div style="display: flex; flex-wrap: wrap; gap: 8px 22px; align-items: center; font-size: 12px; color: #2E3338; padding: 14px 0 6px 0">
+      <span style="font-weight: 600">Items</span>
+      <span style="display: flex; align-items: center; gap: 6px"><span style="width: 6px; height: 6px; border-radius: 50%; background: #5A6169"></span>1</span>
+      <span style="display: flex; align-items: center; gap: 6px"><span style="width: 9px; height: 9px; border-radius: 50%; background: #5A6169"></span>2 to 5</span>
+      <span style="display: flex; align-items: center; gap: 6px"><span style="width: 13px; height: 13px; border-radius: 50%; background: #5A6169"></span>6 to 20</span>
+      <span style="display: flex; align-items: center; gap: 6px"><span style="width: 18px; height: 18px; border-radius: 50%; background: #5A6169"></span>21+</span>
+      <span style="width: 1px; height: 16px; background: #E4E2DC"></span>
+      <span style="display: flex; align-items: center; gap: 6px"><span style="width: 10px; height: 10px; border-radius: 50%; background: #04411F"></span>Last 7 days</span>
+      <span style="display: flex; align-items: center; gap: 6px"><span style="width: 10px; height: 10px; border-radius: 50%; background: #198348"></span>8 to 30 days</span>
+      <span style="display: flex; align-items: center; gap: 6px"><span style="width: 10px; height: 10px; border-radius: 50%; background: #BBD3C5; border: 1px solid #198348"></span>31+ days</span>
+      <span style="display: flex; align-items: center; gap: 6px"><span style="width: 12px; height: 12px; border-radius: 50%; border: 2px solid #A4231A"></span>Breaking, 48h</span>
+      <span style="width: 1px; height: 16px; background: #E4E2DC"></span>
+      <span style="display: flex; align-items: center; gap: 6px"><span style="width: 14px; height: 10px; background: rgba(164,35,26,.35)"></span>Active conflict</span>
+      <span style="display: flex; align-items: center; gap: 6px"><span style="width: 14px; height: 10px; background: rgba(154,74,11,.35)"></span>High tension</span>
+      <span style="display: flex; align-items: center; gap: 6px"><span style="width: 14px; height: 10px; border: 1px solid #5A6169; background: repeating-linear-gradient(45deg, rgba(90,97,105,.5) 0 2px, transparent 2px 5px)"></span>Watch</span>
+      <a href="#disclaimer" style="margin-left: auto; font-weight: 500; text-decoration: none">Map disclaimer</a>
+    </div>
+    <p id="disclaimer" style="margin: 0; font-size: 12px; line-height: 1.5; color: #5A6169">Boundaries, names and designations on PSF maps are approximate and do not imply endorsement or acceptance by PSF. Jammu and Kashmir is a disputed territory whose final status is yet to be determined in accordance with relevant UN Security Council resolutions.</p>
+  </section>
+
+  
+  <section id="region" class="wrap" style="padding-top: 64px">
+    <div class="sec"><h2 class="sf" style="margin: 0; font-size: 28px; font-weight: 600">Coverage by region</h2></div>
+    <div role="tablist" style="display: flex; gap: 24px; flex-wrap: wrap; border-bottom: 1px solid #E4E2DC; margin-bottom: 20px">
+      <button role="tab" aria-selected="false" class="tab">All</button><button role="tab" aria-selected="true" class="tab on">South Asia</button><button role="tab" aria-selected="false" class="tab">Middle East</button><button role="tab" aria-selected="false" class="tab">Central Asia</button><button role="tab" aria-selected="false" class="tab">East Asia</button><button role="tab" aria-selected="false" class="tab">Southeast Asia</button><button role="tab" aria-selected="false" class="tab">Europe</button><button role="tab" aria-selected="false" class="tab">Africa</button><button role="tab" aria-selected="false" class="tab">Americas</button><button role="tab" aria-selected="false" class="tab">Oceania</button>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px"><button class="chip chip-on" aria-pressed="true">Pakistan · 412</button><button class="chip">Afghanistan · 238</button><button class="chip">India · 141</button><button class="chip">Bangladesh · 22</button><button class="chip">Sri Lanka · 9</button></div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 24px">
+      <article style="display: flex; flex-direction: column; gap: 10px"><div class="ph" style="aspect-ratio: 3 / 2"></div><div class="lbl" style="color: #04411F">Analysis / Quetta</div><a href="Article.html" class="sf t" style="font-size: 20px; line-height: 1.3; font-weight: 600">Air defence in depth: layering the western approaches</a><div class="meta">16 Oct 2026</div></article>
+      <article style="display: flex; flex-direction: column; gap: 10px"><div class="ph" style="aspect-ratio: 3 / 2"></div><div class="lbl" style="color: #04411F">Investigation / Peshawar</div><a href="Article.html" class="sf t" style="font-size: 20px; line-height: 1.3; font-weight: 600">Inside the recruitment pipeline in the tribal districts</a><div class="meta">14 Oct 2026</div></article>
+      <article style="display: flex; flex-direction: column; gap: 10px"><div class="ph" style="aspect-ratio: 3 / 2"></div><div class="lbl" style="color: #04411F">Analysis / Gwadar</div><a href="Article.html" class="sf t" style="font-size: 20px; line-height: 1.3; font-weight: 600">CPEC security costs after the Gwadar attacks</a><div class="meta">16 Oct 2026</div></article>
+    </div>
+    <nav aria-label="Pagination" style="display: flex; gap: 4px; justify-content: center; padding-top: 28px; font-size: 14px"><a href="#" style="min-width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 2px; background: #04411F; color: #FFFFFF; text-decoration: none">1</a><a href="#" style="min-width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: #2E3338">2</a><a href="#" style="min-width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: #2E3338">3</a><a href="#" style="height: 36px; display: flex; align-items: center; padding: 0 10px; text-decoration: none">Next</a></nav>
+  </section>
+
+  
+  <section class="wrap g12" style="padding-top: 64px; row-gap: 40px">
+    <div style="grid-column: 1 / 7">
+      <div class="sec"><h2 class="lbl" style="margin: 0; font-size: 13px">Most covered, last 90 days</h2></div>
+      <div style="display: flex; flex-direction: column; gap: 10px; font-size: 14px">
+        <div style="display: grid; grid-template-columns: 24px 120px 1fr 48px; gap: 12px; align-items: center"><span class="meta">1</span><span>Pakistan</span><span style="height: 14px; background: #04411F; width: 100%"></span><span style="text-align: right; font-variant-numeric: tabular-nums">412</span></div>
+        <div style="display: grid; grid-template-columns: 24px 120px 1fr 48px; gap: 12px; align-items: center"><span class="meta">2</span><span>Afghanistan</span><span style="height: 14px; background: #04411F; width: 58%"></span><span style="text-align: right; font-variant-numeric: tabular-nums">238</span></div>
+        <div style="display: grid; grid-template-columns: 24px 120px 1fr 48px; gap: 12px; align-items: center"><span class="meta">3</span><span>India</span><span style="height: 14px; background: #04411F; width: 34%"></span><span style="text-align: right; font-variant-numeric: tabular-nums">141</span></div>
+        <div style="display: grid; grid-template-columns: 24px 120px 1fr 48px; gap: 12px; align-items: center"><span class="meta">4</span><span>Iran</span><span style="height: 14px; background: #04411F; width: 22%"></span><span style="text-align: right; font-variant-numeric: tabular-nums">89</span></div>
+        <div style="display: grid; grid-template-columns: 24px 120px 1fr 48px; gap: 12px; align-items: center"><span class="meta">5</span><span>China</span><span style="height: 14px; background: #04411F; width: 17%"></span><span style="text-align: right; font-variant-numeric: tabular-nums">71</span></div>
+        <div style="display: grid; grid-template-columns: 24px 120px 1fr 48px; gap: 12px; align-items: center"><span class="meta">6</span><span>United States</span><span style="height: 14px; background: #04411F; width: 12%"></span><span style="text-align: right; font-variant-numeric: tabular-nums">48</span></div>
+        <div style="display: grid; grid-template-columns: 24px 120px 1fr 48px; gap: 12px; align-items: center"><span class="meta">7</span><span>Saudi Arabia</span><span style="height: 14px; background: #04411F; width: 9%"></span><span style="text-align: right; font-variant-numeric: tabular-nums">37</span></div>
+        <div style="display: grid; grid-template-columns: 24px 120px 1fr 48px; gap: 12px; align-items: center"><span class="meta">8</span><span>Bangladesh</span><span style="height: 14px; background: #04411F; width: 5%"></span><span style="text-align: right; font-variant-numeric: tabular-nums">22</span></div>
+        <div style="display: grid; grid-template-columns: 24px 120px 1fr 48px; gap: 12px; align-items: center"><span class="meta">9</span><span>Russia</span><span style="height: 14px; background: #04411F; width: 4%"></span><span style="text-align: right; font-variant-numeric: tabular-nums">18</span></div>
+        <div style="display: grid; grid-template-columns: 24px 120px 1fr 48px; gap: 12px; align-items: center"><span class="meta">10</span><span>Türkiye</span><span style="height: 14px; background: #04411F; width: 3%"></span><span style="text-align: right; font-variant-numeric: tabular-nums">14</span></div>
+      </div>
+      <p class="meta" style="font-size: 12px; margin: 12px 0 0 0">Published items by location, 18 Jul to 16 Oct 2026, PKT. Source: PSF.</p>
+    </div>
+    <div style="grid-column: 7 / 13">
+      <div class="sec"><h2 class="lbl" style="margin: 0; font-size: 13px">Recent activity</h2></div>
+      <ol style="margin: 0; padding: 0 0 0 16px; list-style: none; border-left: 1px solid #E4E2DC; display: flex; flex-direction: column; gap: 18px">
+        <li style="position: relative; display: flex; flex-direction: column; gap: 2px"><span style="position: absolute; left: -21px; top: 5px; width: 9px; height: 9px; border-radius: 50%; background: #04411F"></span><span class="meta" style="font-size: 12px">14:30 PKT · North Waziristan, PK</span><a href="NewsroomPost.html" class="t" style="font-size: 15px; font-weight: 600">ISPR confirms security operation under way</a></li>
+        <li style="position: relative; display: flex; flex-direction: column; gap: 2px"><span style="position: absolute; left: -21px; top: 5px; width: 9px; height: 9px; border-radius: 50%; background: #04411F"></span><span class="meta" style="font-size: 12px">13:05 PKT · Tehran, IR</span><a href="NewsroomPost.html" class="t" style="font-size: 15px; font-weight: 600">Joint border commission meeting agreed</a></li>
+        <li style="position: relative; display: flex; flex-direction: column; gap: 2px"><span style="position: absolute; left: -21px; top: 5px; width: 9px; height: 9px; border-radius: 50%; background: #04411F"></span><span class="meta" style="font-size: 12px">11:40 PKT · Kabul, AF</span><a href="NewsroomPost.html" class="t" style="font-size: 15px; font-weight: 600">Torkham crossing reopens to cargo traffic</a></li>
+        <li style="position: relative; display: flex; flex-direction: column; gap: 2px"><span style="position: absolute; left: -21px; top: 5px; width: 9px; height: 9px; border-radius: 50%; background: #04411F"></span><span class="meta" style="font-size: 12px">09:00 PKT · Quetta, PK</span><a href="Article.html" class="t" style="font-size: 15px; font-weight: 600">Air defence in depth: layering the western approaches</a></li>
+        <li style="position: relative; display: flex; flex-direction: column; gap: 2px"><span style="position: absolute; left: -21px; top: 5px; width: 9px; height: 9px; border-radius: 50%; background: #198348"></span><span class="meta" style="font-size: 12px">15 Oct, 22:50 PKT · Washington, US</span><a href="NewsroomPost.html" class="t" style="font-size: 15px; font-weight: 600">Sustainment package for regional partners approved</a></li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-label="Advertisement" style="background: #F5F1E8; margin-top: 64px; padding: 24px 0">
+    <div style="width: 970px; max-width: calc(100% - 32px); margin: 0 auto"><div class="lbl" style="font-size: 11px; color: #5A6169; padding-bottom: 6px">Advertisement</div><div style="height: 250px; background: #FFFFFF; border: 1px dashed #E9E3D5; display: flex; align-items: center; justify-content: center; color: #5A6169; font-size: 14px">global_watch_banner · 970x250</div></div>
+  </section>
+
+  
+<footer style="width: 100%; background: #022C15; color: rgba(255,255,255,.85); font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; box-sizing: border-box">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 56px 32px 32px 32px; display: flex; flex-direction: column; gap: 40px; box-sizing: content-box">
+    <div style="display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap">
+      <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap">
+        <span style="display: flex; align-items: center; gap: 12px"><span style="width: 44px; height: 44px; border: 2px solid #FFFFFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font: 700 13px/1 'Source Serif 4', Georgia, serif; color: #FFFFFF; box-sizing: border-box">PSF</span><span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 19px; font-weight: 600; color: #FFFFFF">Pakistan Strategic Forum</span></span>
+        <span style="font-size: 15px; max-width: 520px">Independent analysis of the forces shaping Pakistan's security and the region around it.</span>
+      </div>
+      <a href="Join.html" style="height: 40px; padding: 0 18px; display: inline-flex; align-items: center; border: 1px solid rgba(255,255,255,.85); border-radius: 2px; color: #FFFFFF; font: 500 15px 'Inter', sans-serif; text-decoration: none">Write for PSF</a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; font-size: 14px">
+      <div style="display: flex; flex-direction: column; gap: 10px"><span style="font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #BBD3C5">Topics</span><a href="Topic.html" style="color: #FFFFFF; text-decoration: none">Defence</a><a href="#" style="color: #FFFFFF; text-decoration: none">Geopolitics</a><a href="#" style="color: #FFFFFF; text-decoration: none">National Affairs</a><a href="#" style="color: #FFFFFF; text-decoration: none">History</a></div>
+      <div style="display: flex; flex-direction: column; gap: 10px"><span style="font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #BBD3C5">Publications</span><a href="ReportsHub.html" style="color: #FFFFFF; text-decoration: none">Reports</a><a href="ResearchHub.html" style="color: #FFFFFF; text-decoration: none">Research</a><a href="Newsroom.html" style="color: #FFFFFF; text-decoration: none">Newsroom</a><a href="GlobalWatch.html" style="color: #FFFFFF; text-decoration: none">Global Watch</a><a href="Videos.html" style="color: #FFFFFF; text-decoration: none">Videos</a><a href="#" style="color: #FFFFFF; text-decoration: none">RSS</a></div>
+      <div style="display: flex; flex-direction: column; gap: 10px"><span style="font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #BBD3C5">PSF</span><a href="About.html" style="color: #FFFFFF; text-decoration: none">About</a><a href="PolicyPage.html" style="color: #FFFFFF; text-decoration: none">Editorial Policy</a><a href="Corrections.html" style="color: #FFFFFF; text-decoration: none">Corrections</a><a href="PolicyPage.html" style="color: #FFFFFF; text-decoration: none">Contributor Agreement</a><a href="PublishWithUs.html" style="color: #FFFFFF; text-decoration: none">Publish With Us</a><a href="WhereWeAre.html" style="color: #FFFFFF; text-decoration: none">Where We Are</a><a href="Contact.html" style="color: #FFFFFF; text-decoration: none">Contact</a></div>
+      <div style="display: flex; flex-direction: column; gap: 10px"><span style="font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #BBD3C5">Work with us</span><a href="Advertise.html" style="color: #FFFFFF; text-decoration: none">Advertise With Us</a><a href="SubmitPaper.html" style="color: #FFFFFF; text-decoration: none">Submit a paper</a><a href="Join.html" style="color: #FFFFFF; text-decoration: none">Write an article</a><a href="PolicyPage.html" style="color: #FFFFFF; text-decoration: none">How peer review works</a></div>
+      <div style="display: flex; flex-direction: column; gap: 10px"><span style="font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #BBD3C5">Legal</span><a href="PolicyPage.html" style="color: #FFFFFF; text-decoration: none">Privacy</a><a href="Cookies.html" style="color: #FFFFFF; text-decoration: none">Cookies</a><a href="PolicyPage.html" style="color: #FFFFFF; text-decoration: none">Disclaimer</a><a href="PolicyPage.html" style="color: #FFFFFF; text-decoration: none">Copyright &amp; Takedown</a><a href="PolicyPage.html" style="color: #FFFFFF; text-decoration: none">Terms of Use</a></div>
+    </div>
+    <div style="display: flex; gap: 16px; font-size: 14px"><a href="#" style="color: #FFFFFF; text-decoration: none">X</a><a href="#" style="color: #FFFFFF; text-decoration: none">Facebook</a><a href="#" style="color: #FFFFFF; text-decoration: none">Instagram</a><a href="#" style="color: #FFFFFF; text-decoration: none">YouTube</a></div>
+    <div style="display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.16); font-size: 13px">
+      <span>© 2019 to 2026 Pakistan Strategic Forum. All rights reserved.</span>
+      <div style="display: flex; gap: 20px"><a href="#" style="color: #FFFFFF; text-decoration: none">Cookie settings</a><a href="#" style="color: #FFFFFF; text-decoration: none">Back to top</a></div>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+<nav class="psf-proto-nav" aria-label="Prototype"><a href="index.html">All screens</a></nav>
+</body>
+</html>

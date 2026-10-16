@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>6.15 Review workspace | PSF prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF9F4}
+a{color:#04411F}a:hover{color:#03361A}
+.psf{font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;color:#14171A;-webkit-font-smoothing:antialiased}
+.psf *{box-sizing:border-box}
+.sf{font-family:'Source Serif 4',Georgia,'Times New Roman',serif}
+.lbl{font-size:12px;line-height:1.2;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.meta{font-size:13px;line-height:1.4;font-weight:500;color:#5A6169}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 16px;border-radius:2px;font:500 15px/1 'Inter',sans-serif;text-decoration:none;border:1px solid transparent;white-space:nowrap;cursor:pointer;background:none}
+.btn-p{background:#04411F;color:#FFFFFF}
+.btn-s{background:#FFFFFF;color:#14171A;border-color:#14171A}
+.ico{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.ico-s{width:16px;height:16px}
+.tab{background:none;border:0;padding:14px 0;font:500 14px 'Inter',sans-serif;color:#5A6169;cursor:pointer}
+.tab.on{color:#14171A;box-shadow:inset 0 -2px 0 #04411F}
+.rc{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid #E4E2DC;border-radius:2px;cursor:pointer;font-size:14px}
+.rc input{width:18px;height:18px;accent-color:#04411F;margin:1px 0 0 0;flex:none}
+.rc.on{border-color:#04411F;background:#F2F5F3}
+.sc{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid #E4E2DC;font-size:14px}
+.sg{display:flex;gap:4px}
+.sg button{width:36px;height:36px;border:1px solid #7A8189;background:#FFFFFF;border-radius:2px;font:500 14px 'Inter',sans-serif;color:#2E3338;cursor:pointer;font-variant-numeric:tabular-nums}
+.sg button.on{background:#04411F;border-color:#04411F;color:#FFFFFF}
+.ta{width:100%;border:1px solid #7A8189;border-radius:2px;padding:12px;font:14px/1.55 'Inter',sans-serif;color:#14171A;resize:vertical;background:#FFFFFF}
+.fl{font-size:14px;font-weight:600;color:#14171A}
+.req{color:#A4231A}
+.hint{font-size:12px;color:#5A6169}
+</style>
+<style>
+.psf-proto-nav{position:fixed;left:16px;bottom:16px;z-index:9999;display:flex;flex-wrap:wrap;gap:6px;align-items:center;max-width:calc(100vw - 32px);padding:8px;background:#14171A;border-radius:4px;box-shadow:0 8px 24px rgba(20,23,26,.24);font:500 13px/1 Inter,system-ui,sans-serif}
+.psf-proto-nav a{color:#FFFFFF;text-decoration:none;padding:8px 10px;border-radius:2px}
+.psf-proto-nav a:hover{background:#2E3338}
+.psf-proto-nav a[aria-current]{background:#FFFFFF;color:#14171A}
+.psf-proto-nav span{color:#BBC0C4;padding:0 4px 0 8px}
+</style>
+</head>
+<body>
+
+<div class="psf" style="width: 100%; min-height: 100vh; background: #FBF9F4; display: flex">
+  <div style="flex: 0 0 64px; background: #F5F1E8; border-right: 1px solid #E9E3D5">
+<div style="width: 64px; min-height: 760px; box-sizing: border-box; padding: 16px 8px 20px; display: flex; flex-direction: column; gap: 4px; font-family: Inter, system-ui, sans-serif; color: #14171A; background: #F5F1E8">
+  <a href="Main.html" style="display: flex; align-items: center; gap: 10px; height: 52px; margin-bottom: 12px; padding: 0 0; justify-content: center; text-decoration: none">
+    <span style="width: 36px; height: 36px; border: 2px solid #04411F; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #04411F; font: 700 11px/1 'Source Serif 4', Georgia, serif; flex: none; box-sizing: border-box">PSF</span>
+    
+  </a>
+  <nav aria-label="Portal" style="display: flex; flex-direction: column; gap: 2px">
+    
+      <a href="PortalOverview.html" aria-label="Overview" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 40px; padding: 0 0; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2E3338">
+        <span style="display: flex; align-items: center; gap: 12px">
+          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M3 3h7v9H3z M14 3h7v5h-7z M14 12h7v9h-7z M3 16h7v5H3z"></path></svg>
+          
+        </span>
+        
+      </a>
+    
+      <a href="MyArticles.html" aria-label="My Articles" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 40px; padding: 0 0; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2E3338">
+        <span style="display: flex; align-items: center; gap: 12px">
+          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z M14 2v6h6 M16 13H8 M16 17H8"></path></svg>
+          
+        </span>
+        
+      </a>
+    
+      <a href="MyReports.html" aria-label="My Reports" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 40px; padding: 0 0; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2E3338">
+        <span style="display: flex; align-items: center; gap: 12px">
+          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M4 4h12l4 4v12H4z M8 12h8 M8 16h5"></path></svg>
+          
+        </span>
+        
+      </a>
+    
+      <a href="MyResearch.html" aria-label="My Research" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 40px; padding: 0 0; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2E3338">
+        <span style="display: flex; align-items: center; gap: 12px">
+          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z M6 12.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-3.5"></path></svg>
+          
+        </span>
+        
+      </a>
+    
+      <a href="ReviewsQueue.html" aria-label="Reviews" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 40px; padding: 0 0; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; background: #FFFFFF; color: #04411F; box-shadow: inset 3px 0 0 #04411F">
+        <span style="display: flex; align-items: center; gap: 12px">
+          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M9 11l3 3L22 4 M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+          
+        </span>
+        
+      </a>
+    
+      <a href="PortalNotifications.html" aria-label="Notifications" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 40px; padding: 0 0; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2E3338">
+        <span style="display: flex; align-items: center; gap: 12px">
+          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9 M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
+          
+        </span>
+        
+      </a>
+    
+      <a href="PortalProfile.html" aria-label="Profile" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 40px; padding: 0 0; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2E3338">
+        <span style="display: flex; align-items: center; gap: 12px">
+          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M12 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10z M20 21a8 8 0 0 0-16 0"></path></svg>
+          
+        </span>
+        
+      </a>
+    
+      <a href="PortalAccount.html" aria-label="Account" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 40px; padding: 0 0; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2E3338">
+        <span style="display: flex; align-items: center; gap: 12px">
+          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-2.82 1.17V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-2.82-1.17l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 3.2 14H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.17-2.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 10 3.2V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 2.82 1.17l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 20.8 10H21a2 2 0 0 1 0 4h-.09"></path></svg>
+          
+        </span>
+        
+      </a>
+    
+  </nav>
+  <div style="margin-top: auto; padding-top: 20px; border-top: 1px solid #E9E3D5; display: flex; flex-direction: column; gap: 2px">
+    
+      <a href="Main.html" aria-label="View site" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 40px; padding: 0 0; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2E3338; justify-content: center"><svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M15 3h6v6 M10 14 21 3 M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></a>
+    
+      <a href="AdminOverview.html" aria-label="Admin" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 40px; padding: 0 0; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2E3338; justify-content: center"><svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></a>
+    
+      <a href="SignIn.html" aria-label="Sign out" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 40px; padding: 0 0; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2E3338; justify-content: center"><svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4 M16 17l5-5-5-5 M21 12H9"></path></svg></a>
+    
+  </div>
+</div>
+</div>
+  <div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column">
+    <div style="background: #FFFFFF; border-bottom: 1px solid #E4E2DC; padding: 0 24px; min-height: 64px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap">
+      <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap">
+        <a href="ReviewsQueue.html" style="display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 500; text-decoration: none; color: #2E3338"><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg>Reviews</a>
+        <span style="width: 1px; height: 20px; background: #E4E2DC"></span>
+        <span style="font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums">RES-2026-00045</span>
+        <span class="meta">Research article · Round 1</span>
+        <span style="display: inline-flex; align-items: center; height: 24px; padding: 0 8px; border-radius: 2px; font-size: 12px; font-weight: 600; background: #FBF1E6; color: #9A4A0B">Due in 3 days · 19 Oct</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px"><span class="meta">Draft saved 14:20</span><button class="btn btn-s">Save draft review</button><button class="btn btn-p">Submit review</button></div>
+    </div>
+
+    <div style="flex: 1; display: grid; grid-template-columns: 7fr 5fr; min-height: 0">
+      <section aria-label="Anonymised paper" style="min-width: 0; background: #FFFFFF; border-right: 1px solid #E4E2DC; display: flex; flex-direction: column">
+        <div role="tablist" style="display: flex; gap: 28px; padding: 0 32px; border-bottom: 1px solid #E4E2DC">
+          <button role="tab" aria-selected="true" class="tab on">Paper</button><button role="tab" aria-selected="false" class="tab">PDF</button><button role="tab" aria-selected="false" class="tab">Files (2)</button><button role="tab" aria-selected="false" aria-disabled="true" class="tab" style="color: #7A8189; cursor: not-allowed">Previous round</button>
+        </div>
+        <div style="padding: 12px 32px; background: #EAF1F8; color: #1F4A7A; font-size: 13px; display: flex; gap: 8px; align-items: center"><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path><line x1="2" x2="22" y1="2" y2="22"></line></svg>Double-blind: author names, institutions and the title page are hidden. Select text to add a comment.</div>
+        <article style="padding: 40px 56px 56px 56px; max-width: 840px; position: relative">
+          <div class="lbl" style="color: #5A6169; margin-bottom: 12px">Anonymised manuscript</div>
+          <h1 class="sf" style="margin: 0 0 24px 0; font-size: 34px; line-height: 1.18; font-weight: 600">Deterrence stability and hypersonic delivery systems in South Asia</h1>
+          <div style="background: #F5F1E8; padding: 20px 24px; border-radius: 4px; margin-bottom: 32px"><div class="lbl" style="color: #04411F; margin-bottom: 8px">Abstract</div><p class="sf" style="margin: 0; font-size: 16px; line-height: 1.6; color: #2E3338">The introduction of hypersonic glide vehicles compresses the time available to decision-makers in a crisis. This paper examines how compressed warning times interact with command and control arrangements...</p></div>
+          <div class="sf" style="font-size: 18px; line-height: 1.7; color: #2E3338">
+            <h2 class="sf" style="font-size: 24px; font-weight: 600; color: #14171A; margin: 0 0 12px 0">1. Introduction</h2>
+            <p style="margin: 0 0 20px 0">Strategic stability in South Asia has rested on an assumption that both sides would have time to understand what was happening before they had to act. That assumption is now under pressure.</p>
+            <p style="margin: 0 0 20px 0"><mark style="background: #FBF1E6; color: inherit; box-shadow: inset 0 -2px 0 #9A4A0B">Hypersonic systems do not change the arithmetic of deterrence. They change its tempo.</mark> This paper asks what happens to crisis decision-making when the window between detection and impact falls below the time needed to characterise a launch.</p>
+            <h2 class="sf" style="font-size: 24px; font-weight: 600; color: #14171A; margin: 28px 0 12px 0">2. Method</h2>
+            <p style="margin: 0 0 20px 0">The study combines a structured review of declared doctrine with three crisis case studies. Each case is coded for warning time, decision layers and the channels used to communicate intent.</p>
+            <p style="margin: 0"><mark style="background: #DCE5E0; color: inherit">The coding framework follows [Author, year], adapted for a dyadic context.</mark></p>
+          </div>
+          <div style="position: absolute; right: -8px; top: 430px; width: 280px; background: #FFFFFF; border: 1px solid #E4E2DC; border-radius: 4px; box-shadow: 0 8px 24px rgba(20,23,26,.08); padding: 14px; display: flex; flex-direction: column; gap: 10px">
+            <span class="lbl" style="font-size: 11px; color: #9A4A0B">Comment · Section 1</span>
+            <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #2E3338">This is the paper's central claim. State it in the abstract too, and support it with the warning-time data from section 3.</p>
+            <div style="display: flex; gap: 8px; justify-content: flex-end"><button class="btn" style="height: 32px; font-size: 13px; color: #5A6169">Delete</button><button class="btn" style="height: 32px; font-size: 13px; color: #04411F">Edit</button></div>
+          </div>
+        </article>
+      </section>
+
+      <aside aria-label="Your review" style="min-width: 0; padding: 28px 32px 48px 32px; display: flex; flex-direction: column; gap: 26px; overflow: auto">
+        <fieldset style="border: 0; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px">
+          <legend class="fl" style="margin-bottom: 10px">Recommendation <span class="req" aria-hidden="true">*</span></legend>
+          <label class="rc"><input type="radio" name="rec"><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600">Approve</span><span class="hint" style="font-size: 13px">Accept as is</span></span></label>
+          <label class="rc"><input type="radio" name="rec"><span style="font-weight: 600">Minor revisions</span></label>
+          <label class="rc on"><input type="radio" name="rec" checked=""><span style="font-weight: 600">Major revisions</span></label>
+          <label class="rc"><input type="radio" name="rec"><span style="font-weight: 600">Reject</span></label>
+        </fieldset>
+        <div>
+          <div class="fl" style="margin-bottom: 6px">Scores <span class="req" aria-hidden="true">*</span> <span class="hint" style="font-weight: 400">1 low, 5 high</span></div>
+          <div class="sc"><span>Originality</span><div class="sg" role="radiogroup" aria-label="Originality"><button>1</button><button>2</button><button>3</button><button class="on" aria-pressed="true">4</button><button>5</button></div></div>
+          <div class="sc"><span>Methodological rigour</span><div class="sg" role="radiogroup" aria-label="Methodological rigour"><button>1</button><button>2</button><button class="on" aria-pressed="true">3</button><button>4</button><button>5</button></div></div>
+          <div class="sc"><span>Evidence and sourcing</span><div class="sg" role="radiogroup" aria-label="Evidence and sourcing"><button>1</button><button class="on" aria-pressed="true">2</button><button>3</button><button>4</button><button>5</button></div></div>
+          <div class="sc"><span>Clarity of writing</span><div class="sg" role="radiogroup" aria-label="Clarity of writing"><button>1</button><button>2</button><button>3</button><button>4</button><button class="on" aria-pressed="true">5</button></div></div>
+          <div class="sc" style="border-bottom: 0"><span>Relevance to PSF readers</span><div class="sg" role="radiogroup" aria-label="Relevance to PSF readers"><button>1</button><button>2</button><button>3</button><button>4</button><button class="on" aria-pressed="true">5</button></div></div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <label for="rv-auth" class="fl">Comments to author <span class="req" aria-hidden="true">*</span></label>
+          <textarea id="rv-auth" class="ta" rows="7">The argument is clear and well written. The main weakness is evidence: the warning-time estimates in section 3 rely on a single secondary source. Please triangulate these figures or present them as a range, and explain how the coding framework was adapted for a dyadic context.</textarea>
+          <div style="display: flex; justify-content: space-between"><span class="hint">Shared with the author anonymously as Reviewer 1</span><span class="hint" style="font-variant-numeric: tabular-nums">312 characters · min 100</span></div>
+          <div style="display: flex; gap: 8px; align-items: center; font-size: 13px; color: #2E3338; padding: 8px 10px; background: #F5F1E8; border-radius: 2px"><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>2 anchored comments will be included</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <label for="rv-conf" class="fl">Confidential comments to editor</label>
+          <textarea id="rv-conf" class="ta" rows="3" style="background: #FBF9F4">Promising paper. Worth a second round.</textarea>
+          <span class="hint">Never shared with the author</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <span class="fl">Annotated file</span>
+          <div style="border: 1px dashed #7A8189; border-radius: 2px; padding: 14px; display: flex; gap: 12px; align-items: center; background: #FFFFFF"><svg class="ico" viewBox="0 0 24 24" style="color: #5A6169" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m17 8-5-5-5 5"></path><path d="M12 3v12"></path></svg><span style="font-size: 13px; color: #2E3338">Optional. Attach a PDF with your annotations, max 20MB.</span></div>
+        </div>
+        <div style="display: flex; gap: 10px; justify-content: flex-end; padding-top: 8px; border-top: 1px solid #E4E2DC"><button class="btn btn-s">Save draft review</button><button class="btn btn-p">Submit review</button></div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<nav class="psf-proto-nav" aria-label="Prototype"><a href="index.html">All screens</a></nav>
+</body>
+</html>

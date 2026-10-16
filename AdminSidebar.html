@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin: Sidebar | PSF prototype</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+<style>
+.psf-proto-nav{position:fixed;left:16px;bottom:16px;z-index:9999;display:flex;flex-wrap:wrap;gap:6px;align-items:center;max-width:calc(100vw - 32px);padding:8px;background:#14171A;border-radius:4px;box-shadow:0 8px 24px rgba(20,23,26,.24);font:500 13px/1 Inter,system-ui,sans-serif}
+.psf-proto-nav a{color:#FFFFFF;text-decoration:none;padding:8px 10px;border-radius:2px}
+.psf-proto-nav a:hover{background:#2E3338}
+.psf-proto-nav a[aria-current]{background:#FFFFFF;color:#14171A}
+.psf-proto-nav span{color:#BBC0C4;padding:0 4px 0 8px}
+</style>
+</head>
+<body>
+
+<div style="width: 264px; min-height: 1000px; box-sizing: border-box; padding: 16px 12px 24px 12px; display: flex; flex-direction: column; gap: 2px; font-family: 'Inter', system-ui, sans-serif; color: #14171A; background: #F5F1E8">
+  <a href="Main.html" style="display: flex; align-items: center; gap: 10px; height: 52px; margin-bottom: 10px; padding: 0 6px; text-decoration: none; color: #14171A">
+    <span style="width: 36px; height: 36px; border: 2px solid #04411F; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #04411F; font: 700 11px/1 'Source Serif 4', Georgia, serif; flex: none; box-sizing: border-box">PSF</span>
+    <span style="display: flex; flex-direction: column"><span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; font-weight: 600">PSF Admin</span><span style="font-size: 11px; color: #5A6169">forumstrategic.com</span></span>
+  </a>
+  <nav aria-label="Admin" style="display: flex; flex-direction: column; gap: 1px">
+    
+      <a href="AdminOverview.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; background: #FFFFFF; color: #04411F; box-shadow: inset 3px 0 0 #04411F"><span>Overview</span></a>
+      
+    
+      <a href="AdminAnalytics.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Analytics</span></a>
+      
+    
+      <a href="AdminUsers.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Users</span><span style="background: #9A4A0B; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 2px 6px; border-radius: 2px">6</span></a>
+      
+    
+      <a href="AdminRoles.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Roles and permissions</span></a>
+      
+    
+      <a href="AdminArticles.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Articles</span><span style="background: #9A4A0B; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 2px 6px; border-radius: 2px">4</span></a>
+      
+    
+      <a href="AdminArticles.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Reports</span><span style="background: #9A4A0B; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 2px 6px; border-radius: 2px">1</span></a>
+      
+    
+      <a href="AdminResearch.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Research papers</span><span style="background: #9A4A0B; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 2px 6px; border-radius: 2px">3</span></a>
+      
+    
+      <a href="AdminNewsroom.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Newsroom</span></a>
+      
+    
+      <a href="AdminFeatured.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Featured and Top Stories</span></a>
+      
+    
+      <a href="AdminTaxonomy.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Taxonomy</span></a>
+      
+    
+      <a href="AdminGlobalWatch.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Global Watch</span></a>
+      
+    
+      <a href="AdminCampaigns.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Ad management</span></a>
+      
+    
+      <a href="AdminInbox.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Inbox</span><span style="background: #1F4A7A; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 2px 6px; border-radius: 2px">9</span></a>
+      
+    
+      <a href="AdminIdCards.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>ID cards</span></a>
+      
+    
+      <a href="AdminCmsPages.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>CMS</span></a>
+      
+    
+      <a href="AdminActivityLogs.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Activity logs</span></a>
+      
+    
+      <a href="AdminSettings.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Settings</span></a>
+      
+    
+  </nav>
+</div>
+
+<nav class="psf-proto-nav" aria-label="Prototype"><a href="index.html">All screens</a></nav>
+</body>
+</html>

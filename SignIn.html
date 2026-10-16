@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5.1 Sign in | PSF prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF9F4}
+a{color:#04411F}a:hover{color:#03361A}
+.psf{font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;color:#14171A;-webkit-font-smoothing:antialiased}
+.psf *{box-sizing:border-box}
+.sf{font-family:'Source Serif 4',Georgia,'Times New Roman',serif}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 24px;border-radius:2px;font:500 15px/1 'Inter',sans-serif;text-decoration:none;border:1px solid transparent;white-space:nowrap;cursor:pointer;background:none}
+.btn-p{background:#04411F;color:#FFFFFF}.btn-p:hover{background:#0D6634;color:#FFFFFF}
+.ico{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.fld{display:flex;flex-direction:column;gap:6px}
+.fld label{font-size:14px;font-weight:500;color:#14171A}
+.inp{height:44px;border:1px solid #7A8189;border-radius:2px;background:#FFFFFF;padding:0 12px;font:15px 'Inter',sans-serif;color:#14171A;width:100%}
+</style>
+<style>
+.psf-proto-nav{position:fixed;left:16px;bottom:16px;z-index:9999;display:flex;flex-wrap:wrap;gap:6px;align-items:center;max-width:calc(100vw - 32px);padding:8px;background:#14171A;border-radius:4px;box-shadow:0 8px 24px rgba(20,23,26,.24);font:500 13px/1 Inter,system-ui,sans-serif}
+.psf-proto-nav a{color:#FFFFFF;text-decoration:none;padding:8px 10px;border-radius:2px}
+.psf-proto-nav a:hover{background:#2E3338}
+.psf-proto-nav a[aria-current]{background:#FFFFFF;color:#14171A}
+.psf-proto-nav span{color:#BBC0C4;padding:0 4px 0 8px}
+</style>
+</head>
+<body>
+
+<div class="psf" style="width: 100%; min-height: 960px; background: #FBF9F4; display: flex; flex-direction: column; align-items: center; padding: 48px 32px 32px 32px; gap: 32px">
+  <a href="Main.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #14171A"><span style="width: 44px; height: 44px; border: 2px solid #04411F; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #04411F; font: 700 13px/1 'Source Serif 4', Georgia, serif">PSF</span><span class="sf" style="font-size: 19px; font-weight: 600">Pakistan Strategic Forum</span></a>
+  <main style="width: 100%; max-width: 628px; background: #FFFFFF; border: 1px solid #E4E2DC; border-radius: 4px; padding: 48px; display: flex; flex-direction: column; gap: 20px">
+    <h1 class="sf" style="margin: 0; font-size: 32px; line-height: 1.15; font-weight: 600">Sign in</h1>
+    
+    <div class="fld"><label for="si-em">Email</label><input id="si-em" class="inp" type="email" value="sara.haider@qau.edu.pk"></div>
+    <div class="fld"><label for="si-pw">Password</label><div style="position: relative"><input id="si-pw" class="inp" type="password" value="xxxxxxxxxx" style="padding-right: 52px"><button type="button" aria-label="Show password" style="position: absolute; right: 0; top: 0; width: 44px; height: 44px; background: none; border: 0; color: #5A6169; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg class="ico" viewBox="0 0 24 24" style="width: 18px; height: 18px" aria-hidden="true"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg></button></div></div>
+    <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px"><label style="display: flex; gap: 10px; align-items: center; font-size: 14px; color: #2E3338; min-height: 44px"><input type="checkbox" style="width: 20px; height: 20px; accent-color: #04411F; margin: 0">Keep me signed in</label><a href="ForgotPassword.html" style="font-size: 14px; font-weight: 500">Forgot password?</a></div>
+    <a class="btn btn-p" href="TwoFactor.html" style="width: 100%">Sign in</a>
+    <div style="height: 65px; display: flex; align-items: center">
+      
+    </div>
+    <div style="border-top: 1px solid #E4E2DC; padding-top: 20px; font-size: 14px; color: #5A6169; text-align: center">New to PSF? <a href="Join.html" style="font-weight: 500">Write for PSF</a></div>
+  </main>
+  <p style="margin: auto 0 0 0; font-size: 13px; color: #5A6169">© 2019 to 2026 Pakistan Strategic Forum</p>
+</div>
+
+<nav class="psf-proto-nav" aria-label="Prototype"><a href="index.html">All screens</a><span>state:</span><a href="SignIn.html" aria-current="page">default</a><a href="SignIn--state-error.html">error</a><a href="SignIn--state-locked.html">locked</a><a href="SignIn--state-invited.html">invited</a><a href="SignIn--state-deactivated.html">deactivated</a><a href="SignIn--state-unavailable.html">unavailable</a><a href="SignIn--state-ready.html">ready</a></nav>
+</body>
+</html>

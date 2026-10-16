@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>7.4.1 Pending applications | PSF prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF9F4}
+a{color:#04411F}a:hover{color:#03361A}
+.psf{font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;color:#14171A;-webkit-font-smoothing:antialiased}
+.psf *{box-sizing:border-box}
+.sf{font-family:'Source Serif 4',Georgia,'Times New Roman',serif}
+.lbl{font-size:12px;line-height:1.2;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.meta{font-size:13px;line-height:1.4;font-weight:500;color:#5A6169}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 16px;border-radius:2px;font:500 15px/1 'Inter',sans-serif;text-decoration:none;border:1px solid transparent;white-space:nowrap;cursor:pointer;background:none;color:#14171A}
+.btn-p{background:#04411F;color:#FFFFFF}.btn-p:hover{background:#0D6634;color:#FFFFFF}
+.btn-s{background:#FFFFFF;color:#14171A;border-color:#14171A}.btn-s:hover{background:#F5F1E8;color:#14171A}
+.btn-t{color:#04411F;padding:0 10px}.btn-t:hover{background:#F2F5F3}
+.btn-d{background:#A4231A;color:#FFFFFF}.btn-d:hover{background:#8A1D16;color:#FFFFFF}
+.btn-ds{background:#FFFFFF;color:#A4231A;border-color:#A4231A}
+.btn-c{height:32px;padding:0 12px;font-size:14px}
+.ib{width:32px;height:32px;padding:0;border:0;background:none;border-radius:2px;color:#2E3338;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.ib:hover{background:#F5F1E8}
+.ico{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.ico-s{width:16px;height:16px}
+.panel{background:#FFFFFF;border:1px solid #E4E2DC;border-radius:4px;min-width:0}
+.ph{padding:16px 20px;border-bottom:1px solid #E4E2DC;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.ph h2,.ph h3{margin:0;font-size:15px;font-weight:600}
+.pb{padding:20px;display:flex;flex-direction:column;gap:16px}
+.kpi{padding:18px 20px;display:flex;flex-direction:column;gap:6px}
+.kpi .n{font-size:30px;font-weight:500;line-height:1.1;font-variant-numeric:tabular-nums}
+.st{display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 8px;border-radius:2px;font-size:12px;font-weight:600;white-space:nowrap}
+table{border-collapse:collapse;width:100%}
+th{font-size:12px;font-weight:600;color:#5A6169;text-align:left;padding:10px 16px;background:#F5F1E8;border-bottom:1px solid #E9E3D5;white-space:nowrap}
+td{font-size:14px;padding:12px 16px;border-bottom:1px solid #E4E2DC;color:#2E3338;vertical-align:middle}
+tbody tr:hover td{background:#F2F5F3}
+tbody tr:last-child td{border-bottom:0}
+.num{font-variant-numeric:tabular-nums;text-align:right}
+.tt{display:block;color:#14171A;font-weight:500;text-decoration:none}
+.fld{display:flex;flex-direction:column;gap:6px;min-width:0}
+.fld label,.fld .fl{font-size:14px;font-weight:500;color:#14171A}
+.req{color:#A4231A}
+.hint{font-size:13px;color:#5A6169;line-height:1.4}
+.err{font-size:13px;color:#A4231A;line-height:1.4;display:flex;gap:6px;align-items:center}
+.inp{height:40px;border:1px solid #7A8189;border-radius:2px;background:#FFFFFF;padding:0 12px;font:14px 'Inter',sans-serif;color:#14171A;width:100%}
+.inp[readonly]{background:#F5F1E8;border-color:#E9E3D5;color:#2E3338}
+.sel{height:40px;border:1px solid #7A8189;border-radius:2px;background:#FFFFFF;padding:0 12px;display:flex;align-items:center;justify-content:space-between;gap:8px;font:14px 'Inter',sans-serif;color:#14171A;width:100%;cursor:pointer;text-align:left}
+.ta{border:1px solid #7A8189;border-radius:2px;background:#FFFFFF;padding:10px 12px;font:14px/1.55 'Inter',sans-serif;color:#14171A;width:100%;resize:vertical}
+.ck{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.5;color:#2E3338}
+.ck input{width:18px;height:18px;accent-color:#04411F;margin:2px 0 0 0;flex:none}
+.up{border:1px dashed #7A8189;border-radius:2px;background:#FBF9F4;padding:16px;display:flex;gap:12px;align-items:center}
+.tabs{display:flex;gap:24px;border-bottom:1px solid #E4E2DC}
+.tab{display:inline-flex;align-items:center;gap:6px;height:44px;font-size:14px;font-weight:500;color:#5A6169;text-decoration:none;border-bottom:2px solid transparent;margin-bottom:-1px}
+.tab[aria-current]{color:#04411F;border-bottom-color:#04411F;font-weight:600}
+.cnt{font-size:12px;font-weight:600;color:#5A6169;background:#F5F1E8;border-radius:2px;padding:1px 6px;font-variant-numeric:tabular-nums}
+.chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border:1px solid #E4E2DC;border-radius:2px;background:#FFFFFF;font-size:13px;color:#2E3338}
+.dl{display:grid;grid-template-columns:160px 1fr;gap:10px 16px;margin:0;font-size:14px}
+.dl dt{color:#5A6169}.dl dd{margin:0;color:#14171A}
+.tog{width:36px;height:20px;border-radius:2px;background:#7A8189;position:relative;flex:none;display:inline-block}
+.tog::after{content:'';position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:1px;background:#FFFFFF}
+.tog.on{background:#04411F}.tog.on::after{left:18px}
+.seg{display:flex;gap:2px;background:#F5F1E8;padding:3px;border-radius:2px}
+.seg .btn{height:30px;padding:0 12px;font-size:13px;color:#5A6169}
+.seg .btn[aria-pressed=true]{background:#FFFFFF;border-color:#E4E2DC;color:#14171A}
+code,.mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px}
+.btn{height:36px;padding:0 14px;font-size:14px}
+.btn-c{height:30px;padding:0 10px;font-size:13px}
+th{padding:9px 14px}
+td{font-size:13px;padding:10px 14px}
+.inp,.sel{height:36px;font-size:13px}
+.st{height:22px;padding:0 7px}
+</style>
+<style>
+.psf-proto-nav{position:fixed;left:16px;bottom:16px;z-index:9999;display:flex;flex-wrap:wrap;gap:6px;align-items:center;max-width:calc(100vw - 32px);padding:8px;background:#14171A;border-radius:4px;box-shadow:0 8px 24px rgba(20,23,26,.24);font:500 13px/1 Inter,system-ui,sans-serif}
+.psf-proto-nav a{color:#FFFFFF;text-decoration:none;padding:8px 10px;border-radius:2px}
+.psf-proto-nav a:hover{background:#2E3338}
+.psf-proto-nav a[aria-current]{background:#FFFFFF;color:#14171A}
+.psf-proto-nav span{color:#BBC0C4;padding:0 4px 0 8px}
+</style>
+</head>
+<body>
+
+<div class="psf" style="width: 100%; min-height: 1100px; background: #FBF9F4; display: flex">
+  <div style="flex: 0 0 264px; background: #F5F1E8; border-right: 1px solid #E9E3D5">
+<div style="width: 264px; min-height: 1000px; box-sizing: border-box; padding: 16px 12px 24px 12px; display: flex; flex-direction: column; gap: 2px; font-family: 'Inter', system-ui, sans-serif; color: #14171A; background: #F5F1E8">
+  <a href="Main.html" style="display: flex; align-items: center; gap: 10px; height: 52px; margin-bottom: 10px; padding: 0 6px; text-decoration: none; color: #14171A">
+    <span style="width: 36px; height: 36px; border: 2px solid #04411F; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #04411F; font: 700 11px/1 'Source Serif 4', Georgia, serif; flex: none; box-sizing: border-box">PSF</span>
+    <span style="display: flex; flex-direction: column"><span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; font-weight: 600">PSF Admin</span><span style="font-size: 11px; color: #5A6169">forumstrategic.com</span></span>
+  </a>
+  <nav aria-label="Admin" style="display: flex; flex-direction: column; gap: 1px">
+    
+      <a href="AdminOverview.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Overview</span></a>
+      
+    
+      <a href="AdminAnalytics.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Analytics</span></a>
+      
+    
+      <a href="AdminUsers.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #04411F"><span>Users</span><span style="background: #9A4A0B; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 2px 6px; border-radius: 2px">6</span></a>
+      
+        <div style="display: flex; flex-direction: column; gap: 1px; margin: 2px 0 6px 0">
+          
+            <a href="AdminUsers.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 30px; padding: 0 10px 0 26px; font-size: 13px; color: #5A6169"><span>All users</span></a>
+          
+            <a href="AdminApplications.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 30px; padding: 0 10px 0 26px; font-size: 13px; background: #FFFFFF; color: #04411F; box-shadow: inset 3px 0 0 #04411F"><span>Pending applications</span><span style="background: #9A4A0B; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 2px 6px; border-radius: 2px">6</span></a>
+          
+            <a href="AdminUsers.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 30px; padding: 0 10px 0 26px; font-size: 13px; color: #5A6169"><span>Article Writers</span></a>
+          
+            <a href="AdminUsers.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 30px; padding: 0 10px 0 26px; font-size: 13px; color: #5A6169"><span>Research Writers</span></a>
+          
+            <a href="AdminUsers.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 30px; padding: 0 10px 0 26px; font-size: 13px; color: #5A6169"><span>Approvers</span></a>
+          
+            <a href="AdminUsers.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 30px; padding: 0 10px 0 26px; font-size: 13px; color: #5A6169"><span>Experts</span></a>
+          
+            <a href="AdminUsers.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 30px; padding: 0 10px 0 26px; font-size: 13px; color: #5A6169"><span>Staff and admins</span></a>
+          
+            <a href="AdminUsers.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 30px; padding: 0 10px 0 26px; font-size: 13px; color: #5A6169"><span>Invited</span></a>
+          
+            <a href="AdminUsers.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 30px; padding: 0 10px 0 26px; font-size: 13px; color: #5A6169"><span>Deactivated</span></a>
+          
+            <a href="AdminUsers.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 30px; padding: 0 10px 0 26px; font-size: 13px; color: #5A6169"><span>Banned</span></a>
+          
+            <a href="AdminUsers.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 30px; padding: 0 10px 0 26px; font-size: 13px; color: #5A6169"><span>Permanently rejected</span></a>
+          
+        </div>
+      
+    
+      <a href="AdminRoles.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Roles and permissions</span></a>
+      
+    
+      <a href="AdminArticles.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Articles</span><span style="background: #9A4A0B; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 2px 6px; border-radius: 2px">4</span></a>
+      
+    
+      <a href="AdminArticles.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Reports</span><span style="background: #9A4A0B; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 2px 6px; border-radius: 2px">1</span></a>
+      
+    
+      <a href="AdminResearch.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Research papers</span><span style="background: #9A4A0B; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 2px 6px; border-radius: 2px">3</span></a>
+      
+    
+      <a href="AdminNewsroom.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Newsroom</span></a>
+      
+    
+      <a href="AdminFeatured.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Featured and Top Stories</span></a>
+      
+    
+      <a href="AdminTaxonomy.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Taxonomy</span></a>
+      
+    
+      <a href="AdminGlobalWatch.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Global Watch</span></a>
+      
+    
+      <a href="AdminCampaigns.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Ad management</span></a>
+      
+    
+      <a href="AdminInbox.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Inbox</span><span style="background: #1F4A7A; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 2px 6px; border-radius: 2px">9</span></a>
+      
+    
+      <a href="AdminIdCards.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>ID cards</span></a>
+      
+    
+      <a href="AdminCmsPages.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>CMS</span></a>
+      
+    
+      <a href="AdminActivityLogs.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Activity logs</span></a>
+      
+    
+      <a href="AdminSettings.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Settings</span></a>
+      
+    
+  </nav>
+</div>
+</div>
+  <div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column">
+    
+<div style="width: 100%; height: 64px; box-sizing: border-box; background: #FFFFFF; border-bottom: 1px solid #E4E2DC; padding: 0 28px; display: flex; align-items: center; gap: 16px; font-family: 'Inter', system-ui, sans-serif; color: #14171A">
+  <div style="flex: 1 1 320px; max-width: 520px; position: relative">
+    <label for="adm-q" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Search admin</label>
+    <input id="adm-q" placeholder="Search users, content, reference ID, campaigns, cards" style="width: 100%; height: 40px; box-sizing: border-box; border: 1px solid #E4E2DC; border-radius: 2px; background: #FBF9F4; padding: 0 12px 0 38px; font: 14px 'Inter', sans-serif; color: #14171A">
+    <svg viewBox="0 0 24 24" style="position: absolute; left: 12px; top: 12px; width: 16px; height: 16px; stroke: #5A6169; fill: none; stroke-width: 1.5; stroke-linecap: round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+  </div>
+  <span style="flex: 1"></span>
+  <button style="height: 40px; padding: 0 14px; display: inline-flex; align-items: center; gap: 8px; background: #04411F; color: #FFFFFF; border: 0; border-radius: 2px; font: 500 14px 'Inter', sans-serif; cursor: pointer"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round" aria-hidden="true"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>Create<svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button>
+  <button aria-label="Notifications, 9 or more unread" style="width: 44px; height: 44px; background: none; border: 0; position: relative; color: #2E3338; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round" aria-hidden="true"><path d="M10.268 21a2 2 0 0 0 3.464 0"></path><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"></path></svg><span style="position: absolute; top: 6px; right: 4px; height: 16px; padding: 0 4px; background: #A4231A; color: #FFFFFF; font: 600 10px 'Inter', sans-serif; border-radius: 8px; display: flex; align-items: center">9+</span></button>
+  <a href="AdminAccount.html" aria-label="Account menu" style="display: flex; align-items: center; gap: 4px; text-decoration: none; color: #2E3338"><span style="width: 32px; height: 32px; border-radius: 50%; background: #022C15; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">UT</span><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+</div>
+
+    <main style="padding: 28px 32px 48px 32px; display: flex; flex-direction: column; gap: 20px; width: 100%; max-width: 1280px">
+<nav aria-label="Breadcrumb" class="meta" style="display: flex; gap: 8px"><a href="AdminUsers.html" style="text-decoration: none; color: #5A6169">Users</a><span>/</span><span style="color: #14171A">Pending applications</span></nav><div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap"><div><h1 class="sf" style="margin: 0; font-size: 30px; line-height: 1.15; font-weight: 600">Pending applications</h1><div class="meta" style="margin-top: 6px">Target: decide within 5 working days</div></div></div><nav class="tabs" aria-label="Filter by status"><a class="tab" href="#" aria-current="page">Pending<span class="cnt">6</span></a><a class="tab" href="#">More info requested<span class="cnt">1</span></a><a class="tab" href="#">Approved<span class="cnt">212</span></a><a class="tab" href="#">Rejected<span class="cnt">37</span></a><a class="tab" href="#">Permanently rejected<span class="cnt">4</span></a></nav><section class="panel" style="overflow: hidden"><div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap; padding: 12px 16px; border-bottom: 1px solid #E4E2DC"><div style="position: relative; width: 320px; max-width: 100%"><span style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #5A6169; display: flex"><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></span><input class="inp" aria-label="Search applicants" placeholder="Search applicants" style="padding-left: 34px"></div><button type="button" class="sel" style="width: auto; height: 36px; font-size: 13px">Role: All<svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><button type="button" class="sel" style="width: auto; height: 36px; font-size: 13px">Sort: Oldest first<svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><table>
+<thead><tr><th scope="col">Applicant</th><th scope="col">Role</th><th scope="col">Institution</th><th scope="col">Submitted</th><th scope="col">Waiting</th><th scope="col">Verification</th><th scope="col"></th></tr></thead>
+<tbody>
+<tr><td><span style="display: flex; gap: 10px; align-items: center"><span aria-hidden="true" style="width: 32px; height: 32px; border-radius: 50%; background: #DCE5E0; color: #04411F; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex: none">SH</span><span style="display: flex; flex-direction: column"><span style="color: #14171A; font-weight: 500">Sara Haider</span><span class="meta" style="font-size: 12px">sara.haider@qau.edu.pk</span></span></span></td><td><span class="st" style="background: #DCE5E0; color: #04411F">Research Writer</span></td><td>Quaid-i-Azam University</td><td>12 Oct 2026</td><td><span style="color: #9A4A0B; font-weight: 600">4 days</span></td><td><span style="display: flex; gap: 10px; font-size: 12px; color: #2E3338"><span style="display: flex; gap: 4px; align-items: center"><svg class="ico ico-s" viewBox="0 0 24 24" style="width: 14px; height: 14px; color: #0D6634" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Email</span><span style="display: flex; gap: 4px; align-items: center"><svg class="ico ico-s" viewBox="0 0 24 24" style="width: 14px; height: 14px; color: #0D6634" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>ID card</span></span></td><td><a class="btn btn-c btn-p" href="ApplicationReview.html">Review</a></td></tr>
+<tr><td><span style="display: flex; gap: 10px; align-items: center"><span aria-hidden="true" style="width: 32px; height: 32px; border-radius: 50%; background: #DCE5E0; color: #04411F; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex: none">UR</span><span style="display: flex; flex-direction: column"><span style="color: #14171A; font-weight: 500">Usama Rafiq</span><span class="meta" style="font-size: 12px">usama.rafiq@pu.edu.pk</span></span></span></td><td><span class="st" style="background: #DCE5E0; color: #04411F">Article Writer</span></td><td>University of the Punjab</td><td>13 Oct 2026</td><td>3 days</td><td><span style="display: flex; gap: 10px; font-size: 12px; color: #2E3338"><span style="display: flex; gap: 4px; align-items: center"><svg class="ico ico-s" viewBox="0 0 24 24" style="width: 14px; height: 14px; color: #0D6634" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Email</span><span style="display: flex; gap: 4px; align-items: center"><svg class="ico ico-s" viewBox="0 0 24 24" style="width: 14px; height: 14px; color: #7A8189" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>ID card</span></span></td><td><a class="btn btn-c btn-s" href="ApplicationReview.html">Review</a></td></tr>
+<tr><td><span style="display: flex; gap: 10px; align-items: center"><span aria-hidden="true" style="width: 32px; height: 32px; border-radius: 50%; background: #DCE5E0; color: #04411F; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex: none">MA</span><span style="display: flex; flex-direction: column"><span style="color: #14171A; font-weight: 500">Mehwish Ali</span><span class="meta" style="font-size: 12px">mehwish.ali@gmail.com</span></span></span></td><td><span class="st" style="background: #DCE5E0; color: #04411F">Article Writer</span></td><td>Independent journalist</td><td>14 Oct 2026</td><td>2 days</td><td><span style="display: flex; gap: 10px; font-size: 12px; color: #2E3338"><span style="display: flex; gap: 4px; align-items: center"><svg class="ico ico-s" viewBox="0 0 24 24" style="width: 14px; height: 14px; color: #0D6634" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Email</span><span style="display: flex; gap: 4px; align-items: center"><svg class="ico ico-s" viewBox="0 0 24 24" style="width: 14px; height: 14px; color: #7A8189" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>ID card</span></span></td><td><a class="btn btn-c btn-s" href="ApplicationReview.html">Review</a></td></tr>
+<tr><td><span style="display: flex; gap: 10px; align-items: center"><span aria-hidden="true" style="width: 32px; height: 32px; border-radius: 50%; background: #DCE5E0; color: #04411F; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex: none">DI</span><span style="display: flex; flex-direction: column"><span style="color: #14171A; font-weight: 500">Danish Iqbal</span><span class="meta" style="font-size: 12px">d.iqbal@ndu.edu.pk</span></span></span></td><td><span class="st" style="background: #DCE5E0; color: #04411F">Research Writer</span></td><td>National Defence University</td><td>15 Oct 2026</td><td>1 day</td><td><span style="display: flex; gap: 10px; font-size: 12px; color: #2E3338"><span style="display: flex; gap: 4px; align-items: center"><svg class="ico ico-s" viewBox="0 0 24 24" style="width: 14px; height: 14px; color: #0D6634" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Email</span><span style="display: flex; gap: 4px; align-items: center"><svg class="ico ico-s" viewBox="0 0 24 24" style="width: 14px; height: 14px; color: #0D6634" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>ID card</span></span></td><td><a class="btn btn-c btn-s" href="ApplicationReview.html">Review</a></td></tr>
+<tr><td><span style="display: flex; gap: 10px; align-items: center"><span aria-hidden="true" style="width: 32px; height: 32px; border-radius: 50%; background: #DCE5E0; color: #04411F; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex: none">FN</span><span style="display: flex; flex-direction: column"><span style="color: #14171A; font-weight: 500">Fatima Noor</span><span class="meta" style="font-size: 12px">fatima.noor@lums.edu.pk</span></span></span></td><td><span class="st" style="background: #DCE5E0; color: #04411F">Research Writer</span></td><td>LUMS</td><td>16 Oct 2026</td><td>Today</td><td><span style="display: flex; gap: 10px; font-size: 12px; color: #2E3338"><span style="display: flex; gap: 4px; align-items: center"><svg class="ico ico-s" viewBox="0 0 24 24" style="width: 14px; height: 14px; color: #0D6634" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Email</span><span style="display: flex; gap: 4px; align-items: center"><svg class="ico ico-s" viewBox="0 0 24 24" style="width: 14px; height: 14px; color: #0D6634" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>ID card</span></span></td><td><a class="btn btn-c btn-s" href="ApplicationReview.html">Review</a></td></tr>
+<tr><td><span style="display: flex; gap: 10px; align-items: center"><span aria-hidden="true" style="width: 32px; height: 32px; border-radius: 50%; background: #DCE5E0; color: #04411F; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex: none">AR</span><span style="display: flex; flex-direction: column"><span style="color: #14171A; font-weight: 500">Ahmed Raza</span><span class="meta" style="font-size: 12px">ahmed.raza@hotmail.com</span></span></span></td><td><span class="st" style="background: #DCE5E0; color: #04411F">Article Writer</span></td><td>Retired, Pakistan Navy</td><td>16 Oct 2026</td><td>Today</td><td><span style="display: flex; gap: 10px; font-size: 12px; color: #2E3338"><span style="display: flex; gap: 4px; align-items: center"><svg class="ico ico-s" viewBox="0 0 24 24" style="width: 14px; height: 14px; color: #0D6634" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Email</span><span style="display: flex; gap: 4px; align-items: center"><svg class="ico ico-s" viewBox="0 0 24 24" style="width: 14px; height: 14px; color: #7A8189" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>ID card</span></span></td><td><a class="btn btn-c btn-s" href="ApplicationReview.html">Review</a></td></tr>
+</tbody>
+</table></section>
+    </main>
+  </div>
+</div>
+
+<nav class="psf-proto-nav" aria-label="Prototype"><a href="index.html">All screens</a></nav>
+</body>
+</html>

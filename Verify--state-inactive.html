@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3.24 ID card verification | PSF prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF9F4}
+.psf{font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;color:#14171A;-webkit-font-smoothing:antialiased}
+.psf *{box-sizing:border-box}
+.sf{font-family:'Source Serif 4',Georgia,'Times New Roman',serif}
+.dl{display:grid;grid-template-columns:120px 1fr;margin:0;font-size:15px;width:100%;text-align:left}
+.dl dt{padding:12px 0;border-top:1px solid #E4E2DC;color:#5A6169;font-weight:500}
+.dl dd{margin:0;padding:12px 0;border-top:1px solid #E4E2DC;color:#14171A;font-weight:600;font-variant-numeric:tabular-nums}
+</style>
+<style>
+.psf-proto-nav{position:fixed;left:16px;bottom:16px;z-index:9999;display:flex;flex-wrap:wrap;gap:6px;align-items:center;max-width:calc(100vw - 32px);padding:8px;background:#14171A;border-radius:4px;box-shadow:0 8px 24px rgba(20,23,26,.24);font:500 13px/1 Inter,system-ui,sans-serif}
+.psf-proto-nav a{color:#FFFFFF;text-decoration:none;padding:8px 10px;border-radius:2px}
+.psf-proto-nav a:hover{background:#2E3338}
+.psf-proto-nav a[aria-current]{background:#FFFFFF;color:#14171A}
+.psf-proto-nav span{color:#BBC0C4;padding:0 4px 0 8px}
+</style>
+</head>
+<body>
+
+<div class="psf" style="width: 100%; min-height: 900px; background: #FBF9F4; display: flex; align-items: center; justify-content: center; padding: 32px 16px">
+  <main style="width: 100%; max-width: 410px; background: #FFFFFF; border: 1px solid #E4E2DC; border-radius: 4px; padding: 40px 32px; display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center">
+    <span style="width: 48px; height: 48px; border: 2px solid #04411F; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #04411F; font: 700 13px/1 'Source Serif 4', Georgia, serif">PSF</span>
+    <span style="font-size: 13px; font-weight: 500; color: #5A6169">Pakistan Strategic Forum</span>
+    
+    
+      <span style="width: 64px; height: 64px; border-radius: 50%; background: #FBEDEB; color: #A4231A; display: flex; align-items: center; justify-content: center"><svg viewBox="0 0 24 24" style="width: 32px; height: 32px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round" role="img" aria-label="Not valid"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></span>
+    
+    <h1 class="sf" style="margin: 0; font-size: 32px; font-weight: 600">Not valid</h1>
+    <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #2E3338">This card is not currently active. If you were presented with this card, please contact PSF.</p>
+    
+      <dl class="dl">
+        <dt>Card ID</dt><dd>PSF-ID-0142</dd>
+        
+        
+      </dl>
+    
+    
+  </main>
+</div>
+
+<nav class="psf-proto-nav" aria-label="Prototype"><a href="index.html">All screens</a><span>state:</span><a href="Verify.html">active</a><a href="Verify--state-inactive.html" aria-current="page">inactive</a><a href="Verify--state-unknown.html">unknown</a></nav>
+</body>
+</html>

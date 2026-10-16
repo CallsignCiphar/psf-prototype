@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>6.1 Overview | PSF prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF9F4}
+a{color:#04411F}a:hover{color:#03361A}
+.psf{font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;color:#14171A;-webkit-font-smoothing:antialiased}
+.psf *{box-sizing:border-box}
+.sf{font-family:'Source Serif 4',Georgia,'Times New Roman',serif}
+.lbl{font-size:12px;line-height:1.2;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.meta{font-size:13px;line-height:1.4;font-weight:500;color:#5A6169}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 16px;border-radius:2px;font:500 15px/1 'Inter',sans-serif;text-decoration:none;border:1px solid transparent;white-space:nowrap;cursor:pointer;background:none}
+.btn-c{height:32px;padding:0 12px;font-size:14px}
+.ico{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.ico-s{width:16px;height:16px}
+.panel{background:#FFFFFF;border:1px solid #E4E2DC;border-radius:4px;min-width:0}
+.ph{padding:16px 20px;border-bottom:1px solid #E4E2DC;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.ph h2{margin:0;font-size:15px;font-weight:600}
+.kpi{padding:18px 20px;display:flex;flex-direction:column;gap:6px}
+.kpi .n{font-size:32px;font-weight:500;line-height:1.1;font-variant-numeric:tabular-nums}
+.st{display:inline-flex;align-items:center;height:24px;padding:0 8px;border-radius:2px;font-size:12px;font-weight:600;white-space:nowrap}
+table{border-collapse:collapse;width:100%}
+th{font-size:12px;font-weight:600;color:#5A6169;text-align:left;padding:10px 20px;background:#F5F1E8;border-bottom:1px solid #E9E3D5}
+td{font-size:14px;padding:12px 20px;border-bottom:1px solid #E4E2DC;color:#2E3338}
+tbody tr:hover td{background:#F2F5F3}
+.num{font-variant-numeric:tabular-nums;text-align:right}
+.row{display:flex;flex-wrap:wrap;gap:24px}
+</style>
+<style>
+.psf-proto-nav{position:fixed;left:16px;bottom:16px;z-index:9999;display:flex;flex-wrap:wrap;gap:6px;align-items:center;max-width:calc(100vw - 32px);padding:8px;background:#14171A;border-radius:4px;box-shadow:0 8px 24px rgba(20,23,26,.24);font:500 13px/1 Inter,system-ui,sans-serif}
+.psf-proto-nav a{color:#FFFFFF;text-decoration:none;padding:8px 10px;border-radius:2px}
+.psf-proto-nav a:hover{background:#2E3338}
+.psf-proto-nav a[aria-current]{background:#FFFFFF;color:#14171A}
+.psf-proto-nav span{color:#BBC0C4;padding:0 4px 0 8px}
+</style>
+</head>
+<body>
+
+<div class="psf" style="width: 100%; min-height: 100vh; background: #FBF9F4; display: flex">
+  <div style="flex: 0 0 240px; background: #F5F1E8; border-right: 1px solid #E9E3D5">
+<div style="width: 240px; min-height: 760px; box-sizing: border-box; padding: 16px 12px 20px; display: flex; flex-direction: column; gap: 4px; font-family: Inter, system-ui, sans-serif; color: #14171A; background: #F5F1E8">
+  <a href="Main.html" style="display: flex; align-items: center; gap: 10px; height: 52px; margin-bottom: 12px; padding: 0 6px; justify-content: flex-start; text-decoration: none">
+    <span style="width: 36px; height: 36px; border: 2px solid #04411F; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #04411F; font: 700 11px/1 'Source Serif 4', Georgia, serif; flex: none; box-sizing: border-box">PSF</span>
+    <span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; font-weight: 600; color: #14171A">Contributor portal</span>
+  </a>
+  <nav aria-label="Portal" style="display: flex; flex-direction: column; gap: 2px">
+    
+      <a href="PortalOverview.html" aria-label="Overview" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; height: 40px; padding: 0 12px; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; background: #FFFFFF; color: #04411F; box-shadow: inset 3px 0 0 #04411F">
+        <span style="display: flex; align-items: center; gap: 12px">
+          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M3 3h7v9H3z M14 3h7v5h-7z M14 12h7v9h-7z M3 16h7v5H3z"></path></svg>
+          <span>Overview</span>
+        </span>
+        
+      </a>
+    
+      <a href="MyArticles.html" aria-label="My Articles" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; height: 40px; padding: 0 12px; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2E3338">
+        <span style="display: flex; align-items: center; gap: 12px">
+          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z M14 2v6h6 M16 13H8 M16 17H8"></path></svg>
+          <span>My Articles</span>
+        </span>
+        
+      </a>
+    
+      <a href="MyReports.html" aria-label="My Reports" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; height: 40px; padding: 0 12px; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2E3338">
+        <span style="display: flex; align-items: center; gap: 12px">
+          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M4 4h12l4 4v12H4z M8 12h8 M8 16h5"></path></svg>
+          <span>My Reports</span>
+        </span>
+        
+      </a>
+    
+      <a href="MyResearch.html" aria-label="My Research" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; height: 40px; padding: 0 12px; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2E3338">
+        <span style="display: flex; align-items: center; gap: 12px">
+          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z M6 12.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-3.5"></path></svg>
+          <span>My Research</span>
+        </span>
+        
+      </a>
+    
+      <a href="ReviewsQueue.html" aria-label="Reviews" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; height: 40px; padding: 0 12px; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2E3338">
+        <span style="display: flex; align-items: center; gap: 12px">
+          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M9 11l3 3L22 4 M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+          <span>Reviews</span>
+        </span>
+        <span style="background: #9A4A0B; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 2px 6px; border-radius: 2px">2</span>
+      </a>
+    
+      <a href="PortalNotifications.html" aria-label="Notifications" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; height: 40px; padding: 0 12px; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2E3338">
+        <span style="display: flex; align-items: center; gap: 12px">
+          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9 M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
+          <span>Notifications</span>
+        </span>
+        <span style="background: #9A4A0B; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 2px 6px; border-radius: 2px">3</span>
+      </a>
+    
+      <a href="PortalProfile.html" aria-label="Profile" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; height: 40px; padding: 0 12px; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2E3338">
+        <span style="display: flex; align-items: center; gap: 12px">
+          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M12 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10z M20 21a8 8 0 0 0-16 0"></path></svg>
+          <span>Profile</span>
+        </span>
+        
+      </a>
+    
+      <a href="PortalAccount.html" aria-label="Account" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; height: 40px; padding: 0 12px; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2E3338">
+        <span style="display: flex; align-items: center; gap: 12px">
+          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-2.82 1.17V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-2.82-1.17l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 3.2 14H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.17-2.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 10 3.2V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 2.82 1.17l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 20.8 10H21a2 2 0 0 1 0 4h-.09"></path></svg>
+          <span>Account</span>
+        </span>
+        
+      </a>
+    
+  </nav>
+  <div style="margin-top: auto; padding-top: 20px; border-top: 1px solid #E9E3D5; display: flex; flex-direction: column; gap: 2px">
+    
+      <a href="Main.html" aria-label="View site" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; height: 40px; padding: 0 12px; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2E3338; justify-content: flex-start"><svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M15 3h6v6 M10 14 21 3 M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg><span>View site</span></a>
+    
+      <a href="AdminOverview.html" aria-label="Admin" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; height: 40px; padding: 0 12px; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2E3338; justify-content: flex-start"><svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg><span>Admin</span></a>
+    
+      <a href="SignIn.html" aria-label="Sign out" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; height: 40px; padding: 0 12px; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2E3338; justify-content: flex-start"><svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4 M16 17l5-5-5-5 M21 12H9"></path></svg><span>Sign out</span></a>
+    
+  </div>
+</div>
+</div>
+  <div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column">
+    
+<div style="width: 100%; height: 64px; box-sizing: border-box; background: #FFFFFF; border-bottom: 1px solid #E4E2DC; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px; font-family: 'Inter', system-ui, sans-serif; color: #14171A">
+  <h1 style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 22px; font-weight: 600">Overview</h1>
+  <div style="display: flex; align-items: center; gap: 10px">
+    <div style="display: flex">
+      <a href="ArticleEditor.html" style="height: 40px; padding: 0 16px; display: inline-flex; align-items: center; gap: 8px; background: #04411F; color: #FFFFFF; border-radius: 2px 0 0 2px; font: 500 15px 'Inter', sans-serif; text-decoration: none"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round" aria-hidden="true"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>Write article</a>
+      <button aria-label="More: Write report, Submit research" style="width: 36px; height: 40px; border: 0; border-left: 1px solid #0D6634; background: #04411F; color: #FFFFFF; border-radius: 0 2px 2px 0; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button>
+    </div>
+    <a href="PortalNotifications.html" aria-label="Notifications, 3 unread" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; position: relative; color: #2E3338"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round" aria-hidden="true"><path d="M10.268 21a2 2 0 0 0 3.464 0"></path><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"></path></svg><span style="position: absolute; top: 6px; right: 6px; min-width: 16px; height: 16px; background: #A4231A; color: #FFFFFF; font-size: 10px; font-weight: 600; border-radius: 8px; display: flex; align-items: center; justify-content: center">3</span></a>
+    <button aria-label="Account menu" style="display: flex; align-items: center; gap: 4px; background: none; border: 0; padding: 0 4px; height: 44px; color: #2E3338; cursor: pointer"><span style="width: 32px; height: 32px; border-radius: 50%; background: #F5F1E8; border: 1px solid #E9E3D5; display: flex; align-items: center; justify-content: center; font: 600 12px 'Inter', sans-serif; color: #2E3338">SH</span><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button>
+  </div>
+</div>
+
+    <main style="padding: 32px; display: flex; flex-direction: column; gap: 24px; width: 100%; max-width: 1280px">
+      
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <h2 class="sf" style="margin: 0; font-size: 32px; font-weight: 600">Welcome back, Sara.</h2>
+        <div style="display: flex; gap: 6px; flex-wrap: wrap"><span class="st" style="background: #DCE5E0; color: #04411F">Research Writer</span><span class="st" style="background: #DCE5E0; color: #04411F">Article Writer</span><span class="st" style="background: #EAF1F8; color: #1F4A7A">Approver</span></div>
+      </div>
+
+      
+      <div class="panel" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr))">
+        <div class="kpi"><span class="meta">Published</span><span class="n">14</span></div>
+        <div class="kpi" style="border-left: 1px solid #E4E2DC"><span class="meta">In review</span><span class="n">2</span></div>
+        <div class="kpi" style="border-left: 1px solid #E4E2DC"><span class="meta">Drafts</span><span class="n">3</span></div>
+        <div class="kpi" style="border-left: 1px solid #E4E2DC"><span class="meta">Changes requested / Rejected</span><span class="n"><span style="color: #9A4A0B">1</span> <span style="color: #7A8189; font-size: 22px">/</span> <span style="color: #A4231A">0</span></span></div>
+        <div class="kpi" style="border-left: 1px solid #E4E2DC"><span class="meta">Total reads</span><span class="n">12,480</span><span style="font-size: 13px; color: #2E3338"><span style="font-variant-numeric: tabular-nums; font-weight: 600">2,317</span> last 30 days <span style="font-weight: 600; color: #0D6634">+18%</span></span></div>
+      </div>
+
+      
+      <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px">
+        <section class="panel">
+          <div class="ph"><div><h2>Reads</h2><div class="meta" style="font-size: 12px; margin-top: 2px">17 Sep to 16 Oct 2026, PKT</div></div><div role="group" aria-label="Period" style="display: flex; gap: 2px; background: #F5F1E8; padding: 3px; border-radius: 2px"><button class="btn btn-c" aria-pressed="true" style="background: #FFFFFF; border-color: #E4E2DC">30 days</button><button class="btn btn-c" style="color: #5A6169">90 days</button></div></div>
+          <div style="padding: 16px 20px 12px 20px">
+            <svg viewBox="0 0 600 210" style="width: 100%; height: 220px" role="img" aria-label="Line chart of daily reads rising from about 50 to 110 a day over 30 days">
+              <g stroke="#E4E2DC" stroke-width="1"><line x1="36" y1="20" x2="600" y2="20"></line><line x1="36" y1="70" x2="600" y2="70"></line><line x1="36" y1="120" x2="600" y2="120"></line><line x1="36" y1="170" x2="600" y2="170"></line></g>
+              <g fill="#5A6169" font-size="11" font-family="Inter, sans-serif"><text x="0" y="24">150</text><text x="0" y="74">100</text><text x="6" y="124">50</text><text x="18" y="174">0</text><text x="36" y="196">17 Sep</text><text x="300" y="196">1 Oct</text><text x="556" y="196">16 Oct</text></g>
+              <polyline fill="none" stroke="#04411F" stroke-width="2" stroke-linejoin="round" points="40,122 60,118 80,126 100,110 120,114 140,104 160,108 180,96 200,112 220,100 240,92 260,98 280,84 300,90 320,80 340,88 360,74 380,82 400,70 420,76 440,64 460,72 480,58 500,66 520,52 540,60 560,48 580,56 596,50"></polyline>
+            </svg>
+            <div class="meta" style="font-size: 12px">Source: PSF read counts, 1 per IP per item per 24 hours</div>
+          </div>
+        </section>
+        <section class="panel" style="overflow: hidden">
+          <div class="ph"><h2>Top content</h2><a href="MyArticles.html" style="font-size: 13px; font-weight: 500; text-decoration: none">View all</a></div>
+          <table>
+            <thead><tr><th scope="col">Title</th><th scope="col" style="text-align: right">Reads</th></tr></thead>
+            <tbody>
+              <tr><td><span style="display: block; color: #14171A; font-weight: 500">Signalling through tests</span><span class="meta" style="font-size: 12px">Article · 2 Sep 2026</span></td><td class="num">3,880</td></tr>
+              <tr><td><span style="display: block; color: #14171A; font-weight: 500">Crisis hotlines in South Asia</span><span class="meta" style="font-size: 12px">Article · 18 Aug 2026</span></td><td class="num">2,615</td></tr>
+              <tr><td><span style="display: block; color: #14171A; font-weight: 500">Missile tests and the media cycle</span><span class="meta" style="font-size: 12px">Article · 30 Jul 2026</span></td><td class="num">1,940</td></tr>
+              <tr><td><span style="display: block; color: #14171A; font-weight: 500">Future warfare conference readout</span><span class="meta" style="font-size: 12px">Report · 28 Apr 2026</span></td><td class="num">1,522</td></tr>
+              <tr><td style="border-bottom: 0"><span style="display: block; color: #14171A; font-weight: 500">Deterrence stability and hypersonics</span><span class="meta" style="font-size: 12px">Research · 16 Oct 2026</span></td><td class="num" style="border-bottom: 0">1,204</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+
+      
+      <section class="panel">
+        <div class="ph"><h2>Research pipeline</h2><a href="MyResearch.html" style="font-size: 13px; font-weight: 500; text-decoration: none">My Research</a></div>
+        <ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr))">
+          <li class="kpi"><span class="meta">Submitted</span><span class="n" style="font-size: 26px">1</span></li>
+          <li class="kpi" style="border-left: 1px solid #E4E2DC"><span class="meta">Screening</span><span class="n" style="font-size: 26px">0</span></li>
+          <li class="kpi" style="border-left: 1px solid #E4E2DC"><span class="meta">Under review</span><span class="n" style="font-size: 26px">1</span></li>
+          <li class="kpi" style="border-left: 1px solid #E4E2DC; background: #FBF1E6"><span class="meta" style="color: #9A4A0B">Revisions requested</span><span class="n" style="font-size: 26px; color: #9A4A0B">1</span></li>
+          <li class="kpi" style="border-left: 1px solid #E4E2DC"><span class="meta">Awaiting final approval</span><span class="n" style="font-size: 26px">0</span></li>
+          <li class="kpi" style="border-left: 1px solid #E4E2DC"><span class="meta">Published</span><span class="n" style="font-size: 26px">2</span></li>
+        </ol>
+      </section>
+
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px">
+        <section class="panel">
+          <div class="ph"><h2>Action needed</h2><span class="meta">3 items</span></div>
+          <a href="ArticleEditor.html" style="display: flex; gap: 14px; padding: 14px 20px; border-bottom: 1px solid #E4E2DC; text-decoration: none; color: #14171A; align-items: flex-start"><span class="st" style="background: #FBF1E6; color: #9A4A0B; box-shadow: inset 0 0 0 1px #9A4A0B; flex: none">Changes requested</span><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 600">Civil-military coordination in flood relief</span><span class="meta" style="font-size: 12px">Editor comment, 15 Oct 2026, 16:10 PKT</span></span></a>
+          <a href="ReviewWorkspace.html" style="display: flex; gap: 14px; padding: 14px 20px; border-bottom: 1px solid #E4E2DC; text-decoration: none; color: #14171A; align-items: flex-start"><span class="st" style="background: #FBF1E6; color: #9A4A0B; flex: none">Due in 3 days</span><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 600">Review RES-2026-00045, round 1</span><span class="meta" style="font-size: 12px">Due 19 Oct 2026</span></span></a>
+          <a href="#" style="display: flex; gap: 14px; padding: 14px 20px; text-decoration: none; color: #14171A; align-items: flex-start"><span class="st" style="background: #EAF1F8; color: #1F4A7A; flex: none">Co-author invite</span><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 600">Rehan Khan invited you to co-author a report</span><span class="meta" style="font-size: 12px">14 Oct 2026 · Accept or decline</span></span></a>
+        </section>
+        <section class="panel">
+          <div class="ph"><h2>Recent activity</h2></div>
+          <ol style="margin: 0; padding: 4px 20px; list-style: none">
+            <li style="display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-bottom: 1px solid #E4E2DC; font-size: 14px"><span><strong style="font-weight: 600">Published:</strong> Deterrence stability and hypersonics</span><span class="meta" style="white-space: nowrap">16 Oct, 09:00</span></li>
+            <li style="display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-bottom: 1px solid #E4E2DC; font-size: 14px"><span><strong style="font-weight: 600">Changes requested:</strong> Flood relief coordination</span><span class="meta" style="white-space: nowrap">15 Oct, 16:10</span></li>
+            <li style="display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-bottom: 1px solid #E4E2DC; font-size: 14px"><span><strong style="font-weight: 600">Comment received:</strong> Crisis hotlines in South Asia</span><span class="meta" style="white-space: nowrap">12 Oct, 11:24</span></li>
+            <li style="display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-bottom: 1px solid #E4E2DC; font-size: 14px"><span><strong style="font-weight: 600">Submitted:</strong> Flood relief coordination</span><span class="meta" style="white-space: nowrap">10 Oct, 20:02</span></li>
+            <li style="display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; font-size: 14px"><span><strong style="font-weight: 600">Review assigned:</strong> RES-2026-00045</span><span class="meta" style="white-space: nowrap">28 Sep 2026</span></li>
+          </ol>
+        </section>
+      </div>
+
+      
+      <section class="panel">
+        <div class="ph"><h2>Where your readers are</h2><span class="meta" style="font-size: 12px">Top 5 countries, last 30 days</span></div>
+        <div style="padding: 16px 20px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; font-size: 14px">
+          <div style="display: flex; flex-direction: column; gap: 8px"><span style="display: flex; justify-content: space-between"><span>Pakistan</span><span style="font-variant-numeric: tabular-nums; font-weight: 600">1,412</span></span><span style="height: 8px; background: #04411F; width: 100%"></span></div>
+          <div style="display: flex; flex-direction: column; gap: 8px"><span style="display: flex; justify-content: space-between"><span>United States</span><span style="font-variant-numeric: tabular-nums; font-weight: 600">318</span></span><span style="height: 8px; background: #04411F; width: 22%"></span></div>
+          <div style="display: flex; flex-direction: column; gap: 8px"><span style="display: flex; justify-content: space-between"><span>United Kingdom</span><span style="font-variant-numeric: tabular-nums; font-weight: 600">201</span></span><span style="height: 8px; background: #04411F; width: 14%"></span></div>
+          <div style="display: flex; flex-direction: column; gap: 8px"><span style="display: flex; justify-content: space-between"><span>UAE</span><span style="font-variant-numeric: tabular-nums; font-weight: 600">130</span></span><span style="height: 8px; background: #04411F; width: 9%"></span></div>
+          <div style="display: flex; flex-direction: column; gap: 8px"><span style="display: flex; justify-content: space-between"><span>India</span><span style="font-variant-numeric: tabular-nums; font-weight: 600">97</span></span><span style="height: 8px; background: #04411F; width: 7%"></span></div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<nav class="psf-proto-nav" aria-label="Prototype"><a href="index.html">All screens</a></nav>
+</body>
+</html>

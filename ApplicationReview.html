@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>7.4.2 Application review | PSF prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF9F4}
+a{color:#04411F}a:hover{color:#03361A}
+.psf{font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;color:#14171A;-webkit-font-smoothing:antialiased}
+.psf *{box-sizing:border-box}
+.sf{font-family:'Source Serif 4',Georgia,'Times New Roman',serif}
+.meta{font-size:13px;line-height:1.4;font-weight:500;color:#5A6169}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 16px;border-radius:2px;font:500 15px/1 'Inter',sans-serif;text-decoration:none;border:1px solid transparent;white-space:nowrap;cursor:pointer;background:none}
+.btn-p{background:#04411F;color:#FFFFFF}
+.btn-s{background:#FFFFFF;color:#14171A;border-color:#14171A}
+.btn-d{background:#FFFFFF;color:#A4231A;border-color:#A4231A}
+.ico{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.ico-s{width:16px;height:16px}
+.panel{background:#FFFFFF;border:1px solid #E4E2DC;border-radius:4px;min-width:0;overflow:hidden}
+.ph{padding:14px 20px;border-bottom:1px solid #E4E2DC;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.ph h2{margin:0;font-size:15px;font-weight:600}
+.dl{display:grid;grid-template-columns:220px 1fr;gap:0;margin:0;font-size:14px}
+.dl dt{color:#5A6169;font-weight:500;padding:10px 20px;border-bottom:1px solid #E4E2DC}
+.dl dd{margin:0;color:#14171A;padding:10px 20px;border-bottom:1px solid #E4E2DC;line-height:1.5}
+.st{display:inline-flex;align-items:center;gap:4px;height:24px;padding:0 8px;border-radius:2px;font-size:12px;font-weight:600;white-space:nowrap}
+.flag{display:flex;gap:10px;align-items:flex-start;padding:10px 20px;border-bottom:1px solid #E4E2DC;font-size:14px}
+.icb{width:36px;height:36px;padding:0;border:1px solid #E4E2DC;border-radius:2px;background:#FFFFFF;color:#2E3338;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+</style>
+<style>
+.psf-proto-nav{position:fixed;left:16px;bottom:16px;z-index:9999;display:flex;flex-wrap:wrap;gap:6px;align-items:center;max-width:calc(100vw - 32px);padding:8px;background:#14171A;border-radius:4px;box-shadow:0 8px 24px rgba(20,23,26,.24);font:500 13px/1 Inter,system-ui,sans-serif}
+.psf-proto-nav a{color:#FFFFFF;text-decoration:none;padding:8px 10px;border-radius:2px}
+.psf-proto-nav a:hover{background:#2E3338}
+.psf-proto-nav a[aria-current]{background:#FFFFFF;color:#14171A}
+.psf-proto-nav span{color:#BBC0C4;padding:0 4px 0 8px}
+</style>
+</head>
+<body>
+
+<div class="psf" style="width: 100%; min-height: 100vh; background: #FBF9F4; display: flex">
+  <div style="flex: 0 0 264px; background: #F5F1E8; border-right: 1px solid #E9E3D5">
+<div style="width: 264px; min-height: 1000px; box-sizing: border-box; padding: 16px 12px 24px 12px; display: flex; flex-direction: column; gap: 2px; font-family: 'Inter', system-ui, sans-serif; color: #14171A; background: #F5F1E8">
+  <a href="Main.html" style="display: flex; align-items: center; gap: 10px; height: 52px; margin-bottom: 10px; padding: 0 6px; text-decoration: none; color: #14171A">
+    <span style="width: 36px; height: 36px; border: 2px solid #04411F; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #04411F; font: 700 11px/1 'Source Serif 4', Georgia, serif; flex: none; box-sizing: border-box">PSF</span>
+    <span style="display: flex; flex-direction: column"><span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; font-weight: 600">PSF Admin</span><span style="font-size: 11px; color: #5A6169">forumstrategic.com</span></span>
+  </a>
+  <nav aria-label="Admin" style="display: flex; flex-direction: column; gap: 1px">
+    
+      <a href="AdminOverview.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Overview</span></a>
+      
+    
+      <a href="AdminAnalytics.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Analytics</span></a>
+      
+    
+      <a href="AdminUsers.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #04411F"><span>Users</span><span style="background: #9A4A0B; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 2px 6px; border-radius: 2px">6</span></a>
+      
+        <div style="display: flex; flex-direction: column; gap: 1px; margin: 2px 0 6px 0">
+          
+            <a href="AdminUsers.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 30px; padding: 0 10px 0 26px; font-size: 13px; color: #5A6169"><span>All users</span></a>
+          
+            <a href="AdminApplications.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 30px; padding: 0 10px 0 26px; font-size: 13px; background: #FFFFFF; color: #04411F; box-shadow: inset 3px 0 0 #04411F"><span>Pending applications</span><span style="background: #9A4A0B; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 2px 6px; border-radius: 2px">6</span></a>
+          
+            <a href="AdminUsers.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 30px; padding: 0 10px 0 26px; font-size: 13px; color: #5A6169"><span>Article Writers</span></a>
+          
+            <a href="AdminUsers.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 30px; padding: 0 10px 0 26px; font-size: 13px; color: #5A6169"><span>Research Writers</span></a>
+          
+            <a href="AdminUsers.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 30px; padding: 0 10px 0 26px; font-size: 13px; color: #5A6169"><span>Approvers</span></a>
+          
+            <a href="AdminUsers.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 30px; padding: 0 10px 0 26px; font-size: 13px; color: #5A6169"><span>Experts</span></a>
+          
+            <a href="AdminUsers.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 30px; padding: 0 10px 0 26px; font-size: 13px; color: #5A6169"><span>Staff and admins</span></a>
+          
+            <a href="AdminUsers.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 30px; padding: 0 10px 0 26px; font-size: 13px; color: #5A6169"><span>Invited</span></a>
+          
+            <a href="AdminUsers.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 30px; padding: 0 10px 0 26px; font-size: 13px; color: #5A6169"><span>Deactivated</span></a>
+          
+            <a href="AdminUsers.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 30px; padding: 0 10px 0 26px; font-size: 13px; color: #5A6169"><span>Banned</span></a>
+          
+            <a href="AdminUsers.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 30px; padding: 0 10px 0 26px; font-size: 13px; color: #5A6169"><span>Permanently rejected</span></a>
+          
+        </div>
+      
+    
+      <a href="AdminRoles.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Roles and permissions</span></a>
+      
+    
+      <a href="AdminArticles.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Articles</span><span style="background: #9A4A0B; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 2px 6px; border-radius: 2px">4</span></a>
+      
+    
+      <a href="AdminArticles.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Reports</span><span style="background: #9A4A0B; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 2px 6px; border-radius: 2px">1</span></a>
+      
+    
+      <a href="AdminResearch.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Research papers</span><span style="background: #9A4A0B; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 2px 6px; border-radius: 2px">3</span></a>
+      
+    
+      <a href="AdminNewsroom.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Newsroom</span></a>
+      
+    
+      <a href="AdminFeatured.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Featured and Top Stories</span></a>
+      
+    
+      <a href="AdminTaxonomy.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Taxonomy</span></a>
+      
+    
+      <a href="AdminGlobalWatch.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Global Watch</span></a>
+      
+    
+      <a href="AdminCampaigns.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Ad management</span></a>
+      
+    
+      <a href="AdminInbox.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Inbox</span><span style="background: #1F4A7A; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 2px 6px; border-radius: 2px">9</span></a>
+      
+    
+      <a href="AdminIdCards.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>ID cards</span></a>
+      
+    
+      <a href="AdminCmsPages.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>CMS</span></a>
+      
+    
+      <a href="AdminActivityLogs.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Activity logs</span></a>
+      
+    
+      <a href="AdminSettings.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 2px; text-decoration: none; font-weight: 500; min-height: 34px; padding: 0 10px; font-size: 14px; color: #2E3338"><span>Settings</span></a>
+      
+    
+  </nav>
+</div>
+</div>
+  <div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column">
+    
+<div style="width: 100%; height: 64px; box-sizing: border-box; background: #FFFFFF; border-bottom: 1px solid #E4E2DC; padding: 0 28px; display: flex; align-items: center; gap: 16px; font-family: 'Inter', system-ui, sans-serif; color: #14171A">
+  <div style="flex: 1 1 320px; max-width: 520px; position: relative">
+    <label for="adm-q" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Search admin</label>
+    <input id="adm-q" placeholder="Search users, content, reference ID, campaigns, cards" style="width: 100%; height: 40px; box-sizing: border-box; border: 1px solid #E4E2DC; border-radius: 2px; background: #FBF9F4; padding: 0 12px 0 38px; font: 14px 'Inter', sans-serif; color: #14171A">
+    <svg viewBox="0 0 24 24" style="position: absolute; left: 12px; top: 12px; width: 16px; height: 16px; stroke: #5A6169; fill: none; stroke-width: 1.5; stroke-linecap: round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+  </div>
+  <span style="flex: 1"></span>
+  <button style="height: 40px; padding: 0 14px; display: inline-flex; align-items: center; gap: 8px; background: #04411F; color: #FFFFFF; border: 0; border-radius: 2px; font: 500 14px 'Inter', sans-serif; cursor: pointer"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round" aria-hidden="true"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>Create<svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button>
+  <button aria-label="Notifications, 9 or more unread" style="width: 44px; height: 44px; background: none; border: 0; position: relative; color: #2E3338; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round" aria-hidden="true"><path d="M10.268 21a2 2 0 0 0 3.464 0"></path><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"></path></svg><span style="position: absolute; top: 6px; right: 4px; height: 16px; padding: 0 4px; background: #A4231A; color: #FFFFFF; font: 600 10px 'Inter', sans-serif; border-radius: 8px; display: flex; align-items: center">9+</span></button>
+  <a href="AdminAccount.html" aria-label="Account menu" style="display: flex; align-items: center; gap: 4px; text-decoration: none; color: #2E3338"><span style="width: 32px; height: 32px; border-radius: 50%; background: #022C15; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">UT</span><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+</div>
+
+    <main style="padding: 24px 32px 32px 32px; width: 100%; max-width: 1280px">
+      
+      <div style="max-width: 1010px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px">
+        <nav aria-label="Breadcrumb" class="meta" style="display: flex; gap: 8px"><a href="AdminUsers.html" style="text-decoration: none; color: #5A6169">Users</a><span>/</span><a href="AdminApplications.html" style="text-decoration: none; color: #5A6169">Pending applications</a><span>/</span><span style="color: #14171A">Sara Haider</span></nav>
+
+        <section class="panel" style="padding: 22px 24px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap">
+          <span style="width: 72px; height: 72px; border-radius: 50%; background: #F5F1E8; border: 1px solid #E9E3D5; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 20px; color: #2E3338; flex: none">SH</span>
+          <div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 8px">
+            <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap"><h1 class="sf" style="margin: 0; font-size: 30px; font-weight: 600">Sara Haider</h1><span class="st" style="background: #FBF1E6; color: #9A4A0B">Pending</span><span class="st" style="background: #F5F1E8; color: #2E3338">Research Writer</span><span class="st" style="background: #F5F1E8; color: #2E3338">Attempt 2</span></div>
+            <div style="display: flex; gap: 16px; flex-wrap: wrap; font-size: 14px; color: #2E3338; align-items: center"><span style="display: flex; gap: 6px; align-items: center">sara.haider@qau.edu.pk<span class="st" style="background: #DCE5E0; color: #04411F; height: 20px; font-size: 11px"><svg class="ico" viewBox="0 0 24 24" style="width: 12px; height: 12px; stroke-width: 2" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Verified</span></span><span class="meta">Submitted 12 Oct 2026, 21:14 PKT</span></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="ph"><h2>Step 1: Account</h2><span class="meta" style="font-size: 12px">Read-only</span></div>
+          <dl class="dl"><dt>Name</dt><dd>Sara Haider</dd><dt>Profile photo</dt><dd><span style="display: inline-flex; width: 40px; height: 40px; border-radius: 50%; background: #F5F1E8; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">SH</span></dd><dt>Areas of expertise</dt><dd>Defence / Strategic Systems, Geopolitics / South Asia</dd><dt>Institution</dt><dd>Quaid-i-Azam University</dd><dt style="border-bottom: 0">Designation</dt><dd style="border-bottom: 0">Student</dd></dl>
+        </section>
+
+        <section class="panel">
+          <div class="ph"><h2>Step 2: Research profile</h2></div>
+          <dl class="dl">
+            <dt>Department</dt><dd>Defence and Strategic Studies</dd>
+            <dt>Programme / degree</dt><dd>MPhil, Strategic Studies</dd>
+            <dt>Graduation status</dt><dd>Currently enrolled · expected 2027</dd>
+            <dt>Registration number</dt><dd style="font-variant-numeric: tabular-nums">QAU-DSS-24-0117</dd>
+            <dt>ORCID iD</dt><dd><a href="#">0000-0002-1825-0097</a> <span class="meta">checksum valid</span></dd>
+            <dt>Profile links</dt><dd><a href="#">Google Scholar</a> · <a href="#">LinkedIn</a></dd>
+            <dt>Research interests</dt><dd>Nuclear deterrence and crisis stability in South Asia; missile technology and signalling; confidence-building measures.</dd>
+            <dt>Why register on PSF</dt><dd>To publish peer-reviewed work from my MPhil thesis and contribute policy briefs on crisis stability.</dd>
+            <dt>Previous publications</dt><dd>Conference paper, NDU Islamabad, 2025. [Citation]</dd>
+          </dl>
+          <div style="padding: 16px 20px; display: flex; flex-direction: column; gap: 10px">
+            <div style="display: flex; justify-content: space-between; align-items: center"><span style="font-size: 14px; font-weight: 600">Student ID card</span><span style="display: flex; gap: 6px"><button class="icb" aria-label="Zoom in"><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="M11 8v6"></path><path d="M8 11h6"></path><path d="m21 21-4.3-4.3"></path></svg></button><button class="icb" aria-label="Rotate"><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"></path><path d="M21 3v5h-5"></path></svg></button></span></div>
+            <div style="aspect-ratio: 85.6 / 54; max-width: 440px; background: #E9E3D5; display: flex; align-items: center; justify-content: center; color: #5A6169; font-size: 13px">[Secure viewer: signed URL, no download]</div>
+            <span class="meta" style="font-size: 12px">Stored privately. Deleted 30 days after a decision.</span>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="ph"><h2>Submission context</h2></div>
+          <dl class="dl"><dt>IP</dt><dd style="font-variant-numeric: tabular-nums">39.48.xxx.xxx</dd><dt>Location</dt><dd>Islamabad, Pakistan</dd><dt>Device</dt><dd>Desktop · Chrome 129 · Windows</dd><dt>Time to complete form</dt><dd>14 min</dd></dl>
+          <div class="flag" style="color: #04411F"><svg class="ico ico-s" viewBox="0 0 24 24" style="margin-top: 2px" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Email domain matches stated university (qau.edu.pk)</div>
+          <div class="flag" style="color: #04411F"><svg class="ico ico-s" viewBox="0 0 24 24" style="margin-top: 2px" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>No other account from this IP</div>
+          <div class="flag" style="color: #04411F; border-bottom: 0"><svg class="ico ico-s" viewBox="0 0 24 24" style="margin-top: 2px" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Not a disposable email domain</div>
+        </section>
+
+        <section class="panel">
+          <div class="ph"><h2>History</h2><span class="meta" style="font-size: 12px">2 attempts</span></div>
+          <div style="padding: 16px 20px; display: flex; flex-direction: column; gap: 14px">
+            <div style="display: flex; flex-direction: column; gap: 6px; padding-bottom: 14px; border-bottom: 1px solid #E4E2DC">
+              <div style="display: flex; justify-content: space-between; gap: 8px"><span class="st" style="background: #FBF1E6; color: #9A4A0B; box-shadow: inset 0 0 0 1px #9A4A0B">Returned with comments</span><span class="meta" style="font-size: 12px">8 Oct 2026 · Usman Tariq</span></div>
+              <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #2E3338; padding-left: 12px; border-left: 2px solid #E9E3D5">Please add your programme details and a short description of your research interests.</p>
+            </div>
+            <div style="display: flex; justify-content: space-between; gap: 8px"><span class="st" style="background: #F5F1E8; color: #2E3338">Attempt 1 submitted</span><span class="meta" style="font-size: 12px">6 Oct 2026, 18:02 PKT</span></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="ph"><h2>Duplicate check</h2></div>
+          <div style="padding: 16px 20px; font-size: 14px; color: #2E3338">No other users with the same name, phone or IP.</div>
+        </section>
+      </div>
+    </main>
+    
+    <div style="position: sticky; bottom: 0; margin-top: auto; background: #FFFFFF; border-top: 1px solid #E4E2DC; box-shadow: 0 -8px 24px rgba(20,23,26,.08); padding: 14px 32px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap">
+      <span class="meta">Decision for APP-2026-00218</span>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap"><button class="btn btn-d">Reject permanently</button><button class="btn btn-s">Reject with comments</button><button class="btn btn-p"><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Approve</button></div>
+    </div>
+  </div>
+</div>
+
+<nav class="psf-proto-nav" aria-label="Prototype"><a href="index.html">All screens</a></nav>
+</body>
+</html>

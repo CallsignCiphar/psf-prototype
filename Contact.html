@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3.19 Contact Us | PSF prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#04411F}a:hover{color:#03361A}
+.psf{font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;color:#14171A;-webkit-font-smoothing:antialiased}
+.psf *{box-sizing:border-box}
+.sf{font-family:'Source Serif 4',Georgia,'Times New Roman',serif}
+.lbl{font-size:12px;line-height:1.2;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.meta{font-size:13px;line-height:1.4;font-weight:500;color:#5A6169}
+.wrap{max-width:1280px;margin:0 auto;padding:0 32px;box-sizing:content-box !important}
+.g12{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 22px;border-radius:2px;font:500 15px/1 'Inter',sans-serif;text-decoration:none;border:1px solid transparent;white-space:nowrap;cursor:pointer;background:none}
+.btn-p{background:#04411F;color:#FFFFFF}
+.ico{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.fld{display:flex;flex-direction:column;gap:6px;min-width:0}
+.fld label{font-size:14px;font-weight:500;color:#14171A}
+.req{color:#A4231A}
+.hint{font-size:13px;color:#5A6169}
+.inp{height:44px;border:1px solid #7A8189;border-radius:2px;background:#FFFFFF;padding:0 12px;font:15px 'Inter',sans-serif;color:#14171A;width:100%}
+.ta{border:1px solid #7A8189;border-radius:2px;background:#FFFFFF;padding:10px 12px;font:15px/1.5 'Inter',sans-serif;color:#14171A;width:100%;resize:vertical}
+.sel{height:44px;border:1px solid #7A8189;border-radius:2px;background:#FFFFFF;padding:0 12px;display:flex;align-items:center;justify-content:space-between;font:15px 'Inter',sans-serif;color:#14171A;width:100%;cursor:pointer}
+.help{display:flex;flex-direction:column;gap:8px;padding:20px;border:1px solid #E4E2DC;border-radius:4px}
+@media (max-width:900px){.wrap{padding:0 16px}.g12{grid-template-columns:minmax(0,1fr)}.g12>*{grid-column:1 / -1 !important}}
+</style>
+<style>
+.psf-proto-nav{position:fixed;left:16px;bottom:16px;z-index:9999;display:flex;flex-wrap:wrap;gap:6px;align-items:center;max-width:calc(100vw - 32px);padding:8px;background:#14171A;border-radius:4px;box-shadow:0 8px 24px rgba(20,23,26,.24);font:500 13px/1 Inter,system-ui,sans-serif}
+.psf-proto-nav a{color:#FFFFFF;text-decoration:none;padding:8px 10px;border-radius:2px}
+.psf-proto-nav a:hover{background:#2E3338}
+.psf-proto-nav a[aria-current]{background:#FFFFFF;color:#14171A}
+.psf-proto-nav span{color:#BBC0C4;padding:0 4px 0 8px}
+</style>
+</head>
+<body>
+
+<div class="psf" style="width: 100%; background: #FFFFFF">
+  
+<div style="width: 100%; font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; color: #14171A; background: #FFFFFF; box-sizing: border-box">
+  
+  <div style="background: #F5F1E8; border-bottom: 1px solid #E9E3D5">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 0 32px; height: 36px; display: flex; align-items: center; justify-content: space-between; gap: 24px; font-size: 13px; color: #2E3338; box-sizing: content-box">
+      <div style="display: flex; gap: 24px; align-items: center">
+        <span>Friday, 16 October 2026</span>
+        <a href="GlobalWatch.html" style="display: flex; align-items: center; gap: 6px; text-decoration: none; font-weight: 500; color: #04411F"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>Global Watch: 212 locations covered</a>
+      </div>
+      <div style="display: flex; gap: 20px; align-items: center">
+        <div role="group" aria-label="Text size" style="display: flex; gap: 2px; align-items: center">
+          <button style="height: 28px; padding: 0 8px; background: none; border: 1px solid transparent; border-radius: 2px; font: 500 13px 'Inter', sans-serif; color: #2E3338; cursor: pointer">A−</button>
+          <button aria-pressed="true" style="height: 28px; padding: 0 8px; background: #FFFFFF; border: 1px solid #BBD3C5; border-radius: 2px; font: 600 13px 'Inter', sans-serif; color: #04411F; cursor: pointer">A</button>
+          <button style="height: 28px; padding: 0 8px; background: none; border: 1px solid transparent; border-radius: 2px; font: 500 15px 'Inter', sans-serif; color: #2E3338; cursor: pointer">A+</button>
+        </div>
+        <div style="display: flex; gap: 14px">
+          <a href="#" style="color: #2E3338; text-decoration: none">X</a>
+          <a href="#" style="color: #2E3338; text-decoration: none">Facebook</a>
+          <a href="#" style="color: #2E3338; text-decoration: none">Instagram</a>
+          <a href="#" style="color: #2E3338; text-decoration: none">YouTube</a>
+        </div>
+        <a href="Advertise.html" style="text-decoration: none; font-weight: 500; color: #04411F">Advertise</a>
+      </div>
+    </div>
+  </div>
+  
+  <header style="background: #FFFFFF; border-bottom: 1px solid #E4E2DC">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 0 32px; height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; box-sizing: content-box">
+      <a href="Main.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #14171A; flex: none">
+        <span style="width: 44px; height: 44px; border: 2px solid #04411F; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #04411F; font: 700 13px/1 'Source Serif 4', Georgia, serif; letter-spacing: .04em; box-sizing: border-box">PSF</span>
+        <span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 19px; font-weight: 600; line-height: 1.1">Pakistan Strategic Forum</span>
+      </a>
+      <nav aria-label="Primary" style="display: flex; gap: 28px; font-size: 15px; font-weight: 500; height: 72px; align-items: stretch">
+        
+          <a href="TopicsHub.html" style="display: flex; align-items: center; gap: 4px; text-decoration: none; color: #14171A; box-shadow: none">Topics<svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+        
+          <a href="ReportsHub.html" style="display: flex; align-items: center; gap: 4px; text-decoration: none; color: #14171A; box-shadow: none">Reports<svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+        
+          <a href="ResearchHub.html" style="display: flex; align-items: center; gap: 4px; text-decoration: none; color: #14171A; box-shadow: none">Research<svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+        
+          <a href="GlobalWatch.html" style="display: flex; align-items: center; gap: 4px; text-decoration: none; color: #14171A; box-shadow: none">Global Watch</a>
+        
+          <a href="Newsroom.html" style="display: flex; align-items: center; gap: 4px; text-decoration: none; color: #14171A; box-shadow: none">Newsroom<span style="width: 7px; height: 7px; border-radius: 50%; background: #198348; margin-left: 2px" aria-label="New posts in the last 2 hours"></span></a>
+        
+          <a href="About.html" style="display: flex; align-items: center; gap: 4px; text-decoration: none; color: #04411F; box-shadow: inset 0 -2px 0 #04411F">About<svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+        
+      </nav>
+      <div style="display: flex; align-items: center; gap: 8px; flex: none">
+        <a href="Search.html" aria-label="Search" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #14171A"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></a>
+        
+          <div style="display: flex; align-items: center; gap: 8px">
+            <a href="SignIn.html" style="height: 40px; padding: 0 8px; display: inline-flex; align-items: center; font: 500 15px 'Inter', sans-serif; color: #04411F; text-decoration: none">Sign in</a>
+            <a href="Join.html" style="height: 40px; padding: 0 18px; display: inline-flex; align-items: center; border-radius: 2px; background: #04411F; color: #FFFFFF; font: 500 15px 'Inter', sans-serif; text-decoration: none">Write for PSF</a>
+          </div>
+        
+        
+      </div>
+    </div>
+  </header>
+</div>
+
+  <section style="background: #FBF9F4; border-bottom: 1px solid #E9E3D5"><div class="wrap" style="padding-top: 48px; padding-bottom: 48px"><h1 class="sf" style="margin: 0; font-size: 56px; line-height: 1.08; font-weight: 600">Contact PSF</h1></div></section>
+  <section class="wrap" style="padding-top: 48px">
+    <h2 class="lbl" style="margin: 0 0 20px 0; padding-top: 12px; border-top: 2px solid #14171A">How we can help</h2>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+      <div class="help"><span style="font-size: 16px; font-weight: 600">Editorial questions and pitches</span><span style="font-size: 14px; color: #2E3338">Use this form and choose Editorial.</span></div>
+      <div class="help"><span style="font-size: 16px; font-weight: 600">Corrections</span><span style="font-size: 14px; color: #2E3338">Use the <a href="Corrections.html">correction form</a>.</span></div>
+      <div class="help"><span style="font-size: 16px; font-weight: 600">Advertising</span><span style="font-size: 14px; color: #2E3338">Visit <a href="Advertise.html">Advertise With Us</a>.</span></div>
+      <div class="help"><span style="font-size: 16px; font-weight: 600">Research submissions</span><span style="font-size: 14px; color: #2E3338"><a href="SignupStep1.html">Apply as a researcher</a>.</span></div>
+      <div class="help"><span style="font-size: 16px; font-weight: 600">Technical problems</span><span style="font-size: 14px; color: #2E3338">Use this form and choose Technical issue.</span></div>
+      <div class="help"><span style="font-size: 16px; font-weight: 600">Media requests</span><span style="font-size: 14px; color: #2E3338">Use this form and choose Media request.</span></div>
+    </div>
+  </section>
+  <section class="wrap g12" style="padding-top: 56px">
+    <form style="grid-column: 3 / 11; padding: 40px; border: 1px solid #E4E2DC; border-radius: 4px; display: flex; flex-direction: column; gap: 18px">
+      <h2 class="sf" style="margin: 0; font-size: 26px; font-weight: 600">Send a message</h2>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px"><div class="fld"><label for="ct-fn">First name <span class="req" aria-hidden="true">*</span></label><input id="ct-fn" class="inp"></div><div class="fld"><label for="ct-ln">Last name <span class="req" aria-hidden="true">*</span></label><input id="ct-ln" class="inp"></div></div>
+      <div class="fld"><label for="ct-em">Email <span class="req" aria-hidden="true">*</span></label><input id="ct-em" class="inp" type="email"></div>
+      <div class="fld"><label for="ct-r">Reason for contact <span class="req" aria-hidden="true">*</span></label><button id="ct-r" type="button" class="sel">Editorial<svg class="ico" viewBox="0 0 24 24" style="width: 16px; height: 16px" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div>
+      <div class="fld"><label for="ct-s">Subject <span class="req" aria-hidden="true">*</span></label><input id="ct-s" class="inp"></div>
+      <div class="fld"><label for="ct-m">Message <span class="req" aria-hidden="true">*</span></label><textarea id="ct-m" class="ta" rows="6"></textarea><span class="hint" style="text-align: right">0 / 3000</span></div>
+      <label style="display: flex; gap: 12px; align-items: flex-start; font-size: 14px; line-height: 1.5; color: #2E3338"><input type="checkbox" style="width: 20px; height: 20px; accent-color: #04411F; margin: 1px 0 0 0; flex: none">I agree to PSF processing my details to respond to this message (<a href="PolicyPage.html">Privacy Policy</a>).</label>
+      <div style="width: 300px; height: 65px; border: 1px solid #E4E2DC; background: #FBF9F4; display: flex; align-items: center; padding: 0 14px; font-size: 13px; color: #5A6169">Cloudflare Turnstile</div>
+      <button class="btn btn-p" type="button" style="align-self: flex-start">Send message</button>
+    </form>
+    <p style="grid-column: 3 / 11; margin: 16px 0 0 0; font-size: 14px; color: #5A6169">We aim to reply within 3 working days.</p>
+  </section>
+  <div style="margin-top: 96px">
+<footer style="width: 100%; background: #022C15; color: rgba(255,255,255,.85); font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; box-sizing: border-box">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 56px 32px 32px 32px; display: flex; flex-direction: column; gap: 40px; box-sizing: content-box">
+    <div style="display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap">
+      <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap">
+        <span style="display: flex; align-items: center; gap: 12px"><span style="width: 44px; height: 44px; border: 2px solid #FFFFFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font: 700 13px/1 'Source Serif 4', Georgia, serif; color: #FFFFFF; box-sizing: border-box">PSF</span><span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 19px; font-weight: 600; color: #FFFFFF">Pakistan Strategic Forum</span></span>
+        <span style="font-size: 15px; max-width: 520px">Independent analysis of the forces shaping Pakistan's security and the region around it.</span>
+      </div>
+      <a href="Join.html" style="height: 40px; padding: 0 18px; display: inline-flex; align-items: center; border: 1px solid rgba(255,255,255,.85); border-radius: 2px; color: #FFFFFF; font: 500 15px 'Inter', sans-serif; text-decoration: none">Write for PSF</a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; font-size: 14px">
+      <div style="display: flex; flex-direction: column; gap: 10px"><span style="font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #BBD3C5">Topics</span><a href="Topic.html" style="color: #FFFFFF; text-decoration: none">Defence</a><a href="#" style="color: #FFFFFF; text-decoration: none">Geopolitics</a><a href="#" style="color: #FFFFFF; text-decoration: none">National Affairs</a><a href="#" style="color: #FFFFFF; text-decoration: none">History</a></div>
+      <div style="display: flex; flex-direction: column; gap: 10px"><span style="font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #BBD3C5">Publications</span><a href="ReportsHub.html" style="color: #FFFFFF; text-decoration: none">Reports</a><a href="ResearchHub.html" style="color: #FFFFFF; text-decoration: none">Research</a><a href="Newsroom.html" style="color: #FFFFFF; text-decoration: none">Newsroom</a><a href="GlobalWatch.html" style="color: #FFFFFF; text-decoration: none">Global Watch</a><a href="Videos.html" style="color: #FFFFFF; text-decoration: none">Videos</a><a href="#" style="color: #FFFFFF; text-decoration: none">RSS</a></div>
+      <div style="display: flex; flex-direction: column; gap: 10px"><span style="font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #BBD3C5">PSF</span><a href="About.html" style="color: #FFFFFF; text-decoration: none">About</a><a href="PolicyPage.html" style="color: #FFFFFF; text-decoration: none">Editorial Policy</a><a href="Corrections.html" style="color: #FFFFFF; text-decoration: none">Corrections</a><a href="PolicyPage.html" style="color: #FFFFFF; text-decoration: none">Contributor Agreement</a><a href="PublishWithUs.html" style="color: #FFFFFF; text-decoration: none">Publish With Us</a><a href="WhereWeAre.html" style="color: #FFFFFF; text-decoration: none">Where We Are</a><a href="Contact.html" style="color: #FFFFFF; text-decoration: none">Contact</a></div>
+      <div style="display: flex; flex-direction: column; gap: 10px"><span style="font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #BBD3C5">Work with us</span><a href="Advertise.html" style="color: #FFFFFF; text-decoration: none">Advertise With Us</a><a href="SubmitPaper.html" style="color: #FFFFFF; text-decoration: none">Submit a paper</a><a href="Join.html" style="color: #FFFFFF; text-decoration: none">Write an article</a><a href="PolicyPage.html" style="color: #FFFFFF; text-decoration: none">How peer review works</a></div>
+      <div style="display: flex; flex-direction: column; gap: 10px"><span style="font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #BBD3C5">Legal</span><a href="PolicyPage.html" style="color: #FFFFFF; text-decoration: none">Privacy</a><a href="Cookies.html" style="color: #FFFFFF; text-decoration: none">Cookies</a><a href="PolicyPage.html" style="color: #FFFFFF; text-decoration: none">Disclaimer</a><a href="PolicyPage.html" style="color: #FFFFFF; text-decoration: none">Copyright &amp; Takedown</a><a href="PolicyPage.html" style="color: #FFFFFF; text-decoration: none">Terms of Use</a></div>
+    </div>
+    <div style="display: flex; gap: 16px; font-size: 14px"><a href="#" style="color: #FFFFFF; text-decoration: none">X</a><a href="#" style="color: #FFFFFF; text-decoration: none">Facebook</a><a href="#" style="color: #FFFFFF; text-decoration: none">Instagram</a><a href="#" style="color: #FFFFFF; text-decoration: none">YouTube</a></div>
+    <div style="display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.16); font-size: 13px">
+      <span>© 2019 to 2026 Pakistan Strategic Forum. All rights reserved.</span>
+      <div style="display: flex; gap: 20px"><a href="#" style="color: #FFFFFF; text-decoration: none">Cookie settings</a><a href="#" style="color: #FFFFFF; text-decoration: none">Back to top</a></div>
+    </div>
+  </div>
+</footer>
+</div>
+</div>
+
+<nav class="psf-proto-nav" aria-label="Prototype"><a href="index.html">All screens</a></nav>
+</body>
+</html>

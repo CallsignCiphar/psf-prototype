@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3.10 Research paper page | PSF prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#04411F}a:hover{color:#03361A}
+.psf{font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;color:#14171A;-webkit-font-smoothing:antialiased}
+.psf *{box-sizing:border-box}
+.sf{font-family:'Source Serif 4',Georgia,'Times New Roman',serif}
+.lbl{font-size:12px;line-height:1.2;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.meta{font-size:13px;line-height:1.4;font-weight:500;color:#5A6169}
+.wrap{max-width:1280px;margin:0 auto;padding:0 32px;box-sizing:content-box !important}
+.g12{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 18px;border-radius:2px;font:500 15px/1 'Inter',sans-serif;text-decoration:none;border:1px solid transparent;white-space:nowrap;cursor:pointer;background:none}
+.btn-p{background:#04411F;color:#FFFFFF}
+.btn-s{background:#FFFFFF;color:#14171A;border-color:#14171A}
+.btn-t{color:#04411F;padding:0 6px}
+.chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border:1px solid #E4E2DC;border-radius:2px;font-size:13px;font-weight:500;color:#2E3338;text-decoration:none;background:#FFFFFF}
+.sec{border-top:2px solid #14171A;padding-top:12px;margin-bottom:20px}
+.t{color:#14171A;text-decoration:none}.t:hover{text-decoration:underline;text-underline-offset:3px}
+.ico{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.ico-s{width:16px;height:16px}
+.body p{margin:0 0 22px 0}
+.dl{display:grid;grid-template-columns:150px 1fr;gap:8px 16px;font-size:14px;margin:0}
+.dl dt{color:#5A6169;font-weight:500}.dl dd{margin:0;color:#2E3338}
+@media (max-width:1100px){.hide-l{display:none !important}}
+@media (max-width:900px){.wrap{padding:0 16px}.g12{grid-template-columns:minmax(0,1fr)}.g12>*{grid-column:1 / -1 !important}}
+</style>
+<style>
+.psf-proto-nav{position:fixed;left:16px;bottom:16px;z-index:9999;display:flex;flex-wrap:wrap;gap:6px;align-items:center;max-width:calc(100vw - 32px);padding:8px;background:#14171A;border-radius:4px;box-shadow:0 8px 24px rgba(20,23,26,.24);font:500 13px/1 Inter,system-ui,sans-serif}
+.psf-proto-nav a{color:#FFFFFF;text-decoration:none;padding:8px 10px;border-radius:2px}
+.psf-proto-nav a:hover{background:#2E3338}
+.psf-proto-nav a[aria-current]{background:#FFFFFF;color:#14171A}
+.psf-proto-nav span{color:#BBC0C4;padding:0 4px 0 8px}
+</style>
+</head>
+<body>
+
+<div class="psf" style="width: 100%; background: #FFFFFF">
+  
+<div style="width: 100%; font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; color: #14171A; background: #FFFFFF; box-sizing: border-box">
+  
+  <div style="background: #F5F1E8; border-bottom: 1px solid #E9E3D5">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 0 32px; height: 36px; display: flex; align-items: center; justify-content: space-between; gap: 24px; font-size: 13px; color: #2E3338; box-sizing: content-box">
+      <div style="display: flex; gap: 24px; align-items: center">
+        <span>Friday, 16 October 2026</span>
+        <a href="GlobalWatch.html" style="display: flex; align-items: center; gap: 6px; text-decoration: none; font-weight: 500; color: #04411F"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>Global Watch: 212 locations covered</a>
+      </div>
+      <div style="display: flex; gap: 20px; align-items: center">
+        <div role="group" aria-label="Text size" style="display: flex; gap: 2px; align-items: center">
+          <button style="height: 28px; padding: 0 8px; background: none; border: 1px solid transparent; border-radius: 2px; font: 500 13px 'Inter', sans-serif; color: #2E3338; cursor: pointer">A−</button>
+          <button aria-pressed="true" style="height: 28px; padding: 0 8px; background: #FFFFFF; border: 1px solid #BBD3C5; border-radius: 2px; font: 600 13px 'Inter', sans-serif; color: #04411F; cursor: pointer">A</button>
+          <button style="height: 28px; padding: 0 8px; background: none; border: 1px solid transparent; border-radius: 2px; font: 500 15px 'Inter', sans-serif; color: #2E3338; cursor: pointer">A+</button>
+        </div>
+        <div style="display: flex; gap: 14px">
+          <a href="#" style="color: #2E3338; text-decoration: none">X</a>
+          <a href="#" style="color: #2E3338; text-decoration: none">Facebook</a>
+          <a href="#" style="color: #2E3338; text-decoration: none">Instagram</a>
+          <a href="#" style="color: #2E3338; text-decoration: none">YouTube</a>
+        </div>
+        <a href="Advertise.html" style="text-decoration: none; font-weight: 500; color: #04411F">Advertise</a>
+      </div>
+    </div>
+  </div>
+  
+  <header style="background: #FFFFFF; border-bottom: 1px solid #E4E2DC">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 0 32px; height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; box-sizing: content-box">
+      <a href="Main.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #14171A; flex: none">
+        <span style="width: 44px; height: 44px; border: 2px solid #04411F; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #04411F; font: 700 13px/1 'Source Serif 4', Georgia, serif; letter-spacing: .04em; box-sizing: border-box">PSF</span>
+        <span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 19px; font-weight: 600; line-height: 1.1">Pakistan Strategic Forum</span>
+      </a>
+      <nav aria-label="Primary" style="display: flex; gap: 28px; font-size: 15px; font-weight: 500; height: 72px; align-items: stretch">
+        
+          <a href="TopicsHub.html" style="display: flex; align-items: center; gap: 4px; text-decoration: none; color: #14171A; box-shadow: none">Topics<svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+        
+          <a href="ReportsHub.html" style="display: flex; align-items: center; gap: 4px; text-decoration: none; color: #14171A; box-shadow: none">Reports<svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+        
+          <a href="ResearchHub.html" style="display: flex; align-items: center; gap: 4px; text-decoration: none; color: #04411F; box-shadow: inset 0 -2px 0 #04411F">Research<svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+        
+          <a href="GlobalWatch.html" style="display: flex; align-items: center; gap: 4px; text-decoration: none; color: #14171A; box-shadow: none">Global Watch</a>
+        
+          <a href="Newsroom.html" style="display: flex; align-items: center; gap: 4px; text-decoration: none; color: #14171A; box-shadow: none">Newsroom<span style="width: 7px; height: 7px; border-radius: 50%; background: #198348; margin-left: 2px" aria-label="New posts in the last 2 hours"></span></a>
+        
+          <a href="About.html" style="display: flex; align-items: center; gap: 4px; text-decoration: none; color: #14171A; box-shadow: none">About<svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+        
+      </nav>
+      <div style="display: flex; align-items: center; gap: 8px; flex: none">
+        <a href="Search.html" aria-label="Search" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #14171A"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></a>
+        
+          <div style="display: flex; align-items: center; gap: 8px">
+            <a href="SignIn.html" style="height: 40px; padding: 0 8px; display: inline-flex; align-items: center; font: 500 15px 'Inter', sans-serif; color: #04411F; text-decoration: none">Sign in</a>
+            <a href="Join.html" style="height: 40px; padding: 0 18px; display: inline-flex; align-items: center; border-radius: 2px; background: #04411F; color: #FFFFFF; font: 500 15px 'Inter', sans-serif; text-decoration: none">Write for PSF</a>
+          </div>
+        
+        
+      </div>
+    </div>
+  </header>
+</div>
+
+
+  <main class="wrap" style="padding-top: 28px">
+    <div class="g12" style="align-items: start">
+      <div style="grid-column: 2 / 10; min-width: 0">
+        <nav aria-label="Breadcrumb" class="meta" style="display: flex; gap: 8px; margin-bottom: 32px"><a href="Main.html" style="text-decoration: none; color: #5A6169">Home</a><span>/</span><a href="ResearchHub.html" style="text-decoration: none; color: #5A6169">Research</a><span>/</span><a href="ResearchListing.html" style="text-decoration: none; color: #04411F">Research Papers</a></nav>
+
+        
+          <div role="alert" style="background: #FBEDEB; padding: 16px 20px; border-radius: 4px; margin-bottom: 24px; font-size: 15px; line-height: 1.5; color: #2E3338"><strong style="font-weight: 600; color: #A4231A">Retracted, 2 Dec 2026.</strong> This paper has been retracted. The PDF is watermarked. [Retraction notice text]</div>
+        
+
+        <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 18px">
+          <span class="lbl" style="display: inline-flex; align-items: center; gap: 4px; background: #DCE5E0; color: #04411F; padding: 5px 8px; border-radius: 2px; font-size: 11px"><svg class="ico" viewBox="0 0 24 24" style="width: 12px; height: 12px; stroke-width: 2" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Peer-reviewed</span>
+          <span class="lbl" style="color: #2E3338">Research article</span><span style="color: #E4E2DC">|</span><a href="ResearchListing.html" class="lbl" style="color: #5A6169; text-decoration: none">Research Papers</a><span style="color: #E4E2DC">|</span><a href="Subtopic.html" class="lbl" style="color: #5A6169; text-decoration: none">Defence / Strategic Systems</a>
+        </div>
+        <h1 class="sf" style="margin: 0 0 24px 0; font-size: 44px; line-height: 1.12; font-weight: 600; text-wrap: balance">Deterrence stability and hypersonic delivery systems in South Asia</h1>
+
+        <div style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 20px; border-bottom: 1px solid #E4E2DC">
+          <div style="display: flex; flex-wrap: wrap; gap: 6px 24px; font-size: 15px">
+            <span style="display: inline-flex; gap: 6px; align-items: center"><a href="Author.html" class="t" style="font-weight: 600">Sara Haider</a><sup style="color: #5A6169">1</sup><a href="#" aria-label="ORCID profile for Sara Haider" style="display: inline-flex; width: 18px; height: 18px; border-radius: 50%; background: #198348; color: #FFFFFF; font-size: 9px; font-weight: 700; align-items: center; justify-content: center; text-decoration: none">iD</a></span>
+            <span style="display: inline-flex; gap: 6px; align-items: center"><a href="Author.html" class="t" style="font-weight: 600">Rehan Khan</a><sup style="color: #5A6169">2</sup></span>
+          </div>
+          <div class="meta" style="display: flex; flex-direction: column; gap: 2px"><span>1 Department of Defence and Strategic Studies, Quaid-i-Azam University, Islamabad</span><span>2 National Defence University, Islamabad</span></div>
+        </div>
+
+        <dl class="dl" style="padding: 18px 0; border-bottom: 1px solid #E4E2DC">
+          <dt>Received</dt><dd>2 Jul 2026</dd>
+          <dt>Accepted</dt><dd>21 Sep 2026</dd>
+          <dt>Published</dt><dd>16 Oct 2026</dd>
+          <dt>DOI</dt><dd><a href="#">https://doi.org/10.xxxx/psf.2026.0045</a> [when registered]</dd>
+          <dt>Volume, issue</dt><dd>PSF Research, Vol. 1, Issue 2, pp. 41 to 68 · ISSN [pending]</dd>
+        </dl>
+
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; padding: 20px 0">
+          <a class="btn btn-p" href="#"><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m7 10 5 5 5-5"></path><path d="M12 15V3"></path></svg>Download PDF</a>
+          <button class="btn btn-s">Cite</button>
+          <button class="btn btn-s"><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="m8.59 13.51 6.83 3.98"></path><path d="m15.41 6.51-6.82 3.98"></path></svg>Share</button>
+        </div>
+
+        <div style="max-width: 720px">
+          <section style="background: #F5F1E8; padding: 28px 32px; border-radius: 4px">
+            <h2 class="lbl" style="margin: 0 0 12px 0; color: #04411F">Abstract</h2>
+            <p class="sf" style="margin: 0; font-size: 18px; line-height: 1.65; color: #2E3338">The introduction of hypersonic glide vehicles and manoeuvrable re-entry systems compresses the time available to decision-makers in a crisis. This paper examines how compressed warning times interact with existing command and control arrangements between India and Pakistan. Using three crisis case studies and a structured review of declared doctrine, it argues that the main risk is not first-strike incentive but misreading: a launch that cannot be characterised in time is treated as the worst case.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px"><span class="chip">Deterrence</span><span class="chip">Hypersonic weapons</span><span class="chip">Crisis stability</span><span class="chip">Command and control</span><span class="chip">South Asia</span></div>
+          </section>
+
+          <div class="sf body" style="font-size: 19px; line-height: 1.65; color: #2E3338; padding-top: 40px">
+            <h2 class="sf" style="font-size: 28px; line-height: 1.2; font-weight: 600; color: #14171A; margin: 0 0 16px 0">1. Introduction</h2>
+            <p>Strategic stability in South Asia has rested on an assumption that both sides would have time to understand what was happening before they had to act. That assumption is now under pressure.</p>
+            <p>Hypersonic systems do not change the arithmetic of deterrence. They change its tempo.</p>
+            <h2 class="sf" style="font-size: 28px; line-height: 1.2; font-weight: 600; color: #14171A; margin: 36px 0 16px 0">2. Method</h2>
+            <p>The study combines a structured review of declared doctrine with three crisis case studies: 2001 to 2002, 2016 and 2019. Each case is coded for warning time, decision layers and the channels used to communicate intent.</p>
+          </div>
+          <figure style="margin: 0 0 32px 0; border: 1px solid #E4E2DC; padding: 20px">
+            <div style="font-size: 15px; font-weight: 600">Figure 1. Estimated warning time by delivery system</div>
+            <div class="meta" style="font-size: 12px; margin: 4px 0 12px 0">Minutes, open-source estimates</div>
+            <div style="height: 140px; background: #FBF9F4; display: flex; align-items: center; justify-content: center; color: #5A6169; font-size: 13px">[Figure]</div>
+            <figcaption class="meta" style="font-size: 12px; padding-top: 8px">Source: authors' compilation.</figcaption>
+          </figure>
+
+          <section style="border-top: 1px solid #E4E2DC; padding-top: 24px">
+            <h2 class="lbl" style="margin: 0 0 14px 0; color: #5A6169">References</h2>
+            <ol style="margin: 0; padding-left: 22px; font-size: 14px; line-height: 1.6; color: #2E3338; display: flex; flex-direction: column; gap: 8px"><li>[Author, A.] (2021). [Title of work]. [Publisher].</li><li>[Author, B.] and [Author, C.] (2023). [Article title]. <em>[Journal]</em>, [vol](issue), pages.</li><li>[Entries render in the selected style, APA 7 by default]</li></ol>
+          </section>
+          <section style="border-top: 1px solid #E4E2DC; padding-top: 24px; margin-top: 32px">
+            <h2 class="lbl" style="margin: 0 0 14px 0; color: #5A6169">Declarations</h2>
+            <dl class="dl"><dt>Funding</dt><dd>No funding was received for this work.</dd><dt>Conflicts of interest</dt><dd>None declared.</dd><dt>Data availability</dt><dd>Case coding sheet available as a supplementary file.</dd><dt>Ethics</dt><dd>Not applicable.</dd></dl>
+          </section>
+          <section style="border-top: 1px solid #E4E2DC; padding-top: 24px; margin-top: 32px">
+            <h2 class="lbl" style="margin: 0 0 6px 0; color: #5A6169">Supplementary files</h2>
+            <a href="#" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 0; border-bottom: 1px solid #E4E2DC; text-decoration: none; color: #14171A; font-size: 14px"><span style="display: flex; align-items: center; gap: 10px"><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path></svg>Case coding sheet</span><span class="meta">XLSX · 84 KB</span></a>
+            <a href="#" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 0; border-bottom: 1px solid #E4E2DC; text-decoration: none; color: #14171A; font-size: 14px"><span style="display: flex; align-items: center; gap: 10px"><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path></svg>Appendix B: doctrine extracts</span><span class="meta">PDF · 1.2 MB</span></a>
+          </section>
+          <section style="border-top: 1px solid #E4E2DC; padding-top: 24px; margin-top: 32px">
+            <h2 class="lbl" style="margin: 0 0 10px 0; color: #5A6169">Licence</h2>
+            <p style="margin: 0; font-size: 14px; line-height: 1.55; color: #2E3338">© 2026 the authors. Published by Pakistan Strategic Forum under a Creative Commons Attribution 4.0 licence (CC BY 4.0). [CONFIRM licence]</p>
+          </section>
+          <div style="display: flex; gap: 12px; align-items: flex-start; margin-top: 32px; padding: 20px 24px; border: 1px solid #BBD3C5; border-radius: 4px; background: #F2F5F3">
+            <svg class="ico" viewBox="0 0 24 24" style="color: #04411F" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
+            <div style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 15px; font-weight: 600; color: #04411F">Peer review statement</span><span style="font-size: 15px; line-height: 1.55; color: #2E3338">This paper was reviewed double-blind by two independent reviewers.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hide-l" style="grid-column: 10 / 13; position: sticky; top: 24px; display: flex; flex-direction: column; gap: 32px; padding-top: 72px">
+        <nav aria-label="On this page">
+          <div class="lbl" style="color: #5A6169; margin-bottom: 10px">On this page</div>
+          <ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; font-size: 14px">
+            <li><a href="#" style="display: block; padding: 8px 12px; text-decoration: none; color: #5A6169; border-left: 2px solid #E4E2DC">Abstract</a></li>
+            <li><a href="#" style="display: block; padding: 8px 12px; text-decoration: none; color: #04411F; font-weight: 600; border-left: 2px solid #04411F">1. Introduction</a></li>
+            <li><a href="#" style="display: block; padding: 8px 12px; text-decoration: none; color: #5A6169; border-left: 2px solid #E4E2DC">2. Method</a></li>
+            <li><a href="#" style="display: block; padding: 8px 12px; text-decoration: none; color: #5A6169; border-left: 2px solid #E4E2DC">3. Three crises</a></li>
+            <li><a href="#" style="display: block; padding: 8px 12px; text-decoration: none; color: #5A6169; border-left: 2px solid #E4E2DC">4. Characterisation risk</a></li>
+            <li><a href="#" style="display: block; padding: 8px 12px; text-decoration: none; color: #5A6169; border-left: 2px solid #E4E2DC">5. Recommendations</a></li>
+            <li><a href="#" style="display: block; padding: 8px 12px; text-decoration: none; color: #5A6169; border-left: 2px solid #E4E2DC">References</a></li>
+          </ol>
+        </nav>
+      </aside>
+    </div>
+
+    <section class="g12" style="padding-top: 64px">
+      <div style="grid-column: 2 / 10">
+        <div class="sec"><h2 class="lbl" style="margin: 0; font-size: 13px">Related research</h2></div>
+        <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px">
+          <article style="display: flex; flex-direction: column; gap: 8px; padding-top: 14px; border-top: 1px solid #E4E2DC"><span class="lbl" style="font-size: 11px; color: #04411F">Peer-reviewed · Policy Briefs</span><a href="#" class="sf t" style="font-size: 19px; font-weight: 600; line-height: 1.3">Crisis hotlines in South Asia: what has worked</a><span style="font-size: 13px; color: #2E3338">F. Ali (NUST)</span></article>
+          <article style="display: flex; flex-direction: column; gap: 8px; padding-top: 14px; border-top: 1px solid #E4E2DC"><span class="lbl" style="font-size: 11px; color: #04411F">Peer-reviewed · Research Papers</span><a href="#" class="sf t" style="font-size: 19px; font-weight: 600; line-height: 1.3">Ballistic missile defence and the stability-instability paradox</a><span style="font-size: 13px; color: #2E3338">Z. Hussain (IPRI)</span></article>
+          <article style="display: flex; flex-direction: column; gap: 8px; padding-top: 14px; border-top: 1px solid #E4E2DC"><span class="lbl" style="font-size: 11px; color: #04411F">Peer-reviewed · Emerging Scholars</span><a href="#" class="sf t" style="font-size: 19px; font-weight: 600; line-height: 1.3">Signalling through tests: missile launches as communication</a><span style="font-size: 13px; color: #2E3338">H. Naqvi (Air University)</span></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div style="margin-top: 96px">
+<footer style="width: 100%; background: #022C15; color: rgba(255,255,255,.85); font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; box-sizing: border-box">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 56px 32px 32px 32px; display: flex; flex-direction: column; gap: 40px; box-sizing: content-box">
+    <div style="display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap">
+      <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap">
+        <span style="display: flex; align-items: center; gap: 12px"><span style="width: 44px; height: 44px; border: 2px solid #FFFFFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font: 700 13px/1 'Source Serif 4', Georgia, serif; color: #FFFFFF; box-sizing: border-box">PSF</span><span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 19px; font-weight: 600; color: #FFFFFF">Pakistan Strategic Forum</span></span>
+        <span style="font-size: 15px; max-width: 520px">Independent analysis of the forces shaping Pakistan's security and the region around it.</span>
+      </div>
+      <a href="Join.html" style="height: 40px; padding: 0 18px; display: inline-flex; align-items: center; border: 1px solid rgba(255,255,255,.85); border-radius: 2px; color: #FFFFFF; font: 500 15px 'Inter', sans-serif; text-decoration: none">Write for PSF</a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; font-size: 14px">
+      <div style="display: flex; flex-direction: column; gap: 10px"><span style="font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #BBD3C5">Topics</span><a href="Topic.html" style="color: #FFFFFF; text-decoration: none">Defence</a><a href="#" style="color: #FFFFFF; text-decoration: none">Geopolitics</a><a href="#" style="color: #FFFFFF; text-decoration: none">National Affairs</a><a href="#" style="color: #FFFFFF; text-decoration: none">History</a></div>
+      <div style="display: flex; flex-direction: column; gap: 10px"><span style="font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #BBD3C5">Publications</span><a href="ReportsHub.html" style="color: #FFFFFF; text-decoration: none">Reports</a><a href="ResearchHub.html" style="color: #FFFFFF; text-decoration: none">Research</a><a href="Newsroom.html" style="color: #FFFFFF; text-decoration: none">Newsroom</a><a href="GlobalWatch.html" style="color: #FFFFFF; text-decoration: none">Global Watch</a><a href="Videos.html" style="color: #FFFFFF; text-decoration: none">Videos</a><a href="#" style="color: #FFFFFF; text-decoration: none">RSS</a></div>
+      <div style="display: flex; flex-direction: column; gap: 10px"><span style="font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #BBD3C5">PSF</span><a href="About.html" style="color: #FFFFFF; text-decoration: none">About</a><a href="PolicyPage.html" style="color: #FFFFFF; text-decoration: none">Editorial Policy</a><a href="Corrections.html" style="color: #FFFFFF; text-decoration: none">Corrections</a><a href="PolicyPage.html" style="color: #FFFFFF; text-decoration: none">Contributor Agreement</a><a href="PublishWithUs.html" style="color: #FFFFFF; text-decoration: none">Publish With Us</a><a href="WhereWeAre.html" style="color: #FFFFFF; text-decoration: none">Where We Are</a><a href="Contact.html" style="color: #FFFFFF; text-decoration: none">Contact</a></div>
+      <div style="display: flex; flex-direction: column; gap: 10px"><span style="font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #BBD3C5">Work with us</span><a href="Advertise.html" style="color: #FFFFFF; text-decoration: none">Advertise With Us</a><a href="SubmitPaper.html" style="color: #FFFFFF; text-decoration: none">Submit a paper</a><a href="Join.html" style="color: #FFFFFF; text-decoration: none">Write an article</a><a href="PolicyPage.html" style="color: #FFFFFF; text-decoration: none">How peer review works</a></div>
+      <div style="display: flex; flex-direction: column; gap: 10px"><span style="font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #BBD3C5">Legal</span><a href="PolicyPage.html" style="color: #FFFFFF; text-decoration: none">Privacy</a><a href="Cookies.html" style="color: #FFFFFF; text-decoration: none">Cookies</a><a href="PolicyPage.html" style="color: #FFFFFF; text-decoration: none">Disclaimer</a><a href="PolicyPage.html" style="color: #FFFFFF; text-decoration: none">Copyright &amp; Takedown</a><a href="PolicyPage.html" style="color: #FFFFFF; text-decoration: none">Terms of Use</a></div>
+    </div>
+    <div style="display: flex; gap: 16px; font-size: 14px"><a href="#" style="color: #FFFFFF; text-decoration: none">X</a><a href="#" style="color: #FFFFFF; text-decoration: none">Facebook</a><a href="#" style="color: #FFFFFF; text-decoration: none">Instagram</a><a href="#" style="color: #FFFFFF; text-decoration: none">YouTube</a></div>
+    <div style="display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.16); font-size: 13px">
+      <span>© 2019 to 2026 Pakistan Strategic Forum. All rights reserved.</span>
+      <div style="display: flex; gap: 20px"><a href="#" style="color: #FFFFFF; text-decoration: none">Cookie settings</a><a href="#" style="color: #FFFFFF; text-decoration: none">Back to top</a></div>
+    </div>
+  </div>
+</footer>
+</div>
+</div>
+
+<nav class="psf-proto-nav" aria-label="Prototype"><a href="index.html">All screens</a><span>retracted:</span><a href="ResearchPaper.html">false</a><a href="ResearchPaper--retracted-true.html" aria-current="page">true</a></nav>
+</body>
+</html>

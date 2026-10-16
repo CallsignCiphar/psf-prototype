@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>6.6 Report editor | PSF prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF9F4}
+a{color:#04411F}a:hover{color:#03361A}
+.psf{font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;color:#14171A;-webkit-font-smoothing:antialiased}
+.psf *{box-sizing:border-box}
+.sf{font-family:'Source Serif 4',Georgia,'Times New Roman',serif}
+.lbl{font-size:12px;line-height:1.2;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.meta{font-size:13px;line-height:1.4;font-weight:500;color:#5A6169}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 16px;border-radius:2px;font:500 15px/1 'Inter',sans-serif;text-decoration:none;border:1px solid transparent;white-space:nowrap;cursor:pointer;background:none;color:#14171A}
+.btn-p{background:#04411F;color:#FFFFFF}.btn-p:hover{background:#0D6634;color:#FFFFFF}
+.btn-s{background:#FFFFFF;color:#14171A;border-color:#14171A}.btn-s:hover{background:#F5F1E8;color:#14171A}
+.btn-t{color:#04411F;padding:0 10px}.btn-t:hover{background:#F2F5F3}
+.btn-d{background:#A4231A;color:#FFFFFF}.btn-d:hover{background:#8A1D16;color:#FFFFFF}
+.btn-ds{background:#FFFFFF;color:#A4231A;border-color:#A4231A}
+.btn-c{height:32px;padding:0 12px;font-size:14px}
+.ib{width:32px;height:32px;padding:0;border:0;background:none;border-radius:2px;color:#2E3338;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.ib:hover{background:#F5F1E8}
+.ico{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.ico-s{width:16px;height:16px}
+.panel{background:#FFFFFF;border:1px solid #E4E2DC;border-radius:4px;min-width:0}
+.ph{padding:16px 20px;border-bottom:1px solid #E4E2DC;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.ph h2,.ph h3{margin:0;font-size:15px;font-weight:600}
+.pb{padding:20px;display:flex;flex-direction:column;gap:16px}
+.kpi{padding:18px 20px;display:flex;flex-direction:column;gap:6px}
+.kpi .n{font-size:30px;font-weight:500;line-height:1.1;font-variant-numeric:tabular-nums}
+.st{display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 8px;border-radius:2px;font-size:12px;font-weight:600;white-space:nowrap}
+table{border-collapse:collapse;width:100%}
+th{font-size:12px;font-weight:600;color:#5A6169;text-align:left;padding:10px 16px;background:#F5F1E8;border-bottom:1px solid #E9E3D5;white-space:nowrap}
+td{font-size:14px;padding:12px 16px;border-bottom:1px solid #E4E2DC;color:#2E3338;vertical-align:middle}
+tbody tr:hover td{background:#F2F5F3}
+tbody tr:last-child td{border-bottom:0}
+.num{font-variant-numeric:tabular-nums;text-align:right}
+.tt{display:block;color:#14171A;font-weight:500;text-decoration:none}
+.fld{display:flex;flex-direction:column;gap:6px;min-width:0}
+.fld label,.fld .fl{font-size:14px;font-weight:500;color:#14171A}
+.req{color:#A4231A}
+.hint{font-size:13px;color:#5A6169;line-height:1.4}
+.err{font-size:13px;color:#A4231A;line-height:1.4;display:flex;gap:6px;align-items:center}
+.inp{height:40px;border:1px solid #7A8189;border-radius:2px;background:#FFFFFF;padding:0 12px;font:14px 'Inter',sans-serif;color:#14171A;width:100%}
+.inp[readonly]{background:#F5F1E8;border-color:#E9E3D5;color:#2E3338}
+.sel{height:40px;border:1px solid #7A8189;border-radius:2px;background:#FFFFFF;padding:0 12px;display:flex;align-items:center;justify-content:space-between;gap:8px;font:14px 'Inter',sans-serif;color:#14171A;width:100%;cursor:pointer;text-align:left}
+.ta{border:1px solid #7A8189;border-radius:2px;background:#FFFFFF;padding:10px 12px;font:14px/1.55 'Inter',sans-serif;color:#14171A;width:100%;resize:vertical}
+.ck{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.5;color:#2E3338}
+.ck input{width:18px;height:18px;accent-color:#04411F;margin:2px 0 0 0;flex:none}
+.up{border:1px dashed #7A8189;border-radius:2px;background:#FBF9F4;padding:16px;display:flex;gap:12px;align-items:center}
+.tabs{display:flex;gap:24px;border-bottom:1px solid #E4E2DC}
+.tab{display:inline-flex;align-items:center;gap:6px;height:44px;font-size:14px;font-weight:500;color:#5A6169;text-decoration:none;border-bottom:2px solid transparent;margin-bottom:-1px}
+.tab[aria-current]{color:#04411F;border-bottom-color:#04411F;font-weight:600}
+.cnt{font-size:12px;font-weight:600;color:#5A6169;background:#F5F1E8;border-radius:2px;padding:1px 6px;font-variant-numeric:tabular-nums}
+.chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border:1px solid #E4E2DC;border-radius:2px;background:#FFFFFF;font-size:13px;color:#2E3338}
+.dl{display:grid;grid-template-columns:160px 1fr;gap:10px 16px;margin:0;font-size:14px}
+.dl dt{color:#5A6169}.dl dd{margin:0;color:#14171A}
+.tog{width:36px;height:20px;border-radius:2px;background:#7A8189;position:relative;flex:none;display:inline-block}
+.tog::after{content:'';position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:1px;background:#FFFFFF}
+.tog.on{background:#04411F}.tog.on::after{left:18px}
+.seg{display:flex;gap:2px;background:#F5F1E8;padding:3px;border-radius:2px}
+.seg .btn{height:30px;padding:0 12px;font-size:13px;color:#5A6169}
+.seg .btn[aria-pressed=true]{background:#FFFFFF;border-color:#E4E2DC;color:#14171A}
+code,.mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px}
+</style>
+<style>
+.psf-proto-nav{position:fixed;left:16px;bottom:16px;z-index:9999;display:flex;flex-wrap:wrap;gap:6px;align-items:center;max-width:calc(100vw - 32px);padding:8px;background:#14171A;border-radius:4px;box-shadow:0 8px 24px rgba(20,23,26,.24);font:500 13px/1 Inter,system-ui,sans-serif}
+.psf-proto-nav a{color:#FFFFFF;text-decoration:none;padding:8px 10px;border-radius:2px}
+.psf-proto-nav a:hover{background:#2E3338}
+.psf-proto-nav a[aria-current]{background:#FFFFFF;color:#14171A}
+.psf-proto-nav span{color:#BBC0C4;padding:0 4px 0 8px}
+</style>
+</head>
+<body>
+
+<div class="psf" style="width: 100%; min-height: 1800px; background: #FBF9F4; display: flex">
+  <div style="flex: 0 0 64px; background: #F5F1E8; border-right: 1px solid #E9E3D5">
+<div style="width: 64px; min-height: 760px; box-sizing: border-box; padding: 16px 8px 20px; display: flex; flex-direction: column; gap: 4px; font-family: Inter, system-ui, sans-serif; color: #14171A; background: #F5F1E8">
+  <a href="Main.html" style="display: flex; align-items: center; gap: 10px; height: 52px; margin-bottom: 12px; padding: 0 0; justify-content: center; text-decoration: none">
+    <span style="width: 36px; height: 36px; border: 2px solid #04411F; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #04411F; font: 700 11px/1 'Source Serif 4', Georgia, serif; flex: none; box-sizing: border-box">PSF</span>
+    
+  </a>
+  <nav aria-label="Portal" style="display: flex; flex-direction: column; gap: 2px">
+    
+      <a href="PortalOverview.html" aria-label="Overview" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 40px; padding: 0 0; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2E3338">
+        <span style="display: flex; align-items: center; gap: 12px">
+          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M3 3h7v9H3z M14 3h7v5h-7z M14 12h7v9h-7z M3 16h7v5H3z"></path></svg>
+          
+        </span>
+        
+      </a>
+    
+      <a href="MyArticles.html" aria-label="My Articles" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 40px; padding: 0 0; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2E3338">
+        <span style="display: flex; align-items: center; gap: 12px">
+          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z M14 2v6h6 M16 13H8 M16 17H8"></path></svg>
+          
+        </span>
+        
+      </a>
+    
+      <a href="MyReports.html" aria-label="My Reports" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 40px; padding: 0 0; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; background: #FFFFFF; color: #04411F; box-shadow: inset 3px 0 0 #04411F">
+        <span style="display: flex; align-items: center; gap: 12px">
+          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M4 4h12l4 4v12H4z M8 12h8 M8 16h5"></path></svg>
+          
+        </span>
+        
+      </a>
+    
+      <a href="MyResearch.html" aria-label="My Research" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 40px; padding: 0 0; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2E3338">
+        <span style="display: flex; align-items: center; gap: 12px">
+          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z M6 12.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-3.5"></path></svg>
+          
+        </span>
+        
+      </a>
+    
+      <a href="ReviewsQueue.html" aria-label="Reviews" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 40px; padding: 0 0; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2E3338">
+        <span style="display: flex; align-items: center; gap: 12px">
+          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M9 11l3 3L22 4 M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+          
+        </span>
+        
+      </a>
+    
+      <a href="PortalNotifications.html" aria-label="Notifications" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 40px; padding: 0 0; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2E3338">
+        <span style="display: flex; align-items: center; gap: 12px">
+          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9 M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
+          
+        </span>
+        
+      </a>
+    
+      <a href="PortalProfile.html" aria-label="Profile" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 40px; padding: 0 0; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2E3338">
+        <span style="display: flex; align-items: center; gap: 12px">
+          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M12 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10z M20 21a8 8 0 0 0-16 0"></path></svg>
+          
+        </span>
+        
+      </a>
+    
+      <a href="PortalAccount.html" aria-label="Account" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 40px; padding: 0 0; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2E3338">
+        <span style="display: flex; align-items: center; gap: 12px">
+          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-2.82 1.17V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-2.82-1.17l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 3.2 14H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.17-2.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 10 3.2V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 2.82 1.17l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 20.8 10H21a2 2 0 0 1 0 4h-.09"></path></svg>
+          
+        </span>
+        
+      </a>
+    
+  </nav>
+  <div style="margin-top: auto; padding-top: 20px; border-top: 1px solid #E9E3D5; display: flex; flex-direction: column; gap: 2px">
+    
+      <a href="Main.html" aria-label="View site" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 40px; padding: 0 0; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2E3338; justify-content: center"><svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M15 3h6v6 M10 14 21 3 M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></a>
+    
+      <a href="AdminOverview.html" aria-label="Admin" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 40px; padding: 0 0; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2E3338; justify-content: center"><svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></a>
+    
+      <a href="SignIn.html" aria-label="Sign out" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 40px; padding: 0 0; border-radius: 2px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2E3338; justify-content: center"><svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4 M16 17l5-5-5-5 M21 12H9"></path></svg></a>
+    
+  </div>
+</div>
+</div>
+  <div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column">
+    <div style="position: sticky; top: 0; z-index: 3; background: #FFFFFF; border-bottom: 1px solid #E4E2DC; padding: 0 24px; min-height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap"><div style="display: flex; align-items: center; gap: 14px"><a href="MyReports.html" style="display: inline-flex; align-items: center; gap: 4px; font-size: 14px; font-weight: 500; text-decoration: none; color: #2E3338"><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg>My Reports</a><span style="width: 1px; height: 20px; background: #E4E2DC"></span><span class="st" style="background: #F5F1E8; color: #2E3338">Draft</span><span class="meta" aria-live="polite" style="display: flex; gap: 6px; align-items: center"><svg class="ico ico-s" viewBox="0 0 24 24" style="color: #0D6634" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Saved 11:48</span></div><div style="display: flex; gap: 8px; align-items: center"><button class="btn" style="color: #04411F"><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg>Preview</button><button class="btn btn-s">Save draft</button><button class="btn btn-p">Submit for review</button></div></div>
+    <main style="width: 100%">
+<div style="display: flex; gap: 24px; padding: 24px; align-items: flex-start"><div style="flex: 0 1 760px; min-width: 0; display: flex; flex-direction: column; gap: 20px"><div class="panel" style="padding: 32px 36px 24px 36px; display: flex; flex-direction: column; gap: 18px"><div class="fld"><label for="re-title" class="lbl" style="color: #5A6169; font-size: 11px">Title <span class="req" aria-hidden="true">*</span></label><textarea id="re-title" rows="2" class="sf" style="border: 0; outline: 0; resize: none; font-size: 38px; line-height: 1.15; font-weight: 600; color: #14171A; padding: 0; background: transparent">Roundtable: Afghanistan after the transition</textarea><span class="hint" style="text-align: right">45 / 120</span></div><div class="fld"><label for="re-sum" class="lbl" style="color: #5A6169; font-size: 11px">Summary <span class="req" aria-hidden="true">*</span></label><textarea id="re-sum" rows="3" class="sf" style="border: 0; outline: 0; resize: none; font-size: 20px; line-height: 1.45; color: #2E3338; padding: 0; background: transparent">Eight practitioners and scholars on trade, refugees and border security, two years on.</textarea><span class="hint" style="text-align: right">86 / 300</span></div></div><div class="panel"><div role="toolbar" aria-label="Formatting" style="display: flex; gap: 2px; padding: 6px 8px; border-bottom: 1px solid #E4E2DC; background: #FBF9F4"><button class="ib" aria-label="Heading"><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12"></path><path d="M6 20V4"></path><path d="M18 20V4"></path></svg></button><button class="ib" aria-label="Bold"><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h9a4 4 0 0 1 0 8H7a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h7a4 4 0 0 1 0 8"></path></svg></button><button class="ib" aria-label="Italic"><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 4h-9"></path><path d="M14 20H5"></path><path d="M15 4 9 20"></path></svg></button><button class="ib" aria-label="List"><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h13"></path><path d="M8 12h13"></path><path d="M8 18h13"></path><path d="M3 6h.01"></path><path d="M3 12h.01"></path><path d="M3 18h.01"></path></svg></button><button class="ib" aria-label="Quote"><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path></svg></button><button class="ib" aria-label="Link"><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></button><button class="ib" aria-label="Image"><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path></svg></button></div><div class="sf" style="padding: 32px 36px; font-size: 19px; line-height: 1.65; color: #2E3338; min-height: 360px"><p style="margin: 0 0 22px 0">PSF convened a closed-door roundtable on 9 October 2026 under the Chatham House Rule. Participants included former diplomats, two retired corps commanders and researchers from three universities.</p><h2 class="sf" style="font-size: 26px; font-weight: 600; color: #14171A; margin: 28px 0 12px 0">Key themes</h2><p style="margin: 0; color: #5A6169">Continue writing, or type / for blocks</p></div><div style="padding: 10px 36px; border-top: 1px solid #E4E2DC; display: flex; justify-content: space-between; font-size: 13px; color: #5A6169"><span>412 words</span><span>Body is optional when a PDF is attached</span></div></div><section class="panel"><div class="ph"><h2>Report PDF</h2><span style="font-size: 12px; font-weight: 600; color: #A4231A">Required</span></div><div class="pb"><div class="up"><svg class="ico" viewBox="0 0 24 24" style="color: #5A6169" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m17 8-5-5-5 5"></path><path d="M12 3v12"></path></svg><div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 500">Drop the PDF here or <a href="#">browse</a></span><span class="hint">PDF only, up to 20 MB. Readers can download it from the report page.</span></div></div></div></section></div><aside aria-label="Report settings" style="flex: 0 0 360px; display: flex; flex-direction: column; gap: 12px"><section class="panel"><div class="ph"><h2>Classification</h2></div><div class="pb"><div class="fld"><span class="fl">Category <span class="req" aria-hidden="true">*</span></span><button type="button" class="sel"><span>Roundtable</span><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="fld"><span class="fl">Topic <span class="req" aria-hidden="true">*</span></span><button type="button" class="sel"><span>International Affairs</span><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="fld"><span class="fl">Tags</span><input id="re-tags" class="inp" value="Afghanistan, Trade, Border"><span class="hint">Up to 10</span></div></div></section><section class="panel"><div class="ph"><h2>Event details</h2></div><div class="pb"><div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px"><div class="fld"><label for="re-date">Event date <span class="req" aria-hidden="true">*</span></label><input id="re-date" class="inp" value="9 Oct 2026"></div><div class="fld"><span class="fl">City <span class="req" aria-hidden="true">*</span></span><button type="button" class="sel"><span>Islamabad</span><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div></div><div class="fld"><label for="re-venue">Venue</label><input id="re-venue" class="inp" value="PSF Conference Room"></div><div class="fld"><label for="re-part">Partner organisations</label><input id="re-part" class="inp" placeholder="Optional"></div></div></section><section class="panel"><div class="ph"><h2>Cover image</h2></div><div class="pb"><div class="up"><div style="width: 72px; height: 48px; background: #E9E3D5; flex: none"></div><div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 13px; font-weight: 500">roundtable-oct.jpg</span><span class="hint">1600x900 · 16:9 · 640 KB</span></div></div><div class="fld"><label for="re-alt">Alt text <span class="req" aria-hidden="true">*</span></label><input id="re-alt" class="inp" value="Participants seated around a table at PSF"></div><div class="fld"><label for="re-cred">Credit <span class="req" aria-hidden="true">*</span></label><input id="re-cred" class="inp" value="Photo: PSF"></div></div></section><section class="panel"><div class="ph"><h2>Co-authors</h2></div><div class="pb"><div style="display: flex; justify-content: space-between; align-items: center; font-size: 14px"><span style="display: flex; gap: 10px; align-items: center"><span aria-hidden="true" style="width: 32px; height: 32px; border-radius: 50%; background: #DCE5E0; color: #04411F; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex: none">RK</span><span style="display: flex; flex-direction: column"><span style="color: #14171A; font-weight: 500">Rehan Khan</span><span class="meta" style="font-size: 12px">Article Writer</span></span></span><span class="st" style="background: #EAF1F8; color: #1F4A7A">Invitation</span></div><div style="position: relative; width: 100%; max-width: 100%"><span style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #5A6169; display: flex"><svg class="ico ico-s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></span><input class="inp" aria-label="Search approved contributors" placeholder="Search approved contributors" style="padding-left: 34px"></div><span class="hint">Up to 4. Pending invites are removed at submission.</span></div></section><section class="panel"><div class="ph"><h2>Declarations</h2><span style="font-size: 12px; font-weight: 600; color: #A4231A">Required</span></div><div class="pb"><label class="ck"><input type="checkbox" checked="">Participants agreed to this summary being published.</label><label class="ck"><input type="checkbox">I agree to the <a href="PolicyPage.html">Contributor Agreement</a>.</label></div></section></aside></div>
+    </main>
+  </div>
+</div>
+
+<nav class="psf-proto-nav" aria-label="Prototype"><a href="index.html">All screens</a></nav>
+</body>
+</html>
