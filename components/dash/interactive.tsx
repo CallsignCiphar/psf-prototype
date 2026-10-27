@@ -160,7 +160,10 @@ const nf = (n: number) => n.toLocaleString("en-GB");
 /* Area/line chart, one shared y-axis, crosshair + tooltip on hover. Series colours validated (brand-600, info-700). */
 export function AreaChart({ labels, series, height = 240, unit = "" }: { labels: string[]; series: { name: string; values: number[]; color?: string }[]; height?: number; unit?: string }) {
   const [hover, setHover] = useState<number | null>(null);
-  const W = 720, H = height, pl = 44, pr = 12, pt = 12, pb = 28;
+  const box = useRef<HTMLDivElement>(null);
+  const [W, setW] = useState(720);
+  useEffect(() => { const el = box.current; if (!el) return; const ro = new ResizeObserver(([e]) => setW(Math.max(280, Math.round(e.contentRect.width)))); ro.observe(el); return () => ro.disconnect(); }, []);
+  const H = W < 500 ? Math.round(height * 0.85) : height, pl = 40, pr = 8, pt = 12, pb = 26;
   const max = Math.max(...series.flatMap((s) => s.values)) * 1.1;
   const step = Math.pow(10, Math.floor(Math.log10(max / 4)));
   const tick = Math.ceil(max / 4 / step) * step;
@@ -170,9 +173,9 @@ export function AreaChart({ labels, series, height = 240, unit = "" }: { labels:
   const colors = ["#10703a", "#1d5fb8"];
   const fmt = (v: number) => (v >= 1000 ? `${Math.round(v / 100) / 10}k` : `${v}`);
   return (
-    <div className="relative">
+    <div className="relative" ref={box}>
       {series.length > 1 && <div className="flex flex-wrap gap-4 mb-3 text-[13px] text-ink-600">{series.map((s, i) => <span key={s.name} className="inline-flex items-center gap-2"><span className="w-3 h-1 rounded-full" style={{ background: s.color ?? colors[i] }} />{s.name}</span>)}</div>}
-      <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto touch-none" role="img" aria-label={`${series.map((s) => s.name).join(" and ")} chart`}
+      <svg viewBox={`0 0 ${W} ${H}`} width={W} height={H} className="w-full h-auto touch-pan-y" role="img" aria-label={`${series.map((s) => s.name).join(" and ")} chart`}
         onPointerMove={(e) => { const r = e.currentTarget.getBoundingClientRect(); const px = ((e.clientX - r.left) / r.width) * W; setHover(Math.max(0, Math.min(labels.length - 1, Math.round(((px - pl) / (W - pl - pr)) * (labels.length - 1))))); }}
         onPointerLeave={() => setHover(null)}>
         {[0, 1, 2, 3, 4].map((k) => <g key={k}><line x1={pl} x2={W - pr} y1={y(k * tick)} y2={y(k * tick)} stroke="#e3e9e5" strokeDasharray={k ? "3 4" : undefined} /><text x={pl - 8} y={y(k * tick) + 4} textAnchor="end" fontSize="11" fill="#7a867f">{fmt(k * tick)}</text></g>)}

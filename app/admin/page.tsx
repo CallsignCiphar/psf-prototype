@@ -24,12 +24,12 @@ export default function AdminOverview() {
 
       <section className="rounded-[28px] bg-brand-900 text-white p-5 sm:p-6">
         <div className="flex items-center justify-between gap-3"><h2 className="font-semibold text-[17px] flex items-center gap-2">Action centre<span className="h-6 px-2 rounded-full bg-mint-500 text-brand-950 text-[12px] font-bold grid place-items-center">{ACTIONS.reduce((a, b) => a + b[0], 0)}</span></h2></div>
-        <ul className="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-2">
+        <ul className="mt-4 grid grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-2">
           {ACTIONS.map(([n, l, h, I, sub]) => (
-            <li key={l}><Link href={h} className="group flex items-center gap-3 rounded-2xl bg-white/6 ring-1 ring-white/10 p-3 hover:bg-white/12 transition">
+            <li key={l}><Link href={h} className="group h-full flex flex-col sm:flex-row items-start sm:items-center gap-2.5 sm:gap-3 rounded-2xl bg-white/6 ring-1 ring-white/10 p-3 hover:bg-white/12 transition">
               <span className={clsx("size-11 rounded-xl grid place-items-center font-serif text-[20px] font-semibold tabular-nums shrink-0", /Overdue|expired|past/.test(l) ? "bg-danger-700 text-white" : "bg-white text-brand-900")}>{n}</span>
-              <span className="min-w-0 flex-1"><span className="block text-[14px] font-semibold leading-snug">{l}</span>{sub && <span className="block text-[12px] text-white/60">{sub}</span>}</span>
-              <I className="size-4 text-white/40 group-hover:text-mint-300 shrink-0" />
+              <span className="min-w-0 flex-1"><span className="block text-[13px] sm:text-[14px] font-semibold leading-snug">{l}</span>{sub && <span className="block text-[12px] text-white/60">{sub}</span>}</span>
+              <I className="hidden sm:block size-4 text-white/40 group-hover:text-mint-300 shrink-0" />
             </Link></li>
           ))}
         </ul>
