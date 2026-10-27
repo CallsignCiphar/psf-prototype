@@ -70,12 +70,15 @@ export const NEWS: NewsItem[] = [
 ];
 
 export type Report = { slug: string; title: string; category: string; date: string; pages: number; summary: string; art: number };
-export const REPORT_CATEGORIES = ["Annual Outlook", "Conference", "Policy brief", "Roundtable", "Seminar"];
+export const REPORT_CATEGORIES = ["Annual Outlook", "Special Reports", "Conference", "Policy brief", "Roundtable", "Seminar"];
 export const REPORTS: Report[] = [
   { slug: "annual-outlook-2027", title: "Annual Outlook 2027: the South Asia security environment", category: "Annual Outlook", date: "1 Oct 2026", pages: 64, summary: "Our yearly assessment of the risks, trends and choices facing Pakistan and its neighbours.", art: 21 },
   { slug: "future-warfare-readout", title: "Future warfare conference readout", category: "Conference", date: "28 Apr 2026", pages: 32, summary: "Two days of panels on drones, electronic warfare and the changing infantry battle.", art: 22 },
   { slug: "nuclear-risk-reduction", title: "Policy brief: nuclear risk reduction measures", category: "Policy brief", date: "3 Mar 2026", pages: 12, summary: "Five measures both sides could adopt without a treaty.", art: 23 },
   { slug: "climate-finance-seminar", title: "Seminar on climate finance for South Asia", category: "Seminar", date: "2 Oct 2026", pages: 24, summary: "What South Asian states can realistically raise, and from whom.", art: 24 },
+  { slug: "drones-western-border", title: "Drones on the western border: a two-year record", category: "Special Reports", date: "18 Aug 2026", pages: 40, summary: "Every recorded drone incident since 2024, mapped and analysed.", art: 25 },
+  { slug: "afghanistan-roundtable", title: "Roundtable: Afghanistan after the transition", category: "Roundtable", date: "9 Jul 2026", pages: 16, summary: "Eight practitioners on trade, refugees and border security.", art: 26 },
+  { slug: "youth-dialogue-security", title: "Youth dialogue on national security", category: "Conference", date: "19 Jan 2026", pages: 20, summary: "What students from twelve universities said about security priorities.", art: 27 },
 ];
 
 export type Paper = { slug: string; title: string; authors: string; category: string; date: string; ref: string; abstract: string; pages: number };
@@ -105,3 +108,52 @@ export const topicBySlug = (s: string) => TOPICS.find((t) => t.slug === s)!;
 export const authorBySlug = (s: string) => AUTHORS.find((a) => a.slug === s)!;
 export const articleBySlug = (s: string) => ARTICLES.find((a) => a.slug === s)!;
 export const subName = (topic: string, sub: string) => topicBySlug(topic).subs.find((x) => x.slug === sub)?.name ?? sub;
+
+// ---------- extended sample content for inner pages ----------
+export const REGIONS = ["South Asia", "Middle East", "Central Asia", "East Asia", "Southeast Asia", "Europe", "Africa", "Americas", "Oceania"];
+export const COUNTRIES = ["Pakistan", "Afghanistan", "India", "Iran", "China", "Saudi Arabia", "United States", "United Kingdom", "Bangladesh", "Sri Lanka", "Turkey", "Russia"];
+export const CONTENT_TYPES = ["Articles", "Reports", "Research", "Newsroom"];
+export const LABELS = ["Analysis", "Explainer", "Opinion", "Interview", "Archive"];
+export const RESEARCH_CATEGORIES = [
+  { name: "Research Papers", desc: "Full-length original research, double-blind peer reviewed.", count: 31 },
+  { name: "Policy Briefs", desc: "Short, evidence-based recommendations for decision makers.", count: 12 },
+  { name: "Emerging Scholars", desc: "Peer-reviewed work by students and early-career researchers.", count: 5 },
+];
+
+export type NewsPost = { id: string; day: string; time: string; region: string; country: string; topic: string; title: string; summary: string; breaking?: boolean; type: string };
+export const NEWSROOM: NewsPost[] = [
+  { id: "n1", day: "Today", time: "14:30", region: "South Asia", country: "Pakistan", topic: "National Affairs", type: "Update", breaking: true, title: "ISPR confirms security operation under way in North Waziristan district", summary: "The military's media wing said troops moved into two villages after intelligence reports. Mobile data has been suspended in the district." },
+  { id: "n2", day: "Today", time: "13:05", region: "Middle East", country: "Iran", topic: "Geopolitics", type: "Update", title: "Tehran and Islamabad agree on a joint border commission meeting next month", summary: "Foreign ministry officials said the commission will meet in Quetta to discuss crossings and trade." },
+  { id: "n3", day: "Today", time: "11:40", region: "South Asia", country: "Afghanistan", topic: "Geopolitics", type: "Update", title: "Torkham crossing reopens to cargo traffic after three-day closure", summary: "Trucks began moving at 10:00 PKT. Pedestrian traffic remains restricted." },
+  { id: "n4", day: "Today", time: "09:15", region: "East Asia", country: "China", topic: "Defence", type: "Update", title: "Second Hangor-class submarine begins sea trials, officials say", summary: "The boat sailed from Wuchang for a first round of trials ahead of delivery next year." },
+  { id: "n5", day: "Yesterday", time: "22:50", region: "Americas", country: "United States", topic: "Defence", type: "Update", title: "US State Department approves sustainment package for regional partners", summary: "The notification covers spares, training and maintenance support." },
+  { id: "n6", day: "Yesterday", time: "18:00", region: "South Asia", country: "Pakistan", topic: "National Affairs", type: "Event", title: "Pakistan Strategic Forum hosts the 2026 Islamabad Security Dialogue on 20 October", summary: "Two days of panels with officials, scholars and journalists. Registration is open." },
+  { id: "n7", day: "14 Oct 2026", time: "16:20", region: "South Asia", country: "Pakistan", topic: "Defence", type: "Update", title: "Navy concludes multinational maritime exercise off Karachi", summary: "Ships from eleven navies took part in the five-day exercise." },
+  { id: "n8", day: "14 Oct 2026", time: "10:05", region: "Middle East", country: "Saudi Arabia", topic: "Geopolitics", type: "Press release", title: "Statement on the Red Sea shipping disruption", summary: "We call for restraint and for shipping lanes to remain open." },
+];
+export const LIVE_UPDATES = [
+  { time: "15:42", text: "Committee session adjourned. A statement is expected within the hour." },
+  { time: "15:10", text: "Interior minister briefs members on border crossings and refugee movement." },
+  { time: "14:35", text: "National Security Committee convenes at the Prime Minister's Office." },
+];
+
+export const AUTHOR_BIO: Record<string, string> = {
+  "ayesha-rahman": "Ayesha Rahman writes on air power, air defence and the defence industrial base. She spent eight years as an analyst before joining the Forum as a senior fellow.",
+  "sara-haider": "Sara Haider is an MPhil candidate in Defence and Strategic Studies at Quaid-i-Azam University. Her research covers missile signalling, crisis communication and arms control in South Asia.",
+  "bilal-ahmed": "Bilal Ahmed lectures in International Relations at NUML Islamabad and writes on defence budgets and civil-military relations.",
+};
+
+export const CORRECTIONS_LOG = [
+  { date: "14 Oct 2026", item: "Crisis hotlines in South Asia", text: "An earlier version said the 1999 memorandum was signed in March. It was signed on 21 February 1999." },
+  { date: "2 Oct 2026", item: "Reading the defence budget", text: "A chart labelled pension spending in rupees billions was in rupees millions. The chart has been corrected." },
+  { date: "19 Sep 2026", item: "Kabul's new economic diplomacy", text: "We misspelled the name of the Afghan commerce minister. It has been corrected." },
+];
+
+export const RESEARCH_ALL: (Paper & { type: string; institution: string; country: string })[] = [
+  { ...RESEARCH[0], type: "Research Papers", institution: "Quaid-i-Azam University", country: "Pakistan" },
+  { ...RESEARCH[1], type: "Research Papers", institution: "LUMS", country: "Pakistan" },
+  { ...RESEARCH[2], type: "Emerging Scholars", institution: "Quaid-i-Azam University", country: "Pakistan" },
+  { slug: "sanctions-dual-use", title: "Sanctions and dual-use exports from South Asia", authors: "Danish Iqbal", category: "Economic Security", date: "12 Jun 2026", ref: "PSF.R.2026.009", abstract: "How export control regimes shape procurement choices for mid-sized states, with five case studies.", pages: 33, type: "Research Papers", institution: "National Defence University", country: "Pakistan" },
+  { slug: "border-trade-iran", title: "Pakistan-Iran border trade: formalising the informal", authors: "Usama Rafiq", category: "Economic Security", date: "3 May 2026", ref: "PSF.R.2026.006", abstract: "Barter, smuggling and the case for border markets in Balochistan.", pages: 14, type: "Policy Briefs", institution: "University of the Punjab", country: "Iran" },
+  { slug: "space-awareness-small-states", title: "Space situational awareness for small states", authors: "Fatima Noor", category: "Strategic Stability", date: "21 Mar 2026", ref: "PSF.R.2026.003", abstract: "What a modest national programme could track, and what it would cost.", pages: 26, type: "Emerging Scholars", institution: "LUMS", country: "Pakistan" },
+];
