@@ -1,0 +1,76 @@
+// Master list of every screen in the prototype. `done` marks screens already redesigned.
+export type Screen = { path: string; title: string; done?: boolean; states?: { label: string; query: string }[] };
+export type Group = { key: string; title: string; desc: string; screens: Screen[] };
+
+export const GROUPS: Group[] = [
+  {
+    key: "public", title: "Public website", desc: "What readers see, from the homepage to policy and error pages.",
+    screens: [
+      { path: "/", title: "Home", done: true, states: [{ label: "Ads off", query: "?ads=off" }] },
+      { path: "/about", title: "About us" },
+      { path: "/newsroom", title: "Newsroom" },
+      { path: "/newsroom/n6", title: "Newsroom post" },
+      { path: "/topics", title: "Topics hub" },
+      { path: "/topics/defence", title: "Topic page" },
+      { path: "/topics/defence/air", title: "Subtopic page" },
+      { path: "/articles/air-defence-in-depth", title: "Article page" },
+      { path: "/reports", title: "Reports hub" },
+      { path: "/reports/category/conference", title: "Report category" },
+      { path: "/reports/annual-outlook-2027", title: "Report page" },
+      { path: "/research", title: "Research hub" },
+      { path: "/research/all", title: "All research" },
+      { path: "/research/submit", title: "Submit a paper" },
+      { path: "/research/deterrence-hypersonics", title: "Research paper" },
+      { path: "/global-watch", title: "Global Watch" },
+      { path: "/authors/sara-haider", title: "Author page" },
+      { path: "/search?q=defence", title: "Search results" },
+      { path: "/videos", title: "Videos" },
+      { path: "/where-we-are", title: "Where we are" },
+      { path: "/policies/editorial", title: "Policy pages" },
+      { path: "/corrections", title: "Corrections" },
+      { path: "/cookies", title: "Cookie policy" },
+      { path: "/publish-with-us", title: "Publish with us" },
+      { path: "/contact", title: "Contact" },
+      { path: "/advertise", title: "Advertise" },
+      { path: "/verify", title: "ID card verification" },
+      { path: "/error/404", title: "Error and maintenance pages" },
+    ],
+  },
+  {
+    key: "auth", title: "Sign in and onboarding", desc: "Same steps and fields as before, with a simpler, modern flow.",
+    screens: [
+      { path: "/sign-in", title: "Sign in" }, { path: "/sign-in/two-factor", title: "Two-factor check" },
+      { path: "/join", title: "Join: choose a track" }, { path: "/join/details", title: "Signup: account details" },
+      { path: "/join/verify-email", title: "Verify email" }, { path: "/join/profile", title: "Signup: about you" },
+      { path: "/join/submitted", title: "Application submitted" }, { path: "/application-status", title: "Application status" },
+      { path: "/set-password", title: "Invited user: set password" }, { path: "/forgot-password", title: "Forgot password" },
+      { path: "/reset-password", title: "Reset password" },
+    ],
+  },
+  {
+    key: "portal", title: "Contributor and approver portal", desc: "Writing, submitting, tracking and peer review.",
+    screens: [
+      { path: "/portal", title: "Overview" }, { path: "/portal/articles", title: "My Articles" }, { path: "/portal/articles/new", title: "Article editor" },
+      { path: "/portal/articles/water-security", title: "Article view" }, { path: "/portal/reports", title: "My Reports" }, { path: "/portal/reports/new", title: "Report editor" },
+      { path: "/portal/research", title: "My Research" }, { path: "/portal/research/new", title: "Research submission" }, { path: "/portal/research/RES-2026-00041", title: "Research detail" },
+      { path: "/portal/reviews", title: "Reviews queue" }, { path: "/portal/reviews/RES-2026-00045", title: "Review workspace" },
+      { path: "/portal/notifications", title: "Notifications" }, { path: "/portal/profile", title: "Profile" }, { path: "/portal/account", title: "Account and security" },
+      { path: "/portal/apply-role", title: "Apply for another role" },
+    ],
+  },
+  {
+    key: "admin", title: "Admin dashboard", desc: "Editorial, research, people, placement, ads and site settings.",
+    screens: [
+      { path: "/admin", title: "Overview" }, { path: "/admin/analytics", title: "Analytics" }, { path: "/admin/users", title: "Users" },
+      { path: "/admin/users/bilal-ahmed", title: "User detail" }, { path: "/admin/users/invite", title: "Invite user" },
+      { path: "/admin/applications", title: "Pending applications" }, { path: "/admin/applications/APP-2026-0318", title: "Application review" },
+      { path: "/admin/roles", title: "Roles and permissions" }, { path: "/admin/articles", title: "Articles and reports" },
+      { path: "/admin/articles/water-security", title: "Article review" }, { path: "/admin/research", title: "Research papers" },
+      { path: "/admin/research/RES-2026-00048", title: "Research paper, editor view" }, { path: "/admin/newsroom", title: "Newsroom" },
+      { path: "/admin/featured", title: "Featured and Top Stories" }, { path: "/admin/taxonomy", title: "Taxonomy and tags" },
+      { path: "/admin/global-watch", title: "Global Watch" }, { path: "/admin/ads", title: "Campaigns and slot calendar" },
+      { path: "/admin/inbox", title: "Inbox" }, { path: "/admin/id-cards", title: "ID cards" }, { path: "/admin/cms", title: "CMS" },
+      { path: "/admin/logs", title: "Activity logs" }, { path: "/admin/settings", title: "Settings" },
+    ],
+  },
+];
