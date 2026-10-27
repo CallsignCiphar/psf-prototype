@@ -4,7 +4,7 @@ import { useRef, useState, type ReactNode } from "react";
 import clsx from "clsx";
 import { CircleAlert, CircleCheck, Eye, EyeOff, FileUp, Paperclip, X } from "lucide-react";
 
-export const inputCls = "w-full h-12 px-4 rounded-xl bg-white ring-1 ring-line-strong text-[15px] text-ink-900 outline-none placeholder:text-ink-400 focus:ring-2 focus:ring-brand-400 transition disabled:bg-canvas disabled:text-ink-500 read-only:bg-canvas read-only:text-ink-600";
+export const inputCls = "w-full h-12 px-4 rounded-xl bg-white ring-1 ring-line-strong text-[15px] text-ink-900 outline-none placeholder:text-ink-400 focus:ring-2 focus:ring-brand-400 transition disabled:bg-canvas disabled:text-ink-500 [&:read-only:not(select)]:bg-canvas [&:read-only:not(select)]:text-ink-600";
 
 export function Field({ label, required, hint, error, children, htmlFor, className, counter }: { label: ReactNode; required?: boolean; hint?: ReactNode; error?: string; children: ReactNode; htmlFor?: string; className?: string; counter?: string }) {
   return (

@@ -123,9 +123,9 @@ export function FilterBar({ state, setState, search, selects = [], segments, tog
           </div>
         )}
         <div className="hidden lg:flex items-center gap-2 flex-wrap"><Controls /></div>
-        <button type="button" onClick={() => setSheet(true)} className="lg:hidden h-11 px-4 inline-flex items-center gap-2 rounded-full bg-canvas ring-1 ring-line text-sm font-semibold text-ink-800">
+        {(selects.length > 0 || toggles.length > 0 || segments) && <button type="button" onClick={() => setSheet(true)} className="lg:hidden h-11 px-4 inline-flex items-center gap-2 rounded-full bg-canvas ring-1 ring-line text-sm font-semibold text-ink-800">
           <SlidersHorizontal className="size-4" />Filters{nActive > 0 && <span className="min-w-5 h-5 px-1.5 rounded-full bg-brand-800 text-white text-[11px] grid place-items-center">{nActive}</span>}
-        </button>
+        </button>}
         {sorts.length > 0 && (
           <label className="ml-auto inline-flex items-center gap-2 h-11 sm:h-10 pl-3.5 pr-2 rounded-full bg-canvas ring-1 ring-line text-sm font-medium text-ink-700">
             <ArrowDownUp className="size-4 text-ink-400" aria-hidden /><span className="sr-only">Sort</span>
