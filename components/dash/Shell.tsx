@@ -30,7 +30,7 @@ function SideNav({ groups, active, kind, onNavigate }: { groups: NavGroup[]; act
   const [loc, setLoc] = useState(path);
   useEffect(() => { setLoc(window.location.pathname + window.location.search); }, [path]);
   return (
-    <nav aria-label={kind === "admin" ? "Admin" : "Portal"} className="flex-1 overflow-y-auto no-scrollbar px-3 py-4 space-y-5">
+    <nav aria-label={kind === "admin" ? "Admin" : "Portal"} className="flex-1 overflow-y-auto no-scrollbar px-3 py-3 space-y-4">
       {groups.map((g, i) => (
         <div key={i}>
           {g.label && <p className="px-3 mb-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-white/40">{g.label}</p>}
@@ -40,7 +40,7 @@ function SideNav({ groups, active, kind, onNavigate }: { groups: NavGroup[]; act
               return (
                 <li key={it.key}>
                   <Link href={it.href} onClick={onNavigate} aria-current={on ? "page" : undefined}
-                    className={clsx("group flex items-center gap-3 h-11 px-3 rounded-xl text-[14.5px] font-medium transition", on ? "bg-white text-brand-900 shadow-soft" : "text-white/75 hover:bg-white/8 hover:text-white")}>
+                    className={clsx("group flex items-center gap-3 h-10 px-3 rounded-xl text-[14px] font-medium transition", on ? "bg-white text-brand-900 shadow-soft" : "text-white/75 hover:bg-white/8 hover:text-white")}>
                     <it.icon className={clsx("size-[18px] shrink-0", on ? "text-brand-700" : "text-white/55 group-hover:text-white")} />
                     <span className="flex-1 truncate">{it.label}</span>
                     {it.badge ? <span className={clsx("min-w-6 h-6 px-1.5 rounded-full text-[11px] font-bold grid place-items-center tabular-nums", on ? "bg-brand-800 text-white" : "bg-mint-500 text-brand-950")}>{it.badge}</span> : null}
@@ -66,7 +66,7 @@ function Brand({ kind }: { kind: Kind }) {
   return (
     <Link href={kind === "admin" ? "/admin" : "/portal"} className="flex items-center gap-3 px-5 h-[72px] shrink-0">
       <Image src="/psf-logo.png" alt="" width={38} height={38} className="rounded-full bg-white p-0.5" />
-      <span className="min-w-0 leading-tight"><span className="block font-serif font-semibold text-white text-[15px] truncate">Pakistan Strategic Forum</span><span className="block text-[12px] text-mint-300 font-medium">{kind === "admin" ? "Admin dashboard" : "Contributor portal"}</span></span>
+      <span className="min-w-0 leading-tight"><span className="block font-serif font-semibold text-white text-[15px]">Pakistan Strategic Forum</span><span className="block text-[12px] text-mint-300 font-medium">{kind === "admin" ? "Admin dashboard" : "Contributor portal"}</span></span>
     </Link>
   );
 }

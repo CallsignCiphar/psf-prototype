@@ -11,13 +11,13 @@ export function PageHead({ title, desc, crumbs, actions, badge }: { title: React
           {crumbs.map((c, i) => <span key={i} className="flex items-center gap-1">{i > 0 && <ChevronRight className="size-3.5 opacity-60" />}{c.href ? <Link href={c.href} className="hover:text-brand-800 font-medium">{c.label}</Link> : <span className="text-ink-800 font-medium">{c.label}</span>}</span>)}
         </nav>
       )}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+      {(title || actions) && <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div className="min-w-0">
           <div className="flex items-center gap-3 flex-wrap"><h1 className="font-serif text-[28px] sm:text-[34px] leading-tight font-semibold tracking-[-0.02em] text-balance">{title}</h1>{badge}</div>
           {desc && <p className="mt-1.5 text-[15px] text-ink-500">{desc}</p>}
         </div>
         {actions && <div className="flex flex-wrap gap-2 shrink-0">{actions}</div>}
-      </div>
+      </div>}
     </div>
   );
 }

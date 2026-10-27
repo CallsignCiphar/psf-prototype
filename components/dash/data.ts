@@ -65,7 +65,7 @@ export const ADMIN_ITEMS = [
   { slug: "climate-finance-seminar", title: "Seminar on climate finance for South Asia", by: "Sara Haider, Rehan Khan", type: "Report", topic: "Climate and Environment", sub: "8 Oct 2026", editor: "Hina Shah", status: "Pending review" },
   { slug: "kashmir-unga", title: "Kashmir and the 2026 UNGA session", by: "Rehan Khan", type: "Article", topic: "International Affairs", sub: "16 Oct 2026", editor: "Unassigned", status: "Pending review" },
   { slug: "flood-relief", title: "Civil-military coordination in flood relief", by: "Sara Haider", type: "Article", topic: "National Affairs", sub: "10 Oct 2026", editor: "Hina Shah", status: "Changes requested" },
-  { slug: "annual-outlook-2027", title: "Annual Outlook 2027", by: "PSF Analysis Desk", type: "Report", topic: "Defence and Security", sub: "14 Oct 2026", editor: "Hina Shah", status: "Scheduled" },
+  { slug: "annual-outlook-2027", title: "Annual Outlook 2027", by: "Analysis Desk", type: "Report", topic: "Defence and Security", sub: "14 Oct 2026", editor: "Hina Shah", status: "Scheduled" },
   { slug: "cyber-command", title: "The case for a national cyber command", by: "Bilal Ahmed", type: "Article", topic: "Science and Technology", sub: "15 Oct 2026", editor: "Hina Shah", status: "Live" },
   { slug: "gwadar", title: "Gwadar after the attacks", by: "Rehan Khan", type: "Article", topic: "National Affairs", sub: "13 Oct 2026", editor: "Hina Shah", status: "Rejected" },
 ];

@@ -20,7 +20,7 @@ export default function PrototypeIndex() {
           </div>
           <p className="mt-8 eyebrow text-mint-300">Clickable prototype · responsive · sample content</p>
           <h1 className="mt-2 font-serif text-[34px] sm:text-5xl font-semibold leading-tight">Every screen, in one place</h1>
-          <p className="mt-3 text-white/75 max-w-2xl text-[17px]">Open any screen below, or start at an entry point and click through. {done} of {all.length} screens are redesigned so far; the rest are being rebuilt in phases.</p>
+          <p className="mt-3 text-white/75 max-w-2xl text-[17px]">Open any screen below, or start at an entry point and click through. {done} of {all.length} screens are built, plus {all.reduce((n, x) => n + (x.states?.length ?? 0), 0)} alternative states. Every button and form leads to the next step of its flow.</p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Link href="/" className={btn("light", "md", "rounded-full")}>Start at the homepage<ArrowRight className="size-4" /></Link>
             <Link href="/join" className={btn("outline-light", "md", "rounded-full")}>Contributor signup</Link>
@@ -29,9 +29,14 @@ export default function PrototypeIndex() {
           </div>
         </div>
       </header>
+      <nav aria-label="Jump to section" className="sticky top-0 z-20 bg-canvas/90 backdrop-blur border-b border-line">
+        <div className="container-site flex gap-2 overflow-x-auto no-scrollbar py-3">
+          {GROUPS.map((g) => <a key={g.key} href={`#${g.key}`} className="shrink-0 h-10 px-4 rounded-full bg-white shadow-soft text-sm font-semibold text-ink-700 hover:text-brand-800 inline-flex items-center gap-2">{g.title}<span className="text-xs text-ink-400 tabular-nums">{g.screens.length}</span></a>)}
+        </div>
+      </nav>
       <main className="container-site py-10 sm:py-14 space-y-12">
         {GROUPS.map((g) => (
-          <section key={g.key}>
+          <section key={g.key} id={g.key} className="scroll-mt-20">
             <div className="flex items-end justify-between gap-4 pb-4 mb-5 border-b border-line">
               <div><h2 className="font-serif text-2xl sm:text-[28px] font-semibold">{g.title}</h2><p className="text-ink-500 mt-1">{g.desc}</p></div>
               <span className="text-sm text-ink-500 shrink-0">{g.screens.filter((s) => s.done).length} / {g.screens.length} done</span>
